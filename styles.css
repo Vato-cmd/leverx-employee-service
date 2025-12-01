@@ -74,3 +74,60 @@ header {
 .button-with-power-logo {
   margin-left: 15px;
 }
+
+main {
+  width: 90%;
+  margin: 20px auto;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 20px;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+.tabs {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 10px;
+  padding: 15px;
+}
+
+.tab {
+  cursor: pointer;
+  padding-bottom: 5px;
+  font-weight: bold;
+  color: #b3b3b3;
+  border-bottom: 2px solid transparent;
+  transition: 0.3s;
+}
+
+aside:has(#basic:checked) .tabs label[for="basic"],
+aside:has(#advanced:checked) .tabs label[for="advanced"] {
+  color: #000;
+  border-bottom-color: #1e5dbe;
+  transition: 1s;
+}
+
+#basic:checked ~ .basic-content {
+  display: inline-block;
+  transition: 0.5s;
+}
+
+#advanced:checked ~ .advanced-content {
+  display: inline-block;
+  transition: 0.5s;
+}
+.content {
+  display: none;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 100%;
+}
+.content-inside {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
