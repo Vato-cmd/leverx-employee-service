@@ -29,5 +29,76 @@
         </button>
       </div>
     </header>
+    <main>
+      <aside>
+        <div>
+          <input type="radio" name="search-tab" id="basic" checked />
+          <input type="radio" name="search-tab" id="advanced" />
+
+          <div class="tabs">
+            <label for="basic" class="tab">BASIC SEARCH</label>
+            <label for="advanced" class="tab">ADVANCED SEARCH</label>
+          </div>
+
+          <div class="content basic-content">
+            <div class="content-inside">
+              <input
+                type="text"
+                class="search-input"
+                placeholder="John Smith"
+              />
+               <label for="no-results" class="search-btn">
+                  SEARCH
+                </label>
+            </div>
+          </div>
+
+          <div class="content advanced-content">
+            <div class="form">
+              <label for="name">Name</label>
+              <input id="name" type="text" placeholder="John Smith" />
+
+              <label for="email">Email</label>
+              <input
+                id="email"
+                type="text"
+                placeholder="john.smith@leverx.com"
+              />
+              <div class="phone-skype">
+                <div>
+                  <label for="phone">Phone</label>
+                  <input id="phone" type="text" placeholder="Phone number" />
+                </div>
+                <div>
+                  <label for="skype">Skype</label>
+                  <input id="skype" type="text" placeholder="SkypeID" />
+                </div>
+              </div>
+              <div class="phone-skype">
+                <div>
+                   <label for="building">Building</label>
+                   <select id="building">
+                      <option>Any</option>
+                   </select>
+                </div>
+                <div>
+                  <label for="name">Room</label>
+                  <input id="name" type="text" placeholder="303.1" />
+                </div>
+              </div>
+       
+              <label for="name">Department</label>
+              <select id="building">
+                <option>Any</option>
+              </select>
+                <label for="no-results" class="search-btn">
+                  SEARCH
+                </label>
+
+            </div>
+          </div>
+        </div>
+      </aside>
+
   </body>
 </html>
