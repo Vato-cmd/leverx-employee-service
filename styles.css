@@ -480,6 +480,16 @@ section:has(#list:checked) .employee-section > .card > .tags span:nth-child(1) {
   display: block;
 }
 
+.overlay {
+  display: none;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 9;
+  opacity: 0;
+}
+
 @media (width <= 800px) {
   main {
     grid-template-columns: 1fr;
