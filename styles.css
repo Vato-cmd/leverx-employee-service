@@ -110,6 +110,12 @@ aside:has(#advanced:checked) .tabs label[for="advanced"] {
   transition: 1s;
 }
 
+section:has(#grid:checked) .top-section label[for="grid"] svg,
+section:has(#list:checked) .top-section label[for="list"] svg {
+  stroke: #1e5dbe;
+  transition: 0.3s;
+}
+
 #basic:checked ~ .basic-content {
   display: inline-block;
   transition: 0.5s;
