@@ -490,6 +490,39 @@ section:has(#list:checked) .employee-section > .card > .tags span:nth-child(1) {
   opacity: 0;
 }
 
+.hamburger-menu {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  z-index: 11;
+  width: max-content;
+  position: absolute;
+  right: 10px;
+  top: 30px;
+}
+
+.hamburger-menu input:checked {
+  opacity: 0;
+  width: 0;
+}
+
+.hamburger-menu::before,
+.hamburger-menu::after,
+.hamburger-menu input {
+  content: "";
+  width: 25px;
+  height: 4px;
+  background-color: white;
+  transition: opacity 0.3s, width 0.3s;
+  transform-origin: left center;
+  margin-right: 15px;
+}
+
+.hamburger-menu:has(input:checked) ~ .hidden-main-nav {
+  display: flex;
+  left: 0;
+}
+
 @media (width <= 800px) {
   main {
     grid-template-columns: 1fr;
