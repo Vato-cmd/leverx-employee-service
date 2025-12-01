@@ -465,3 +465,17 @@ section:has(#list:checked) .employee-section > .card > .tags span:nth-child(1) {
 .mobile-input-search {
   display: none;
 }
+
+.phone-skype {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.phone-skype > div {
+  flex: 1;
+}
+
+.phone-skype > div > label {
+  display: block;
+}
