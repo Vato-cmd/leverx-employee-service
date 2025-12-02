@@ -1,13 +1,18 @@
-const employeeSection = document.getElementById("employee-section");
 const basicSearchBtn = document.getElementById("basic-search");
 const advancedSearchBtn = document.getElementById("advanced-search");
 const basicContent = document.getElementById("basic-content");
 const advancedContent = document.getElementById("advanced-content");
 const svgGrid = document.getElementById("svg-grid");
 const svgList = document.getElementById("svg-list");
+const employeeSection = document.getElementById("employee-section");
 
 const buttonGrid = document.getElementById("button-grid");
 const buttonList = document.getElementById("button-list");
+
+const employeeSeachBtn = document.getElementById("employee-search-btn");
+const basicEmployeeSearchInput = document.getElementById(
+  "basic-employee-search-input"
+);
 
 let listClicked = false;
 let employees = [];
@@ -52,6 +57,45 @@ function renderEmployees(users) {
     `;
     }
   });
+}
+
+employeeSeachBtn.addEventListener("click", (e) => {
+  const value = basicEmployeeSearchInput.value.trim().toLowerCase();
+  if (!value) return;
+
+  employees.forEach(
+    (employee) =>
+      (employee.fullname =
+        `${employee.first_name} ${employee.last_name}`.toLowerCase())
+  );
+
+  const findEmployee = employees.find(
+    (employee) =>
+      employee.id.toLowerCase() === value ||
+      employee.first_name.toLowerCase() === value ||
+      employee.last_name.toLowerCase() === value ||
+      employee.fullname.toLowerCase() === value
+  );
+
+  if (findEmployee) {
+    window.location.href = `user.html?id=${findEmployee.id}`;
+  } else {
+    employeeSection.classList.remove("employee-section");
+    employeeSection.classList.add("employee-section-flex");
+    employeeSection.innerHTML = `
+      <img src="images/Page-Not-Found--Streamline-Lagos.png" />
+      <h2>404 Page not found</h2>
+      <p>Sorry, we can't find that page! it might be an old link or maybe it was removed</p>
+      <button id="go-home">GO TO THE HOME PAGE</button>
+    `;
+
+    document.getElementById("go-home").addEventListener("click", goToHomePage);
+    document.querySelector(".button-section").classList.add("hidden");
+  }
+});
+
+function goToHomePage() {
+  return (window.location.href = `index.html`);
 }
 
 advancedSearchBtn.addEventListener("click", () => {
