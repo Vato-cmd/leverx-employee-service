@@ -147,3 +147,58 @@ a {
   color: white;
   opacity: 0.9;
 }
+
+main {
+  width: 90%;
+  margin: 20px auto;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 35px;
+}
+
+.tabs {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 10px;
+  padding: 15px;
+}
+
+.tabs > button {
+  border: none;
+  font-family: "Roboto", sans-serif;
+  background-color: #f5f7fa;
+  padding-bottom: 10px;
+}
+
+.tabs .active {
+  color: #2b2a2a;
+  border-bottom: 2px solid #5591ff;
+  opacity: 0.9;
+}
+
+.tab {
+  cursor: pointer;
+  padding-bottom: 5px;
+  font-weight: bold;
+  color: #b3b3b3;
+  border-bottom: 2px solid transparent;
+  transition: 0.3s;
+}
+
+.content-inside {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.content-inside > input {
+  background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' fill='%23cbd2dd' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11.742 10.344h-.806l-.286-.276a6.471 6.471 0 001.486-4.098A6.565 6.565 0 005.565.965 6.565 6.565 0 00.964 5.565a6.565 6.565 0 006.6 6.5c1.523 0 2.935-.5 4.098-1.486l.276.286v.806l4.25 4.244 1.27-1.27-4.244-4.25zm-5.877 0A5.134 5.134 0 01.43 5.148a5.134 5.134 0 015.435-5.435 5.134 5.134 0 015.434 5.434 5.134 5.134 0 01-5.434 5.435z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 12px center;
+  padding: 10px;
+  color: #738392;
+  border: 1px solid #c3c9cf;
+  border-radius: 5px;
+  padding-left: 35px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+}
