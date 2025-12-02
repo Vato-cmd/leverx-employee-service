@@ -9,6 +9,9 @@ const svgList = document.getElementById("svg-list");
 const buttonGrid = document.getElementById("button-grid");
 const buttonList = document.getElementById("button-list");
 
+let listClicked = false;
+let employees = [];
+
 fetch("./data/users.json")
   .then((res) => res.json())
   .then((data) => {

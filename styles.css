@@ -385,6 +385,14 @@ a {
   gap: 0;
   transition: 1s;
 }
+.employee-cards.list {
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #ffffff;
+}
 
 @media (width <= 800px) {
   main {
