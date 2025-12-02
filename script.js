@@ -111,6 +111,37 @@ form.addEventListener("submit", (e) => {
     }, 1000);
     return;
   }
+  const found = employees.find((emp) => {
+    const fullName = `${emp.first_name} ${emp.last_name}`.toLowerCase();
+
+    return Object.entries(advanceSearchObject).every(([key, value]) => {
+      switch (key) {
+        case "name":
+          return (
+            emp.first_name.toLowerCase().includes(value) ||
+            emp.last_name.toLowerCase().includes(value) ||
+            fullName.includes(value)
+          );
+        default:
+          return emp[key] && emp[key].toLowerCase() === value;
+      }
+    });
+  });
+  if (found) {
+    window.location.href = `user.html?id=${found.id}`;
+  } else {
+    employeeSection.classList.remove("employee-section");
+    employeeSection.classList.add("employee-section-flex");
+    employeeSection.innerHTML = `
+      <img src="images/Page-Not-Found--Streamline-Lagos.png" />
+      <h2>404 Page not found</h2>
+      <p>Sorry, we can't find that page! it might be an old link or maybe it was removed</p>
+      <button id="go-home">GO TO THE HOME PAGE</button>
+    `;
+
+    document.getElementById("go-home").addEventListener("click", goToHomePage);
+    document.querySelector(".button-section").classList.add("hidden");
+  }
 });
 
 fetch("./data/users.json")
