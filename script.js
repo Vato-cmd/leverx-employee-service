@@ -3,6 +3,11 @@ const basicSearchBtn = document.getElementById("basic-search");
 const advancedSearchBtn = document.getElementById("advanced-search");
 const basicContent = document.getElementById("basic-content");
 const advancedContent = document.getElementById("advanced-content");
+const svgGrid = document.getElementById("svg-grid");
+const svgList = document.getElementById("svg-list");
+
+const buttonGrid = document.getElementById("button-grid");
+const buttonList = document.getElementById("button-list");
 
 fetch("./data/users.json")
   .then((res) => res.json())
@@ -59,4 +64,26 @@ basicSearchBtn.addEventListener("click", () => {
 
   basicContent.classList.toggle("hidden");
   advancedContent.classList.toggle("hidden");
+});
+
+buttonGrid.addEventListener("click", () => {
+  employeeSection.classList.add("employee-section");
+  employeeSection.classList.remove("list-employee-section");
+
+  conditionalRenderComponent.classList.add("hidden");
+  svgGrid.classList.add("clicked");
+  svgList.classList.remove("clicked");
+  document.querySelectorAll(".employee-cards").forEach((card) => {
+    card.classList.remove("list");
+  });
+});
+buttonList.addEventListener("click", () => {
+  employeeSection.classList.remove("employee-section");
+  employeeSection.classList.add("list-employee-section");
+  conditionalRenderComponent.classList.remove("hidden");
+  svgList.classList.add("clicked");
+  svgGrid.classList.remove("clicked");
+  document.querySelectorAll(".employee-cards").forEach((card) => {
+    card.classList.add("list");
+  });
 });

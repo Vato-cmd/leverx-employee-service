@@ -269,6 +269,11 @@ main {
   transform: scale(1.2);
 }
 
+.functional-buttons button svg {
+  width: 20px;
+  height: 20px;
+}
+
 .user-main-layout {
   display: flex;
   flex-direction: column;
@@ -305,11 +310,6 @@ main {
 .hidden {
   display: none;
   margin-bottom: 20px;
-}
-.employee-section {
-  width: 70%;
-  margin: 0 auto;
-  grid-template-columns: repeat(2, 1fr);
 }
 
 .employee-cards {
@@ -379,6 +379,13 @@ a {
   color: #363535;
 }
 
+.list-employee-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  transition: 1s;
+}
+
 @media (width <= 800px) {
   main {
     grid-template-columns: 1fr;
@@ -442,6 +449,10 @@ a {
     gap: 10px;
     width: 90%;
     margin: 0 auto;
+  }
+
+  .clicked {
+    stroke: #0a41a5;
   }
 
   .employee-cards .department img {
