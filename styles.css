@@ -337,10 +337,6 @@ main {
   display: none;
 }
 
-/* NEW CSS RULES HERE */
-/* NEW CSS RULES HERE */
-/* NEW CSS RULES HERE */
-
 .employee-section-flex {
   display: flex;
   flex-direction: column;
@@ -429,6 +425,11 @@ a {
   justify-content: space-around;
   padding: 20px;
   background-color: white;
+  transition: transform 0.3s ease;
+}
+
+.employee-cards:hover {
+  transform: scale(1.03);
 }
 
 .employee-cards-inner-flex {
@@ -625,9 +626,6 @@ button:hover {
   z-index: 9;
   opacity: 0;
 }
-/* NEW CSS RULES HERE */
-/* NEW CSS RULES HERE */
-/* NEW CSS RULES HERE */
 
 @media (width <= 800px) {
   main {
@@ -658,6 +656,17 @@ button:hover {
   aside {
     width: 70%;
     margin: 0 auto;
+  }
+
+  .header-address-active {
+    display: none;
+  }
+  .header-button-container {
+    display: none;
+  }
+
+  .hamburger-menu {
+    display: flex;
   }
 }
 
@@ -696,16 +705,6 @@ button:hover {
 
   .employee-cards .department img {
     width: 20px;
-  }
-  .hamburger-menu {
-    display: flex;
-  }
-
-  .header-address-active {
-    display: none;
-  }
-  .header-button-container {
-    display: none;
   }
 
   .card {
