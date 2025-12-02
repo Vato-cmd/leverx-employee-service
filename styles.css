@@ -302,17 +302,15 @@ main {
 
 .hamburger-menu:has(input:checked) ~ .hidden-main-nav {
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: center;
   left: 0;
 }
 
 .hidden-main-nav-inner {
   display: flex;
   flex-direction: column;
+  padding-top: 100px;
   align-items: center;
-  justify-content: space-around;
 }
 
 .hamburger-menu:has(input:checked) ~ main section .employee-section .overlay {
