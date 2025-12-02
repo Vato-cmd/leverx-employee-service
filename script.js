@@ -29,6 +29,88 @@ form.addEventListener("submit", (e) => {
     if (!value || value.startsWith("select")) return;
     advanceSearchObject[key] = value;
   });
+
+  if (Object.entries(advanceSearchObject).length === 0) {
+    form.innerHTML = `<h3 style="opacity: 0.8; transform: scale(1.1)">Please enter at least one search field!</h3>`;
+    setTimeout(() => {
+      form.innerHTML = `
+        <label for="name">Name</label>
+              <input
+                name="name"
+                id="name"
+                type="text"
+                placeholder="John Smith"
+              />
+
+              <label for="email">Email</label>
+              <input
+                id="email"
+                name="email"
+                type="text"
+                placeholder="john.smith@leverx.com"
+              />
+              <div class="phone-skype">
+                <div>
+                  <label for="phone">Phone</label>
+                  <input
+                    name="phone"
+                    id="phone"
+                    type="text"
+                    placeholder="Phone number"
+                  />
+                </div>
+                <div>
+                  <label for="viber">Viber</label>
+                  <input name="viber" type="text" placeholder="ViberId" />
+                </div>
+              </div>
+              <div class="phone-skype">
+                <div>
+                  <label for="building">Building</label>
+                  <select name="building" id="building">
+                    <option>Select building</option>
+                    <option>LeverX HQ – Poland</option>
+                    <option>LeverX Dubai</option>
+                    <option>LeverX HQ – Georgia</option>
+                    <option>LeverX HQ – Kazakhstan</option>
+                    <option>Remote</option>
+                    <option>LeverX Bulgaria</option>
+                    <option>LeverX HQ – Hungary</option>
+                    <option>LeverX HQ – England</option>
+                    <option>Leverx HQ</option>
+                    <option>LeverX HQ — Ukraine</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="room">Room</label>
+                  <input
+                    name="room"
+                    id="room"
+                    type="text"
+                    placeholder="303.1"
+                  />
+                </div>
+              </div>
+
+              <label for="department">Department</label>
+              <select name="department" id="department">
+                <option>Select a department</option>
+                <option>Web & Mobile</option>
+                <option>Legal Department</option>
+                <option>Human Resources (HR)</option>
+                <option>Operations</option>
+                <option>Research & Development (R&D)</option>
+                <option>Customer Support</option>
+                <option>IT / Information Technology</option>
+                <option>Sales</option>
+                <option>Marketing</option>
+                <option>Finance & Accounting</option>
+              </select>
+              <button class="search-btn">SEARCH</button>
+      `;
+    }, 1000);
+    return;
+  }
 });
 
 fetch("./data/users.json")
