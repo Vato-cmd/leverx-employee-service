@@ -202,3 +202,45 @@ main {
   padding-left: 35px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
 }
+
+.search-btn {
+  padding: 10px;
+  border: none;
+  color: white;
+  background-color: #5591ff;
+  font-family: "Roboto", sans-serif;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.form input,
+.form select {
+  width: 100%;
+  padding: 10px;
+  color: #738392;
+  border: 1px solid #c3c9cf;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.phone-skype {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.phone-skype > div {
+  flex: 1;
+}
+
+.phone-skype > div > label {
+  display: block;
+}
