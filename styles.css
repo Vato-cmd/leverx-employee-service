@@ -244,3 +244,27 @@ main {
 .phone-skype > div > label {
   display: block;
 }
+
+.button-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.conditional-section img {
+  width: 20px;
+  height: 20px;
+}
+.functional-buttons button {
+  border: none;
+  cursor: pointer;
+}
+
+.functional-buttons svg {
+  transition: transform 0.3s ease;
+}
+
+.functional-buttons svg:hover {
+  transform: scale(1.2);
+}
