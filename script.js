@@ -178,7 +178,7 @@ function renderEmployees(users) {
                 <p class="department"><img src="images/briefcase-svgrepo-com.svg"/>${
                   user.department
                 }</p>
-                <p class="department"><img src="images/door-svgrepo-com.svg"/>${
+                <p class="department second-p"><img src="images/door-svgrepo-com.svg"/>${
                   user.room
                 }</p>
         </div>

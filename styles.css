@@ -694,10 +694,11 @@ button:hover {
   }
 
   .button-section {
-    justify-content: start;
     margin-bottom: 20px;
   }
-
+  .second-p {
+    display: none;
+  }
   .employee-section {
     grid-template-columns: repeat(1, 1fr);
     gap: 10px;
