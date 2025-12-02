@@ -19,6 +19,11 @@ header {
   background-color: #1e5dbe;
   padding: 1.5rem;
   color: whitesmoke;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 40;
 }
 
 .header-logo-span {
@@ -82,6 +87,7 @@ main {
   display: grid;
   grid-template-columns: 1fr 2fr;
   gap: 35px;
+  padding-top: 100px;
 }
 
 .tabs {
@@ -170,17 +176,17 @@ main {
   border-radius: 5px;
   box-sizing: border-box;
 }
-.phone-skype {
+.additional-info {
   display: flex;
   align-items: center;
   gap: 5px;
 }
 
-.phone-skype > div {
+.additional-info > div {
   flex: 1;
 }
 
-.phone-skype > div > label {
+.additional-info > div > label {
   display: block;
 }
 
@@ -210,15 +216,14 @@ main {
 }
 
 .hidden-main-nav {
-  display: none;
-  flex-direction: column;
-  background-color: white;
+  position: fixed;
+  top: 0;
   left: -100%;
+  height: 100vh;
   width: 280px;
-  position: absolute;
-  height: 100%;
-  padding: 20px;
-  z-index: 11;
+  background: white;
+  z-index: 30;
+  transition: left 0.3s ease;
 }
 
 .hidden-main-nav-inner-bottom-button {
@@ -271,9 +276,9 @@ main {
   display: none;
   flex-direction: column;
   gap: 5px;
-  z-index: 11;
+  z-index: 41;
   width: max-content;
-  position: absolute;
+  position: fixed;
   right: 10px;
   top: 30px;
 }
@@ -297,7 +302,17 @@ main {
 
 .hamburger-menu:has(input:checked) ~ .hidden-main-nav {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   left: 0;
+}
+
+.hidden-main-nav-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .hamburger-menu:has(input:checked) ~ main section .employee-section .overlay {
@@ -518,7 +533,7 @@ a {
 .user-details {
   display: grid;
   grid-template-columns: 1fr 2fr;
-  padding: 20px;
+  padding: 110px 20px;
 }
 .info-left {
   display: flex;
@@ -631,7 +646,7 @@ button:hover {
   main {
     grid-template-columns: 1fr;
     width: 100%;
-    padding: 0 10px;
+    padding: 100px 10px;
     font-size: 0.9em;
   }
   .functional-buttons {

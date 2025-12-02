@@ -7,6 +7,9 @@
     <link href="styles.css" rel="stylesheet" />
   </head>
   <body>
+    <label class="hamburger-menu">
+      <input type="checkbox" />
+    </label>
     <header>
       <a class="header-anchor" href="index.html?">
         <p class="title">
@@ -33,6 +36,33 @@
         </button>
       </div>
     </header>
+
+    <div class="hidden-main-nav">
+      <div class="hidden-main-nav-inner">
+        <div>
+          <div class="hidden-main-nav-inner-top">
+            <img src="images/avataaars.png" alt="main image" />
+            <div id="main-account">
+              <p>Steve Cook</p>
+              <p class="paragraph-smaller">Sign out</p>
+            </div>
+          </div>
+          <div class="hidden-main-nav-inner-bottom">
+            <h4>Adress Book</h4>
+          </div>
+        </div>
+
+        <div class="hidden-main-nav-inner-bottom-button">
+          <button class="hidden-main-button">
+            <img
+              src="images/question-circle-svgrepo-com.svg"
+              alt="question"
+            />SUPPORT
+          </button>
+        </div>
+      </div>
+    </div>
+
     <div class="user-details" id="user-details"></div>
     <script src="user.js"></script>
   </body>
