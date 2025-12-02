@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LeverX Employee Service</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <label class="hamburger-menu">
+        <input type="checkbox" >
+    </label>
+    <header>
+      <p class="title">
+        LEVERX <span class="header-logo-span">EMPLOYEE SERVICES</span>
+      </p>
+      <div class="header-address-active">
+        <p>Adress Book</p>
+      </div>
+      <div class="header-button-container">
+        <button>
+          <img
+            src="images/question-circle-svgrepo-com.svg"
+            alt="question icon"
+          />SUPPORT
+        </button>
+        <button class="button-with-avatar">
+          <img src="images/avataaars.png" />STEVE COOK
+        </button>
+        <button class="button-with-power-logo">
+          <img src="./images/power-off-svgrepo-com.svg" alt="power logo" />
+        </button>
+      </div>
+    </header>
+
+    <div class="hidden-main-nav">
+      <div>
+        <div class="hidden-main-nav-inner-top">
+          <img src="images/avataaars.png" alt="main image">
+          <div>
+            <p>Steve Cook</p>
+            <p class="paragraph-smaller">Sign out</p>
+          </div>
+        </div>
+        <div class="hidden-main-nav-inner-bottom">
+            <h4>Adress Book</h4>
+          </div>
+      </div>
+      
+
+       <div class="hidden-main-nav-inner-bottom-button">
+        <button class="hidden-main-button"><img src="images/question-circle-svgrepo-com.svg" alt="question">SUPPORT</button>
+      </div>
+    </div>
+    <input type="text" placeholder="Open search panel" class="mobile-input-search">
+    <main>
+      <aside>
+        <div>
+          <input type="radio" name="search-tab" id="basic" checked />
+          <input type="radio" name="search-tab" id="advanced" />
+
+          
+
+          <div class="tabs">
+            <label for="basic" class="tab">BASIC SEARCH</label>
+            <label for="advanced" class="tab">ADVANCED SEARCH</label>
+          </div>
+
+          <div class="content basic-content">
+            <div class="content-inside">
+              <input
+                type="text"
+                class="search-input"
+                placeholder="John Smith"
+              />
+               <label for="no-results" class="search-btn">
+                  SEARCH
+                </label>
+            </div>
+          </div>
+
+          <div class="content advanced-content">
+            <div class="form">
+              <label for="name">Name</label>
+              <input id="name" type="text" placeholder="John Smith" />
+
+              <label for="email">Email</label>
+              <input
+                id="email"
+                type="text"
+                placeholder="john.smith@leverx.com"
+              />
+              <div class="phone-skype">
+                <div>
+                  <label for="phone">Phone</label>
+                  <input id="phone" type="text" placeholder="Phone number" />
+                </div>
+                <div>
+                  <label for="skype">Skype</label>
+                  <input id="skype" type="text" placeholder="SkypeID" />
+                </div>
+              </div>
+              <div class="phone-skype">
+                <div>
+                   <label for="building">Building</label>
+                   <select id="building">
+                      <option>Any</option>
+                   </select>
+                </div>
+                <div>
+                  <label for="name">Room</label>
+                  <input id="name" type="text" placeholder="303.1" />
+                </div>
+              </div>
+       
+              <label for="name">Department</label>
+              <select id="building">
+                <option>Any</option>
+              </select>
+                <label for="no-results" class="search-btn">
+                  SEARCH
+                </label>
+
+            </div>
+          </div>
+        </div>
+      </aside>
+
+
+      <section>
+      <input type="radio" name="result" id="no-results" hidden>
+       <div class="top-section hidden">
+            <p>0 employees displayed</p>
+            <div class="view-toggle">
+              <label for="grid"><i class="fa-solid fa-grip"></i></i></label>
+              <label for="list"><i class="fa-solid fa-list"></i></label>
+            </div>
+          </div>
+      <section class="no-employees"> 
+          <div class="overlay"></div>     
+          <img src="images/Page-Not-Found--Streamline-Lagos.png" alt="page not found">
+          <div class="nothing-found-text">
+            <h2>Nothing Found</h2>
+            <p>No result match your search. Consider trying different search request</p>
+          </div>
+        </section>
+
+      <section>
+        <input type="radio" name="view" id="grid" checked/>
+        <input type="radio" name="view" id="list" />
+
+        <div class="top-section">
+          <p>9 employees displayed</p>
+          <div class="view-toggle">
+            <label for="grid"><svg fill="#b0a3ef" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" stroke="#b0a3ef"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M30 32h-10c-1.105 0-2-0.895-2-2v-10c0-1.105 0.895-2 2-2h10c1.105 0 2 0.895 2 2v10c0 1.105-0.895 2-2 2zM30 20h-10v10h10v-10zM30 14h-10c-1.105 0-2-0.896-2-2v-10c0-1.105 0.895-2 2-2h10c1.105 0 2 0.895 2 2v10c0 1.104-0.895 2-2 2zM30 2h-10v10h10v-10zM12 32h-10c-1.105 0-2-0.895-2-2v-10c0-1.105 0.895-2 2-2h10c1.104 0 2 0.895 2 2v10c0 1.105-0.896 2-2 2zM12 20h-10v10h10v-10zM12 14h-10c-1.105 0-2-0.896-2-2v-10c0-1.105 0.895-2 2-2h10c1.104 0 2 0.895 2 2v10c0 1.104-0.896 2-2 2zM12 2h-10v10h10v-10z"></path> </g></svg></label>
+            <label for="list"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M3 1H1V3H3V1Z" fill="#beb4f1"></path> <path d="M3 5H1V7H3V5Z" fill="#beb4f1"></path> <path d="M1 9H3V11H1V9Z" fill="#beb4f1"></path> <path d="M3 13H1V15H3V13Z" fill="#beb4f1"></path> <path d="M15 1H5V3H15V1Z" fill="#beb4f1"></path> <path d="M15 5H5V7H15V5Z" fill="#beb4f1"></path> <path d="M5 9H15V11H5V9Z" fill="#beb4f1"></path> <path d="M15 13H5V15H15V13Z" fill="#beb4f1"></path> </g></svg></label>
+          </div>
+        </div>
+
+        <div class="conditional-section">
+          <div>
+            <img src="images/photo-svgrepo-com.svg" alt="photo icon">
+            <span>Photo</span>
+          </div>
+          <div>
+            <img src="images/user-svgrepo-com.svg" alt="user icon">
+            <span>Name</span>
+          </div>
+          <div>
+            <img src="images/briefcase-svgrepo-com.svg" alt="briefcase">
+            <span>Department</span>
+          </div>
+          <div>
+            <img src="images/door-svgrepo-com.svg" alt="">
+            <span>Room</span>
+          </div>
+        </div>
+
+        
+      <div class="employee-section">
+          <div class="overlay"></div>
+          <div class="mobile-version">
+              <div class="mobile-version-inner">
+                 <img
+              src="https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortFlat&accessoriesType=Prescription01&hairColor=Blue&facialHairType=Blank&facialHairColor=Red&clotheType=Overall&clotheColor=Heather&eyeType=Surprised&eyebrowType=RaisedExcitedNatural&mouthType=Eating&skinColor=Pale"
+            />
+                <h3>Brendan Krueger</h3>
+              </div>
+              <div class="tags-inner">
+                <span><img src="images/briefcase-svgrepo-com.svg" alt="briefcase"> Web & Mobile</span>
+              </div>
+            </div>
+          <div class="card">
+            <img
+              src="https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortFlat&accessoriesType=Prescription01&hairColor=Blue&facialHairType=Blank&facialHairColor=Red&clotheType=Overall&clotheColor=Heather&eyeType=Surprised&eyebrowType=RaisedExcitedNatural&mouthType=Eating&skinColor=Pale"
+            />
+              <h3>Brendan Krueger</h3>
+              <div class="tags">
+                <span><img src="images/briefcase-svgrepo-com.svg" alt="briefcase"> Web & Mobile</span>
+                <span><img src="images/door-svgrepo-com.svg" alt="door icon"> LPT1403</span>
+              </div>
+          </div>
+          <div class="mobile-version">
+              <div class="mobile-version-inner">
+                 <img
+              src="https://avataaars.io/?avatarStyle=Circle&topType=ShortHairDreads01&accessoriesType=Wayfarers&hairColor=SilverGray&facialHairType=BeardLight&facialHairColor=BlondeGolden&clotheType=ShirtScoopNeck&clotheColor=Gray01&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Default&skinColor=Pale"
+            />
+                <h3>Andrew Savage</h3>
+              </div>
+              <div class="tags-inner">
+                <span><img src="images/briefcase-svgrepo-com.svg" alt="briefcase"> Web & Mobile</span>
+              </div>
+            </div>
+          <div class="card">
+            <img
+              src="https://avataaars.io/?avatarStyle=Circle&topType=ShortHairDreads01&accessoriesType=Wayfarers&hairColor=SilverGray&facialHairType=BeardLight&facialHairColor=BlondeGolden&clotheType=ShirtScoopNeck&clotheColor=Gray01&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Default&skinColor=Pale"
+            />
+            <h3>Andrew Savage</h3>
+            <div class="tags">
+              <span><img src="images/briefcase-svgrepo-com.svg" alt="briefcase"></i> Web & Mobile</span>
+              <span><img src="images/door-svgrepo-com.svg" alt="door icon"> LPT1403</span>
+            </div>
+          </div>
+          <div class="mobile-version">
+              <div class="mobile-version-inner">
+                 <img
+              src="https://avataaars.io/?avatarStyle=Circle&topType=LongHairBigHair&accessoriesType=Prescription01&hairColor=PastelPink&facialHairType=Blank&clotheType=Hoodie&clotheColor=PastelYellow&eyeType=Happy&eyebrowType=SadConcerned&mouthType=Smile&skinColor=Brown"
+            />
+                <h3>Lula Aguilar</h3>
+              </div>
+              <div class="tags-inner">
+                <span><img src="images/briefcase-svgrepo-com.svg" alt="briefcase"> Web & Mobile</span>
+              </div>
+            </div>
+          <div class="card">
+            <img
+              src="https://avataaars.io/?avatarStyle=Circle&topType=LongHairBigHair&accessoriesType=Prescription01&hairColor=PastelPink&facialHairType=Blank&clotheType=Hoodie&clotheColor=PastelYellow&eyeType=Happy&eyebrowType=SadConcerned&mouthType=Smile&skinColor=Brown"
+            />
+              <h3>Lula Aguilar</h3>
+              <div class="tags">
+                <span><img src="images/briefcase-svgrepo-com.svg" alt="briefcase"> Web & Mobile</span>
+                <span><img src="images/door-svgrepo-com.svg" alt="door icon"> LPT1403</span>
+              </div>
+          </div>
+          <div class="mobile-version">
+              <div class="mobile-version-inner">
+                 <img
+              src="https://avataaars.io/?avatarStyle=Circle&topType=LongHairStraight2&accessoriesType=Kurt&hairColor=PastelPink&facialHairType=Blank&clotheType=ShirtScoopNeck&clotheColor=PastelBlue&eyeType=EyeRoll&eyebrowType=UpDown&mouthType=Serious&skinColor=Light"
+            />
+                <h3>Fintan Cruz</h3>
+              </div>
+              <div class="tags-inner">
+                <span><img src="images/briefcase-svgrepo-com.svg" alt="briefcase"> Web & Mobile</span>
+              </div>
+            </div>
+          <div class="card">
+            <img
+              src="https://avataaars.io/?avatarStyle=Circle&topType=LongHairStraight2&accessoriesType=Kurt&hairColor=PastelPink&facialHairType=Blank&clotheType=ShirtScoopNeck&clotheColor=PastelBlue&eyeType=EyeRoll&eyebrowType=UpDown&mouthType=Serious&skinColor=Light"
+            />
+                <h3>Fintan Cruz</h3>
+              <div class="tags">
+                <span><img src="images/briefcase-svgrepo-com.svg" alt="briefcase"> Web & Mobile</span>
+                <span><img src="images/door-svgrepo-com.svg" alt="door icon"> LPT1403</span>
+              </div>
+          </div>
+          <div class="mobile-version">
+              <div class="mobile-version-inner">
+                <img
+              src="https://avataaars.io/?avatarStyle=Circle&topType=Hijab&accessoriesType=Prescription02&hatColor=Blue03&hairColor=Brown&facialHairType=Blank&clotheType=GraphicShirt&clotheColor=Blue03&graphicType=Skull&eyeType=Cry&eyebrowType=RaisedExcitedNatural&mouthType=ScreamOpen&skinColor=DarkBrown"
+            />
+                <h3>Suzanne Taylor</h3>
+              </div>
+              <div class="tags-inner">
+                <span><img src="images/briefcase-svgrepo-com.svg" alt="briefcase"> Web & Mobile</span>
+              </div>
+            </div>
+          <div class="card">
+            <img
+              src="https://avataaars.io/?avatarStyle=Circle&topType=Hijab&accessoriesType=Prescription02&hatColor=Blue03&hairColor=Brown&facialHairType=Blank&clotheType=GraphicShirt&clotheColor=Blue03&graphicType=Skull&eyeType=Cry&eyebrowType=RaisedExcitedNatural&mouthType=ScreamOpen&skinColor=DarkBrown"
+            />
+              <h3>Suzanne Taylor</h3>
+              <div class="tags">
+                <span><img src="images/briefcase-svgrepo-com.svg" alt="briefcase"> Web & Mobile</span>
+                <span><img src="images/door-svgrepo-com.svg" alt="door icon"> LPT1403</span>
+              </div>
+          </div>
+          <div class="mobile-version">
+              <div class="mobile-version-inner">
+                <img
+              src="https://avataaars.io/?avatarStyle=Circle&topType=LongHairShavedSides&accessoriesType=Sunglasses&hatColor=Blue03&facialHairType=BeardMedium&facialHairColor=BlondeGolden&clotheType=BlazerSweater&clotheColor=Pink&graphicType=Resist&eyeType=Close&eyebrowType=Angry&mouthType=Disbelief&skinColor=Yellow"
+            />
+                <h3>Francesco Reed</h3>
+              </div>
+              <div class="tags-inner">
+                <span><img src="images/briefcase-svgrepo-com.svg" alt="briefcase"> Web & Mobile</span>
+              </div>
+            </div>
+          <div class="card">
+            <img
+              src="https://avataaars.io/?avatarStyle=Circle&topType=LongHairShavedSides&accessoriesType=Sunglasses&hatColor=Blue03&facialHairType=BeardMedium&facialHairColor=BlondeGolden&clotheType=BlazerSweater&clotheColor=Pink&graphicType=Resist&eyeType=Close&eyebrowType=Angry&mouthType=Disbelief&skinColor=Yellow"
+            />
+              <h3>Francesco Reed</h3>
+              <div class="tags">
+                <span><img src="images/briefcase-svgrepo-com.svg" alt="briefcase"> Web & Mobile</span>
+                <span><img src="images/door-svgrepo-com.svg" alt="door icon"> LPT1403</span>
+              </div>
+          </div>
+          <div class="mobile-version">
+              <div class="mobile-version-inner">
+                <img src='https://avataaars.io/?avatarStyle=Circle&topType=Eyepatch&facialHairType=BeardLight&facialHairColor=Blonde&clotheType=ShirtCrewNeck&clotheColor=Gray02&eyeType=Wink&eyebrowType=RaisedExcited&mouthType=Concerned&skinColor=Tanned'
+              />
+                <h3>Alexander Volk</h3>
+              </div>
+              <div class="tags-inner">
+                <span><img src="images/briefcase-svgrepo-com.svg" alt="briefcase"> Web & Mobile</span>
+              </div>
+            </div>
+          <div class="card">
+            <img src='https://avataaars.io/?avatarStyle=Circle&topType=Eyepatch&facialHairType=BeardLight&facialHairColor=Blonde&clotheType=ShirtCrewNeck&clotheColor=Gray02&eyeType=Wink&eyebrowType=RaisedExcited&mouthType=Concerned&skinColor=Tanned'
+              />
+                <h3>Alexander Volk</h3>
+                <div class="tags">
+                  <span><img src="images/briefcase-svgrepo-com.svg" alt="briefcase"> Web & Mobile</span>
+                  <span><img src="images/door-svgrepo-com.svg" alt="door icon"> LPT1403</span>
+                </div>
+          </div>
+          <div class="mobile-version">
+              <div class="mobile-version-inner">
+                <img src='https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortWaved&accessoriesType=Kurt&hairColor=Blonde&facialHairType=MoustacheMagnum&facialHairColor=BlondeGolden&clotheType=Hoodie&clotheColor=Heather&eyeType=Side&eyebrowType=RaisedExcited&mouthType=Twinkle&skinColor=Tanned'
+            />
+                <h3>James Jones</h3>
+              </div>
+              <div class="tags-inner">
+                <span><img src="images/briefcase-svgrepo-com.svg" alt="briefcase"> Web & Mobile</span>
+              </div>
+            </div>
+          <div class="card">
+            <img src='https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortWaved&accessoriesType=Kurt&hairColor=Blonde&facialHairType=MoustacheMagnum&facialHairColor=BlondeGolden&clotheType=Hoodie&clotheColor=Heather&eyeType=Side&eyebrowType=RaisedExcited&mouthType=Twinkle&skinColor=Tanned'
+            />
+              <h3>James Jones</h3>
+              <div class="tags">
+                <span><img src="images/briefcase-svgrepo-com.svg" alt="briefcase"> Web & Mobile</span>
+                <span><img src="images/door-svgrepo-com.svg" alt="door icon"> LPT1403</span>
+              </div>
+          </div>
+          <div class="mobile-version">
+              <div class="mobile-version-inner">
+                <img src='https://avataaars.io/?avatarStyle=Circle&topType=ShortHairSides&accessoriesType=Round&hairColor=BrownDark&facialHairType=BeardMajestic&facialHairColor=Platinum&clotheType=ShirtVNeck&clotheColor=PastelYellow&eyeType=Squint&eyebrowType=Default&mouthType=Smile&skinColor=Pale'
+                />
+                <h3>John Doe</h3>
+              </div>
+              <div class="tags-inner">
+                <span><img src="images/briefcase-svgrepo-com.svg" alt="briefcase"> Web & Mobile</span>
+              </div>
+            </div>
+
+          <div class="card">
+            
+            <img src='https://avataaars.io/?avatarStyle=Circle&topType=ShortHairSides&accessoriesType=Round&hairColor=BrownDark&facialHairType=BeardMajestic&facialHairColor=Platinum&clotheType=ShirtVNeck&clotheColor=PastelYellow&eyeType=Squint&eyebrowType=Default&mouthType=Smile&skinColor=Pale'
+            />
+              
+              <h3>John Doe</h3>
+              <div class="tags">
+                <span><img src="images/briefcase-svgrepo-com.svg" alt="briefcase"> Web & Mobile</span>
+                <span><img src="images/door-svgrepo-com.svg" alt="door icon"> LPT1403</span>
+              </div>
+          </div>
+        </div>
+        </section>
+    </main>
+  </body>
+</html>
