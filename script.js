@@ -9,6 +9,8 @@ const employeeSection = document.getElementById("employee-section");
 const buttonGrid = document.getElementById("button-grid");
 const buttonList = document.getElementById("button-list");
 
+const form = document.getElementById("form");
+
 const employeeSeachBtn = document.getElementById("employee-search-btn");
 const basicEmployeeSearchInput = document.getElementById(
   "basic-employee-search-input"
@@ -16,6 +18,18 @@ const basicEmployeeSearchInput = document.getElementById(
 
 let listClicked = false;
 let employees = [];
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const formData = new FormData(form);
+  const advanceSearchObject = {};
+  formData.forEach((value, key) => {
+    value = value.trim().toLowerCase();
+    if (!value || value.startsWith("select")) return;
+    advanceSearchObject[key] = value;
+  });
+});
 
 fetch("./data/users.json")
   .then((res) => res.json())
