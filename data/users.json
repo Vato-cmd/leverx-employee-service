@@ -1,0 +1,294 @@
+[
+  {
+    "id": "1",
+    "isRemoteWork": false,
+    "middle_name": "D.",
+    "user_avatar": "images/Avatars - 9.png",
+    "first_name": "Brendan",
+    "last_name": "Krueger",
+    "department": "Human Resources (HR)",
+    "building": "LeverX HQ – Poland",
+    "room": "LPT1402",
+    "date_birth": { "year": 1991, "month": 6, "day": 18 },
+    "desk_number": 21,
+    "manager": { "id": "m001", "first_name": "John", "last_name": "Snow" },
+    "phone": "+48123456701",
+    "email": "brendan.krueger@leverx.com",
+    "viber": "live:brendan.krueger",
+    "cnumber": "AX109442",
+    "citizenship": "Germany",
+    "visa": [
+      {
+        "issuing_country": "Poland",
+        "type": "National visa type D",
+        "start_date": 1677628800000,
+        "end_date": 1709251200000
+      }
+    ]
+  },
+
+  {
+    "id": "2",
+    "isRemoteWork": true,
+    "middle_name": "D.",
+    "user_avatar": "images/Avatars - 8.png",
+    "first_name": "Andrew",
+    "last_name": "Savage",
+    "department": "Finance & Accounting",
+    "building": "LeverX Dubai",
+    "room": "LPT502B",
+    "date_birth": { "year": 1989, "month": 11, "day": "02" },
+    "desk_number": 9,
+    "manager": { "id": "m001", "first_name": "John", "last_name": "Snow" },
+    "phone": "+48777710222",
+    "email": "andrew.savage@leverx.com",
+    "viber": "live:andrew.savage",
+    "cnumber": "C912001",
+    "citizenship": "Canada",
+    "visa": [
+      {
+        "issuing_country": "UAE",
+        "type": "National visa type D",
+        "start_date": 1680307200000,
+        "end_date": 1711843200000
+      }
+    ]
+  },
+
+  {
+    "id": "3",
+    "isRemoteWork": false,
+    "middle_name": "L.",
+    "user_avatar": "images/Avatars - 7.png",
+    "first_name": "Lula",
+    "last_name": "Aguilar",
+    "department": "Web & Mobile",
+    "building": "LeverX HQ – Georgia",
+    "room": "LPT1403",
+    "date_birth": { "year": 1993, "month": 3, "day": 12 },
+    "desk_number": 14,
+    "manager": { "id": "m002", "first_name": "Elena", "last_name": "Koval" },
+    "phone": "+48550555111",
+    "email": "lula.aguilar@leverx.com",
+    "viber": "live:lula.aguilar",
+    "cnumber": "PL782003",
+    "citizenship": "Spain",
+    "visa": [
+      {
+        "issuing_country": "Poland",
+        "type": "National visa type D",
+        "start_date": 1685577600000,
+        "end_date": 1717200000000
+      }
+    ]
+  },
+
+  {
+    "id": "4",
+    "isRemoteWork": false,
+    "middle_name": "K.",
+    "user_avatar": "images/Avatars - 6.png",
+    "first_name": "Fintan",
+    "last_name": "Cruz",
+    "department": "Marketing",
+    "building": "LeverX HQ – Kazakhstan",
+    "room": "LPT1501",
+    "date_birth": { "year": 1995, "month": 9, "day": 22 },
+    "desk_number": 12,
+    "manager": { "id": "m003", "first_name": "Adam", "last_name": "Stein" },
+    "phone": "+48509877722",
+    "email": "f.cruz@leverx.com",
+    "viber": "live:cruz.f",
+    "cnumber": "DE871002",
+    "citizenship": "Ireland",
+    "visa": [
+      {
+        "issuing_country": "Poland",
+        "type": "National visa type D",
+        "start_date": 1680393600000,
+        "end_date": 1711929600000
+      }
+    ]
+  },
+
+  {
+    "id": "5",
+    "isRemoteWork": true,
+    "middle_name": "F.",
+    "user_avatar": "images/Avatars - 5.png",
+    "first_name": "Suzanne",
+    "last_name": "Taylor",
+    "department": "Sales",
+    "building": "Remote",
+    "room": "LPT302B",
+    "date_birth": { "year": 1985, "month": 2, "day": 14 },
+    "desk_number": 11,
+    "manager": { "id": "m002", "first_name": "Elena", "last_name": "Koval" },
+    "phone": "+447891223344",
+    "email": "suzanne.taylor@leverx.com",
+    "viber": "live:s.taylor",
+    "cnumber": "UK329900",
+    "citizenship": "UK",
+    "visa": [
+      {
+        "issuing_country": "Poland",
+        "type": "National visa type D",
+        "start_date": 1680480000000,
+        "end_date": 1712016000000
+      }
+    ]
+  },
+
+  {
+    "id": "6",
+    "isRemoteWork": false,
+    "middle_name": "",
+    "user_avatar": "images/Avatars - 4.png",
+    "first_name": "Francesco",
+    "last_name": "Reed",
+    "department": "IT / Information Technology",
+    "building": "LeverX Bulgaria",
+    "room": "LPT337A",
+    "date_birth": { "year": 1990, "month": 12, "day": "04" },
+    "desk_number": 7,
+    "manager": { "id": "m003", "first_name": "Adam", "last_name": "Stein" },
+    "phone": "+359892123987",
+    "email": "francesco.reed@leverx.com",
+    "viber": "live:francesco.reed",
+    "cnumber": "BG782389",
+    "citizenship": "Italy",
+    "visa": [
+      {
+        "issuing_country": "Bulgaria",
+        "type": "National visa type D",
+        "start_date": 1677715200000,
+        "end_date": 1709337600000
+      }
+    ]
+  },
+
+  {
+    "id": "7",
+    "isRemoteWork": false,
+    "middle_name": "D.",
+    "user_avatar": "images/Avatars - 3.png",
+    "first_name": "Alexander",
+    "last_name": "Volk",
+    "department": "Customer Support",
+    "building": "LeverX HQ – Hungary",
+    "room": "LPT1222",
+    "date_birth": { "year": 1994, "month": 5, "day": 16 },
+    "desk_number": 11,
+    "manager": { "id": "m001", "first_name": "John", "last_name": "Snow" },
+    "phone": "+48888555111",
+    "email": "alex.volk@leverx.com",
+    "viber": "live:alex.volk",
+    "cnumber": "PL991002",
+    "citizenship": "Georgia",
+    "visa": [
+      {
+        "issuing_country": "Poland",
+        "type": "National visa type D",
+        "start_date": 1688083200000,
+        "end_date": 1719705600000
+      }
+    ]
+  },
+
+  {
+    "id": "8",
+    "isRemoteWork": false,
+    "middle_name": "",
+    "user_avatar": "images/Avatars -2.png",
+    "first_name": "James",
+    "last_name": "Jones",
+    "department": "Research & Development (R&D)",
+    "building": "LeverX HQ – England",
+    "room": "LPT1401",
+    "date_birth": { "year": 1992, "month": 7, "day": "08" },
+    "desk_number": 16,
+    "manager": { "id": "m003", "first_name": "Adam", "last_name": "Stein" },
+    "phone": "+48222733111",
+    "email": "james.jones@leverx.com",
+    "viber": "live:j.jones",
+    "cnumber": "PL521900",
+    "citizenship": "USA",
+    "visa": [
+      {
+        "issuing_country": "Poland",
+        "type": "National visa type D",
+        "start_date": 1679952000000,
+        "end_date": 1711574400000
+      }
+    ]
+  },
+
+  {
+    "id": "9",
+    "isRemoteWork": true,
+    "middle_name": "U.",
+    "user_avatar": "images/Avatars - 1.png",
+    "first_name": "John",
+    "last_name": "Doe",
+    "department": "Operations",
+    "building": "Leverx HQ",
+    "room": "LPT100",
+    "date_birth": { "year": 1988, "month": 1, "day": 19 },
+    "desk_number": 43,
+    "manager": { "id": "m002", "first_name": "Elena", "last_name": "Koval" },
+    "phone": "+14880002233",
+    "email": "john.doe@leverx.com",
+    "viber": "live:john.doe",
+    "cnumber": "US009323",
+    "citizenship": "USA",
+    "visa": [
+      {
+        "issuing_country": "Poland",
+        "type": "National visa type D",
+        "start_date": 1687996800000,
+        "end_date": 1720156800000
+      }
+    ]
+  },
+  {
+    "id": "10",
+    "isRemoteWork": true,
+    "middle_name": "A.",
+    "first_name": "Steve",
+    "last_name": "Cook",
+    "user_avatar": "images/avataaars.png",
+    "department": "Legal Department",
+    "building": "LeverX HQ — Ukraine",
+    "room": "LPT1107",
+    "desk_number": 12,
+    "date_birth": {
+      "day": "21",
+      "month": "03",
+      "year": "1985"
+    },
+
+    "manager": {
+      "id": "105",
+      "first_name": "Elena",
+      "last_name": "Koval",
+      "phone": "+49711223344",
+      "email": "elena.koval@leverx.com"
+    },
+
+    "phone": "+371660055555",
+    "email": "steve.cook@leverx.com",
+    "viber": "live:steve.cook1985",
+    "cnumber": "LC011590",
+
+    "citizenship": "Poland",
+
+    "visa": [
+      {
+        "issuing_country": "Poland",
+        "type": "National visa type D",
+        "start_date": 1652158800000,
+        "end_date": 1683680400000
+      }
+    ]
+  }
+]
