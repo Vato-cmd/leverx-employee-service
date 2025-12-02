@@ -1,4 +1,8 @@
 const employeeSection = document.getElementById("employee-section");
+const basicSearchBtn = document.getElementById("basic-search");
+const advancedSearchBtn = document.getElementById("advanced-search");
+const basicContent = document.getElementById("basic-content");
+const advancedContent = document.getElementById("advanced-content");
 
 fetch("./data/users.json")
   .then((res) => res.json())
@@ -41,3 +45,18 @@ function renderEmployees(users) {
     }
   });
 }
+
+advancedSearchBtn.addEventListener("click", () => {
+  advancedSearchBtn.classList.toggle("active");
+  basicSearchBtn.classList.toggle("active");
+
+  basicContent.classList.toggle("hidden");
+  advancedContent.classList.toggle("hidden");
+});
+basicSearchBtn.addEventListener("click", () => {
+  advancedSearchBtn.classList.toggle("active");
+  basicSearchBtn.classList.toggle("active");
+
+  basicContent.classList.toggle("hidden");
+  advancedContent.classList.toggle("hidden");
+});
