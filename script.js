@@ -10,6 +10,9 @@ const buttonGrid = document.getElementById("button-grid");
 const buttonList = document.getElementById("button-list");
 
 const form = document.getElementById("form");
+const conditionalRenderComponent = document.getElementById(
+  "conditional-section"
+);
 
 const employeeSeachBtn = document.getElementById("employee-search-btn");
 const basicEmployeeSearchInput = document.getElementById(
@@ -46,7 +49,7 @@ form.addEventListener("submit", (e) => {
               <input
                 id="email"
                 name="email"
-                type="text"
+                type="email"
                 placeholder="john.smith@leverx.com"
               />
               <div class="phone-skype">
@@ -55,13 +58,13 @@ form.addEventListener("submit", (e) => {
                   <input
                     name="phone"
                     id="phone"
-                    type="text"
+                    type="tel"
                     placeholder="Phone number"
                   />
                 </div>
                 <div>
                   <label for="viber">Viber</label>
-                  <input name="viber" type="text" placeholder="ViberId" />
+                  <input name="viber" type="tel" placeholder="ViberId" />
                 </div>
               </div>
               <div class="phone-skype">
@@ -254,6 +257,7 @@ buttonGrid.addEventListener("click", () => {
 buttonList.addEventListener("click", () => {
   employeeSection.classList.remove("employee-section");
   employeeSection.classList.add("list-employee-section");
+
   conditionalRenderComponent.classList.remove("hidden");
   svgList.classList.add("clicked");
   svgGrid.classList.remove("clicked");
