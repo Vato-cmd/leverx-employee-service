@@ -1,17 +1,65 @@
-const userDetailsContainer = document.getElementById("user-details");
+type DateBirth = {
+  year: number | string;
+  month: number | string;
+  day: number | string;
+};
+
+type Manager = {
+  id: string;
+  first_name: string;
+  last_name: string;
+  phone?: string;
+  email?: string;
+};
+
+type Visa = {
+  issuing_country: string;
+  type: string;
+  start_date: number;
+  end_date: number;
+};
+
+type Employee = {
+  id: string;
+  isRemoteWork: boolean;
+  middle_name: string;
+  user_avatar: string;
+  first_name: string;
+  last_name: string;
+  department: string;
+  building: string;
+  room: string;
+  date_birth: DateBirth;
+  desk_number: number;
+  manager: Manager;
+  phone: string;
+  email: string;
+  viber: string;
+  cnumber: string;
+  citizenship: string;
+  visa: Visa[];
+  fullname?: string;
+};
+
+const userDetailsContainer = document.getElementById(
+  "user-details"
+) as HTMLElement | null;
 const params = new URLSearchParams(window.location.search);
 const userId = params.get("id");
 
 fetch("./data/users.json")
   .then((res) => res.json())
-  .then((data) => {
+  .then((data: Employee[]) => {
     const user = data.find((user) => user.id === userId);
+    if (!user || !userDetailsContainer) return;
+
     renderUser(user);
   });
 {
 }
 
-function renderUser(user) {
+function renderUser(user: Employee): void {
+  if (!userDetailsContainer) return;
   userDetailsContainer.innerHTML = `
         <div class="user-main-layout">
         <a href="index.html?">
@@ -155,7 +203,7 @@ function renderUser(user) {
                     <span>Visa 1</span>
                 </div>
                 <div class="info-right">
-                    ${user.visa[0].type}
+                    ${user.visa[0]?.type}
                 </div>
             </div>
             <div class="info-row">
@@ -181,21 +229,22 @@ function renderUser(user) {
 
     `;
 
-  document.getElementById("copy-link").addEventListener("click", () => {
-    navigator.clipboard
-      .writeText(window.location.href)
-      .then(() => {
-        document.getElementById(
-          "copy-link"
-        ).innerHTML = `<img src="images/copy-svgrepo-com.svg"/> Copied!`;
-        setTimeout(() => {
-          document.getElementById(
-            "copy-link"
-          ).innerHTML = `<img src="images/copy-svgrepo-com.svg"/>Copy link`;
-        }, 500);
-      })
-      .catch(() => {
-        alert("Couldn't copy");
-      });
-  });
+  const copyBtn = document.getElementById(
+    "copy-link"
+  ) as HTMLButtonElement | null;
+  if (copyBtn) {
+    copyBtn.addEventListener("click", () => {
+      navigator.clipboard
+        .writeText(window.location.href)
+        .then(() => {
+          copyBtn.innerHTML = `<img src="images/copy-svgrepo-com.svg"/> Copied!`;
+          setTimeout(() => {
+            copyBtn.innerHTML = `<img src="images/copy-svgrepo-com.svg"/>Copy link`;
+          }, 500);
+        })
+        .catch(() => {
+          alert("Couldn't copy");
+        });
+    });
+  }
 }

@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 const userDetailsContainer = document.getElementById("user-details");
 const params = new URLSearchParams(window.location.search);
 const userId = params.get("id");
@@ -7,11 +5,15 @@ fetch("./data/users.json")
     .then((res) => res.json())
     .then((data) => {
     const user = data.find((user) => user.id === userId);
+    if (!user || !userDetailsContainer)
+        return;
     renderUser(user);
 });
 {
 }
 function renderUser(user) {
+    if (!userDetailsContainer)
+        return;
     userDetailsContainer.innerHTML = `
         <div class="user-main-layout">
         <a href="index.html?">
@@ -149,7 +151,7 @@ function renderUser(user) {
                     <span>Visa 1</span>
                 </div>
                 <div class="info-right">
-                    ${user.visa[0].type}
+                    ${user.visa[0]?.type}
                 </div>
             </div>
             <div class="info-row">
@@ -174,18 +176,22 @@ function renderUser(user) {
 
 
     `;
-    document.getElementById("copy-link").addEventListener("click", () => {
-        navigator.clipboard
-            .writeText(window.location.href)
-            .then(() => {
-            document.getElementById("copy-link").innerHTML = `<img src="images/copy-svgrepo-com.svg"/> Copied!`;
-            setTimeout(() => {
-                document.getElementById("copy-link").innerHTML = `<img src="images/copy-svgrepo-com.svg"/>Copy link`;
-            }, 500);
-        })
-            .catch(() => {
-            alert("Couldn't copy");
+    const copyBtn = document.getElementById("copy-link");
+    if (copyBtn) {
+        copyBtn.addEventListener("click", () => {
+            navigator.clipboard
+                .writeText(window.location.href)
+                .then(() => {
+                copyBtn.innerHTML = `<img src="images/copy-svgrepo-com.svg"/> Copied!`;
+                setTimeout(() => {
+                    copyBtn.innerHTML = `<img src="images/copy-svgrepo-com.svg"/>Copy link`;
+                }, 500);
+            })
+                .catch(() => {
+                alert("Couldn't copy");
+            });
         });
-    });
+    }
 }
+export {};
 //# sourceMappingURL=user.js.map

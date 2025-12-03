@@ -1,5 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+console.log("SCRIPT LOADED!");
 const basicSearchBtn = document.getElementById("basic-search");
 const advancedSearchBtn = document.getElementById("advanced-search");
 const basicContent = document.getElementById("basic-content");
@@ -246,4 +245,5 @@ buttonList.addEventListener("click", () => {
         card.classList.add("list");
     });
 });
+export {};
 //# sourceMappingURL=script.js.map
