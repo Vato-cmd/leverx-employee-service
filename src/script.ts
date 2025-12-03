@@ -81,11 +81,11 @@ form.addEventListener("submit", (e) => {
   e.preventDefault();
 
   const formData = new FormData(form);
-  const advanceSearchObject = {};
+  const advanceSearchObject: Record<string, string> = {};
   formData.forEach((value, key) => {
-    value = value.trim().toLowerCase();
-    if (!value || value.startsWith("select")) return;
-    advanceSearchObject[key] = value;
+    const strValue = String(value).trim().toLowerCase();
+    if (!strValue || strValue.startsWith("select")) return;
+    advanceSearchObject[key] = strValue;
   });
 
   if (Object.entries(advanceSearchObject).length === 0) {
@@ -181,7 +181,8 @@ form.addEventListener("submit", (e) => {
             fullName.includes(value)
           );
         default:
-          return emp[key] && emp[key].toLowerCase() === value;
+          const field = (emp as Record<string, any>)[key];
+          return field && field.toString().toLowerCase() === value;
       }
     });
   });
@@ -196,11 +197,20 @@ form.addEventListener("submit", (e) => {
       <p>Sorry, we can't find that page! it might be an old link or maybe it was removed</p>
       <button id="go-home">GO TO THE HOME PAGE</button>
     `;
-
-    document.getElementById("go-home").addEventListener("click", goToHomePage);
-    document.querySelector(".button-section").classList.add("hidden");
+    const goHomeBtn = document.getElementById("go-home");
+    if (goHomeBtn) {
+      goHomeBtn.addEventListener("click", goToHomePage);
+    }
+    const buttonSection = document.querySelector(".button-section");
+    if (buttonSection instanceof HTMLElement) {
+      buttonSection.classList.add("hidden");
+    }
   }
 });
+
+function goToHomePage() {
+  return (window.location.href = `index.html`);
+}
 
 fetch("./data/users.json")
   .then((res) => res.json())
@@ -244,7 +254,7 @@ function renderEmployees(users) {
   });
 }
 
-employeeSeachBtn.addEventListener("click", (e) => {
+employeeSeachBtn.addEventListener("click", () => {
   const value = basicEmployeeSearchInput.value.trim().toLowerCase();
   if (!value) return;
 
@@ -278,10 +288,6 @@ employeeSeachBtn.addEventListener("click", (e) => {
     document.querySelector(".button-section").classList.add("hidden");
   }
 });
-
-function goToHomePage() {
-  return (window.location.href = `index.html`);
-}
 
 advancedSearchBtn.addEventListener("click", () => {
   advancedSearchBtn.classList.toggle("active");
