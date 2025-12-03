@@ -1,26 +1,81 @@
-const basicSearchBtn = document.getElementById("basic-search");
-const advancedSearchBtn = document.getElementById("advanced-search");
-const basicContent = document.getElementById("basic-content");
-const advancedContent = document.getElementById("advanced-content");
-const svgGrid = document.getElementById("svg-grid");
-const svgList = document.getElementById("svg-list");
-const employeeSection = document.getElementById("employee-section");
+type DateBirth = {
+  year: number | string;
+  month: number | string;
+  day: number | string;
+};
 
-const buttonGrid = document.getElementById("button-grid");
-const buttonList = document.getElementById("button-list");
+type Manager = {
+  id: string;
+  first_name: string;
+  last_name: string;
+  phone?: string;
+  email?: string;
+};
 
-const form = document.getElementById("form");
+type Visa = {
+  issuing_country: string;
+  type: string;
+  start_date: number;
+  end_date: number;
+};
+
+type Employee = {
+  id: string;
+  isRemoteWork: boolean;
+  middle_name: string;
+  user_avatar: string;
+  first_name: string;
+  last_name: string;
+  department: string;
+  building: string;
+  room: string;
+  date_birth: DateBirth;
+  desk_number: number;
+  manager: Manager;
+  phone: string;
+  email: string;
+  viber: string;
+  cnumber: string;
+  citizenship: string;
+  visa: Visa[];
+  fullname?: string;
+};
+
+const basicSearchBtn = document.getElementById(
+  "basic-search"
+) as HTMLButtonElement;
+const advancedSearchBtn = document.getElementById(
+  "advanced-search"
+) as HTMLButtonElement;
+const basicContent = document.getElementById("basic-content") as HTMLDivElement;
+const advancedContent = document.getElementById(
+  "advanced-content"
+) as HTMLDivElement;
+
+const svgGrid = document.getElementById("svg-grid") as HTMLElement;
+const svgList = document.getElementById("svg-list") as HTMLElement;
+
+const employeeSection = document.getElementById(
+  "employee-section"
+) as HTMLElement;
+
+const buttonGrid = document.getElementById("button-grid") as HTMLButtonElement;
+const buttonList = document.getElementById("button-list") as HTMLButtonElement;
+
+const form = document.getElementById("form") as HTMLFormElement;
+
 const conditionalRenderComponent = document.getElementById(
   "conditional-section"
-);
+) as HTMLElement;
 
-const employeeSeachBtn = document.getElementById("employee-search-btn");
+const employeeSearchBtn = document.getElementById(
+  "employee-search-btn"
+) as HTMLButtonElement;
 const basicEmployeeSearchInput = document.getElementById(
   "basic-employee-search-input"
-);
+) as HTMLInputElement;
 
-let listClicked = false;
-let employees = [];
+let employees: Employee[] = [];
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
