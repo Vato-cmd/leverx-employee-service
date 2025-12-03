@@ -3,12 +3,16 @@
   padding: 0;
   box-sizing: border-box;
 }
+:root {
+  --font-primary: "Roboto", sans-serif;
+  --header-color: #1e5dbe;
+}
 
 body {
   margin: 0;
   background: #f5f7fa;
   color: #333;
-  font-family: "Roboto", sans-serif;
+  font-family: var(--font-primary);
   height: 100%;
 }
 
@@ -16,7 +20,7 @@ header > nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #1e5dbe;
+  background-color: var(--header-color);
   padding: 1.5rem;
   color: whitesmoke;
   position: fixed;
@@ -52,7 +56,7 @@ header > nav {
   border-radius: 20px;
   color: whitesmoke;
   cursor: pointer;
-  font-family: "Roboto", sans-serif;
+  font-family: var(--font-primary);
 }
 
 .header-address-active {
@@ -407,7 +411,7 @@ a {
   gap: 8px;
   color: whitesmoke;
   cursor: pointer;
-  font-family: "Roboto", sans-serif;
+  font-family: var(--font-primary);
   font-size: 1.02em;
 }
 .blue {
@@ -638,6 +642,48 @@ button:hover {
   background: rgba(0, 0, 0, 0.55);
   z-index: 9;
   opacity: 0;
+}
+
+.sign-in-body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #e5e5ec;
+}
+
+.sign-in-container {
+  height: 300px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+}
+.sign-in-container button {
+  padding: 10px 20px;
+  background-color: #5591ff;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.register-info {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.sign-in-header {
+  background-color: var(--header-color);
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  color: white;
 }
 
 @media (width <= 800px) {
