@@ -83,9 +83,9 @@ form.addEventListener("submit", (e) => {
   const formData = new FormData(form);
   const advanceSearchObject: Record<string, string> = {};
   formData.forEach((value, key) => {
-    const strValue = String(value).trim().toLowerCase();
-    if (!strValue || strValue.startsWith("select")) return;
-    advanceSearchObject[key] = strValue;
+    const cleaned = String(value).trim().toLowerCase();
+    if (!cleaned || cleaned.startsWith("select")) return;
+    advanceSearchObject[key] = cleaned;
   });
 
   if (Object.entries(advanceSearchObject).length === 0) {
@@ -219,8 +219,8 @@ fetch("./data/users.json")
     renderEmployees(employees);
   });
 
-function renderEmployees(users) {
-  users.forEach((user, index) => {
+function renderEmployees(users: Employee[]): void {
+  users.forEach((user: Employee, index: number) => {
     if (index !== users.length - 1) {
       employeeSection.innerHTML += `
       <div>
@@ -254,23 +254,29 @@ function renderEmployees(users) {
   });
 }
 
-employeeSeachBtn.addEventListener("click", () => {
+employeeSearchBtn.addEventListener("click", () => {
   const value = basicEmployeeSearchInput.value.trim().toLowerCase();
   if (!value) return;
 
   employees.forEach(
-    (employee) =>
+    (employee: Employee) =>
       (employee.fullname =
         `${employee.first_name} ${employee.last_name}`.toLowerCase())
   );
 
-  const findEmployee = employees.find(
-    (employee) =>
-      employee.id.toLowerCase() === value ||
-      employee.first_name.toLowerCase() === value ||
-      employee.last_name.toLowerCase() === value ||
-      employee.fullname.toLowerCase() === value
-  );
+  const findEmployee = employees.find((employee: Employee) => {
+    const firstName = employee.first_name.toLowerCase();
+    const lastName = employee.last_name.toLowerCase();
+    const fullName = `${firstName} ${lastName}`;
+    const id = employee.id.toLowerCase();
+
+    return (
+      id === value ||
+      firstName === value ||
+      lastName === value ||
+      fullName === value
+    );
+  });
 
   if (findEmployee) {
     window.location.href = `user.html?id=${findEmployee.id}`;
@@ -284,8 +290,15 @@ employeeSeachBtn.addEventListener("click", () => {
       <button id="go-home">GO TO THE HOME PAGE</button>
     `;
 
-    document.getElementById("go-home").addEventListener("click", goToHomePage);
-    document.querySelector(".button-section").classList.add("hidden");
+    const goHomeBtn = document.getElementById("go-home");
+    if (goHomeBtn) {
+      goHomeBtn.addEventListener("click", goToHomePage);
+    }
+
+    const buttonSection = document.querySelector(".button-section");
+    if (buttonSection) {
+      buttonSection.classList.add("hidden");
+    }
   }
 });
 

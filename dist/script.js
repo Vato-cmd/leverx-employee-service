@@ -19,10 +19,10 @@ form.addEventListener("submit", (e) => {
     const formData = new FormData(form);
     const advanceSearchObject = {};
     formData.forEach((value, key) => {
-        const strValue = String(value).trim().toLowerCase();
-        if (!strValue || strValue.startsWith("select"))
+        const cleaned = String(value).trim().toLowerCase();
+        if (!cleaned || cleaned.startsWith("select"))
             return;
-        advanceSearchObject[key] = strValue;
+        advanceSearchObject[key] = cleaned;
     });
     if (Object.entries(advanceSearchObject).length === 0) {
         form.innerHTML = `<h3 style="opacity: 0.8; transform: scale(1.1)">Please enter at least one search field!</h3>`;
@@ -114,7 +114,8 @@ form.addEventListener("submit", (e) => {
                         emp.last_name.toLowerCase().includes(value) ||
                         fullName.includes(value));
                 default:
-                    return emp[key] && emp[key].toLowerCase() === value;
+                    const field = emp[key];
+                    return field && field.toString().toLowerCase() === value;
             }
         });
     });
@@ -130,10 +131,19 @@ form.addEventListener("submit", (e) => {
       <p>Sorry, we can't find that page! it might be an old link or maybe it was removed</p>
       <button id="go-home">GO TO THE HOME PAGE</button>
     `;
-        document.getElementById("go-home").addEventListener("click", goToHomePage);
-        document.querySelector(".button-section").classList.add("hidden");
+        const goHomeBtn = document.getElementById("go-home");
+        if (goHomeBtn) {
+            goHomeBtn.addEventListener("click", goToHomePage);
+        }
+        const buttonSection = document.querySelector(".button-section");
+        if (buttonSection instanceof HTMLElement) {
+            buttonSection.classList.add("hidden");
+        }
     }
 });
+function goToHomePage() {
+    return (window.location.href = `index.html`);
+}
 fetch("./data/users.json")
     .then((res) => res.json())
     .then((data) => {
@@ -166,16 +176,22 @@ function renderEmployees(users) {
         }
     });
 }
-employeeSeachBtn.addEventListener("click", (e) => {
+employeeSearchBtn.addEventListener("click", () => {
     const value = basicEmployeeSearchInput.value.trim().toLowerCase();
     if (!value)
         return;
     employees.forEach((employee) => (employee.fullname =
         `${employee.first_name} ${employee.last_name}`.toLowerCase()));
-    const findEmployee = employees.find((employee) => employee.id.toLowerCase() === value ||
-        employee.first_name.toLowerCase() === value ||
-        employee.last_name.toLowerCase() === value ||
-        employee.fullname.toLowerCase() === value);
+    const findEmployee = employees.find((employee) => {
+        const firstName = employee.first_name.toLowerCase();
+        const lastName = employee.last_name.toLowerCase();
+        const fullName = `${firstName} ${lastName}`;
+        const id = employee.id.toLowerCase();
+        return (id === value ||
+            firstName === value ||
+            lastName === value ||
+            fullName === value);
+    });
     if (findEmployee) {
         window.location.href = `user.html?id=${findEmployee.id}`;
     }
@@ -188,13 +204,16 @@ employeeSeachBtn.addEventListener("click", (e) => {
       <p>Sorry, we can't find that page! it might be an old link or maybe it was removed</p>
       <button id="go-home">GO TO THE HOME PAGE</button>
     `;
-        document.getElementById("go-home").addEventListener("click", goToHomePage);
-        document.querySelector(".button-section").classList.add("hidden");
+        const goHomeBtn = document.getElementById("go-home");
+        if (goHomeBtn) {
+            goHomeBtn.addEventListener("click", goToHomePage);
+        }
+        const buttonSection = document.querySelector(".button-section");
+        if (buttonSection) {
+            buttonSection.classList.add("hidden");
+        }
     }
 });
-function goToHomePage() {
-    return (window.location.href = `index.html`);
-}
 advancedSearchBtn.addEventListener("click", () => {
     advancedSearchBtn.classList.toggle("active");
     basicSearchBtn.classList.toggle("active");
