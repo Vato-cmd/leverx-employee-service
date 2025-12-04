@@ -45,19 +45,18 @@ app.post("/sign-in", async (req, res) => {
   }
 
   const isMatch = await bcrypt.compare(password, user.password);
+  console.log("asdasd");
 
   if (!isMatch) {
     return res.status(401).json({ message: "Invalid credentials." });
   }
 
   res.json({
-    message: "Login successful",
     user: {
       id: user.id,
       first_name: user.first_name,
       last_name: user.last_name,
       email: user.email,
-      user_avatar: user.user_avatar,
     },
   });
 });
