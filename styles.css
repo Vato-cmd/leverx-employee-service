@@ -217,6 +217,7 @@ main {
 .paragraph-smaller {
   color: rgb(233, 71, 71);
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .hidden-main-nav {

@@ -2,10 +2,13 @@ const basicSearchBtn = document.getElementById("basic-search");
 const advancedSearchBtn = document.getElementById("advanced-search");
 const userProfile = document.getElementById("user-profile");
 const logout = document.getElementById("logout");
-logout.addEventListener("click", () => {
+const signOutParagraph = document.getElementById("signout-paragraph");
+logout.addEventListener("click", logoutFunc);
+signOutParagraph.addEventListener("click", logoutFunc);
+function logoutFunc() {
     sessionStorage.removeItem("user");
     window.location.href = "signin.html";
-});
+}
 const basicContent = document.getElementById("basic-content");
 const advancedContent = document.getElementById("advanced-content");
 const svgGrid = document.getElementById("svg-grid");

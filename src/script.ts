@@ -52,11 +52,17 @@ const userProfile = document.getElementById(
 ) as HTMLButtonElement;
 
 const logout = document.getElementById("logout") as HTMLButtonElement;
+const signOutParagraph = document.getElementById(
+  "signout-paragraph"
+) as HTMLElement;
 
-logout.addEventListener("click", () => {
+logout.addEventListener("click", logoutFunc);
+signOutParagraph.addEventListener("click", logoutFunc);
+
+function logoutFunc() {
   sessionStorage.removeItem("user");
   window.location.href = "signin.html";
-});
+}
 
 const basicContent = document.getElementById("basic-content") as HTMLDivElement;
 const advancedContent = document.getElementById(
