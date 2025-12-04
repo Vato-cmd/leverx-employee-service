@@ -182,6 +182,17 @@ basicEmployeeSearchInput.addEventListener("input", () => {
     const value = basicEmployeeSearchInput.value.trim().toLowerCase();
     if (value === "") {
         renderEmployees(employees);
+        if (svgGrid.classList.contains("clicked")) {
+            employeeSection.classList.add("employee-section");
+            employeeSection.classList.remove("list-employee-section");
+        }
+        else {
+            employeeSection.classList.remove("employee-section");
+            employeeSection.classList.add("list-employee-section");
+        }
+        document.querySelectorAll(".employee-cards").forEach((card) => {
+            card.classList.add("list");
+        });
     }
 });
 employeeSearchBtn.addEventListener("click", () => {
