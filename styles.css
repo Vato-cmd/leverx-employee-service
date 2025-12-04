@@ -659,8 +659,8 @@ button:hover {
 }
 
 .sign-in-container {
-  height: 300px;
-  width: 300px;
+  height: 350px;
+  width: 400px;
   text-align: center;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
   background-color: white;
