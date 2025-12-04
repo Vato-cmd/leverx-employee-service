@@ -47,6 +47,17 @@ const basicSearchBtn = document.getElementById(
 const advancedSearchBtn = document.getElementById(
   "advanced-search"
 ) as HTMLButtonElement;
+const userProfile = document.getElementById(
+  "user-profile"
+) as HTMLButtonElement;
+
+const logout = document.getElementById("logout") as HTMLButtonElement;
+
+logout.addEventListener("click", () => {
+  sessionStorage.removeItem("user");
+  window.location.href = "signin.html";
+});
+
 const basicContent = document.getElementById("basic-content") as HTMLDivElement;
 const advancedContent = document.getElementById(
   "advanced-content"
@@ -55,9 +66,42 @@ const advancedContent = document.getElementById(
 const svgGrid = document.getElementById("svg-grid") as HTMLElement;
 const svgList = document.getElementById("svg-list") as HTMLElement;
 
+const loggedUserAvatar = document.getElementById(
+  "logged-user-avatar"
+) as HTMLImageElement;
+const hiddenNavImage = document.getElementById(
+  "hidden-nav-image"
+) as HTMLImageElement;
+const loggedUserName = document.getElementById(
+  "logged-user-name"
+) as HTMLElement;
+
 const employeeSection = document.getElementById(
   "employee-section"
 ) as HTMLElement;
+
+const storedUser = sessionStorage.getItem("user");
+
+if (!storedUser) {
+  window.location.href = "signin.html";
+}
+let employees: Employee[] = [];
+
+const loggedUser = JSON.parse(storedUser!);
+console.log(loggedUser);
+
+userProfile.addEventListener("click", () => {
+  window.location.href = `user.html?id=${loggedUser.id}`;
+});
+
+fetch("http://localhost:3000/employees")
+  .then((res) => res.json())
+  .then((data) => {
+    const foundUser = data.find((user: Employee) => user.id === loggedUser.id);
+    loggedUserAvatar.src = foundUser.user_avatar;
+    loggedUserName.textContent = `${foundUser.first_name} ${foundUser.last_name}`;
+    hiddenNavImage.src = foundUser.user_avatar;
+  });
 
 const buttonGrid = document.getElementById("button-grid") as HTMLButtonElement;
 const buttonList = document.getElementById("button-list") as HTMLButtonElement;
@@ -74,8 +118,6 @@ const employeeSearchBtn = document.getElementById(
 const basicEmployeeSearchInput = document.getElementById(
   "basic-employee-search-input"
 ) as HTMLInputElement;
-
-let employees: Employee[] = [];
 
 const advancedInputs = advancedContent.querySelectorAll(
   "input, select"
@@ -308,7 +350,7 @@ function renderEmployees(users: Employee[]): void {
                 <p class="department"><img src="images/briefcase-svgrepo-com.svg"/>${
                   user.department
                 }</p>
-                <p class="department second-p"><img src="images/door-svgrepo-com.svg"/>LPT${
+                <p class="department second-p"><img src="images/door-svgrepo-com.svg"/>${
                   user.room
                 }</p>
         </div>

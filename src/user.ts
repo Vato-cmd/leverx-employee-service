@@ -40,20 +40,37 @@ type Employee = {
   visa: Visa[];
   fullname?: string;
 };
-
 const userDetailsContainer = document.getElementById(
   "user-details"
-) as HTMLElement | null;
+) as HTMLElement;
 const params = new URLSearchParams(window.location.search);
 const userId = params.get("id");
 
-fetch("http://localhost:3000/employees")
-  .then((res) => res.json())
-  .then((data: Employee[]) => {
-    const user = data.find((user) => user.id === userId);
-    if (!user || !userDetailsContainer) return;
+if (!userId) {
+  renderUserNotFound();
+}
+const storedUser = sessionStorage.getItem("user");
 
-    renderUser(user);
+if (!storedUser) {
+  window.location.href = "signin.html";
+}
+function renderUserNotFound() {
+  if (!userDetailsContainer) return;
+
+  userDetailsContainer.innerHTML = `
+    <h2>User not found</h2>
+    <a href="signin.html">Go back</a>
+  `;
+}
+
+fetch(`http://localhost:3000/employees/${userId}`)
+  .then((res) => {
+    if (!res.ok) throw new Error("User not found");
+    return res.json();
+  })
+  .then((user) => renderUser(user))
+  .catch(() => {
+    renderUserNotFound();
   });
 
 function renderUser(user: Employee): void {

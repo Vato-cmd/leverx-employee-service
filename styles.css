@@ -230,7 +230,10 @@ main {
   transition: left 0.3s ease;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
-
+.sign-in-body {
+  background-image: url(images/3395620.jpg);
+  background-repeat: no-repeat;
+}
 .hidden-main-nav-inner-bottom-button {
   margin: auto;
 }
@@ -659,6 +662,7 @@ button:hover {
   width: 300px;
   text-align: center;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+  background-color: white;
 }
 .sign-in-container button {
   padding: 10px 20px;

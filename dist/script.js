@@ -1,17 +1,43 @@
 const basicSearchBtn = document.getElementById("basic-search");
 const advancedSearchBtn = document.getElementById("advanced-search");
+const userProfile = document.getElementById("user-profile");
+const logout = document.getElementById("logout");
+logout.addEventListener("click", () => {
+    sessionStorage.removeItem("user");
+    window.location.href = "signin.html";
+});
 const basicContent = document.getElementById("basic-content");
 const advancedContent = document.getElementById("advanced-content");
 const svgGrid = document.getElementById("svg-grid");
 const svgList = document.getElementById("svg-list");
+const loggedUserAvatar = document.getElementById("logged-user-avatar");
+const hiddenNavImage = document.getElementById("hidden-nav-image");
+const loggedUserName = document.getElementById("logged-user-name");
 const employeeSection = document.getElementById("employee-section");
+const storedUser = sessionStorage.getItem("user");
+if (!storedUser) {
+    window.location.href = "signin.html";
+}
+let employees = [];
+const loggedUser = JSON.parse(storedUser);
+console.log(loggedUser);
+userProfile.addEventListener("click", () => {
+    window.location.href = `user.html?id=${loggedUser.id}`;
+});
+fetch("http://localhost:3000/employees")
+    .then((res) => res.json())
+    .then((data) => {
+    const foundUser = data.find((user) => user.id === loggedUser.id);
+    loggedUserAvatar.src = foundUser.user_avatar;
+    loggedUserName.textContent = `${foundUser.first_name} ${foundUser.last_name}`;
+    hiddenNavImage.src = foundUser.user_avatar;
+});
 const buttonGrid = document.getElementById("button-grid");
 const buttonList = document.getElementById("button-list");
 const form = document.getElementById("form");
 const conditionalRenderComponent = document.getElementById("conditional-section");
 const employeeSearchBtn = document.getElementById("employee-search-btn");
 const basicEmployeeSearchInput = document.getElementById("basic-employee-search-input");
-let employees = [];
 const advancedInputs = advancedContent.querySelectorAll("input, select");
 console.log(advancedContent);
 advancedInputs.forEach((input) => {
@@ -215,7 +241,7 @@ function renderEmployees(users) {
             </div>
             <h3>${user.first_name} ${user.last_name}</h3>
                 <p class="department"><img src="images/briefcase-svgrepo-com.svg"/>${user.department}</p>
-                <p class="department second-p"><img src="images/door-svgrepo-com.svg"/>LPT${user.room}</p>
+                <p class="department second-p"><img src="images/door-svgrepo-com.svg"/>${user.room}</p>
         </div>
         </a>
       </div>

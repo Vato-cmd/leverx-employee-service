@@ -39,14 +39,12 @@
             />SUPPORT
           </button>
 
-          <button
-            onclick="window.location.href='user.html?id=10'"
-            class="button-with-avatar"
-          >
-            <img src="images/avataaars.png" />STEVE COOK
+          <button id="user-profile" class="button-with-avatar">
+            <img id="logged-user-avatar" src="images/avataaars.png" />
+            <span id="logged-user-name">STEVE COOK</span>
           </button>
 
-          <button class="button-with-power-logo">
+          <button id="logout" class="button-with-power-logo">
             <img src="./images/power-off-svgrepo-com.svg" alt="power logo" />
           </button>
         </div>
@@ -57,7 +55,11 @@
       <div class="hidden-main-nav-inner">
         <div>
           <div class="hidden-main-nav-inner-top">
-            <img src="images/avataaars.png" alt="main image" />
+            <img
+              id="hidden-nav-image"
+              src="images/avataaars.png"
+              alt="main image"
+            />
             <div id="main-account">
               <p>Steve Cook</p>
               <p class="paragraph-smaller">Sign out</p>
