@@ -4,6 +4,7 @@ const signInButton = document.getElementById(
   "sign-in-btn"
 ) as HTMLButtonElement;
 const rememberMe = document.getElementById("remember-me") as HTMLInputElement;
+const spinner = document.getElementById("btn-loader") as HTMLDivElement;
 
 signInButton.addEventListener("click", async () => {
   const email = emailInput.value.trim();
@@ -36,14 +37,17 @@ signInButton.addEventListener("click", async () => {
       emailInput.value = "";
       return;
     }
+    spinner.hidden = false;
 
     if (rememberMe.checked) {
       localStorage.setItem("user", JSON.stringify(data.user));
     } else {
       sessionStorage.setItem("user", JSON.stringify(data.user));
     }
-
-    window.location.href = "index.html";
+    setTimeout(() => {
+      window.location.href = "index.html";
+      spinner.hidden = true;
+    }, 1000);
   } catch (error) {
     console.error(error);
     alert("Server error. Please try again.");
