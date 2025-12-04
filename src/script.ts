@@ -212,24 +212,31 @@ function goToHomePage() {
   return (window.location.href = `index.html`);
 }
 
-fetch("./data/users.json")
+fetch("http://localhost:3000/employees")
   .then((res) => res.json())
   .then((data) => {
+    console.log(data);
     employees = data;
-    renderEmployees(employees);
+    if (employees && employees.length > 0) {
+      renderEmployees(employees);
+    }
   });
 
 function renderEmployees(users: Employee[]): void {
+  employeeSection.innerHTML = "";
+
+  employeeSection.classList.add("employee-section");
+  employeeSection.classList.remove("employee-section-flex");
+
   users.forEach((user: Employee, index: number) => {
-    if (index !== users.length - 1) {
-      employeeSection.innerHTML += `
+    employeeSection.innerHTML += `
       <div>
        <a href="user.html?id=${user.id}">
         <div class="employee-cards">
             <div class="remote-relative">
               <img src="${user.user_avatar}" alt="${
-        user.first_name
-      }" class="avatar">
+      user.first_name
+    }" class="avatar">
               ${
                 user.isRemoteWork
                   ? `<div class="remote-container">
@@ -250,12 +257,20 @@ function renderEmployees(users: Employee[]): void {
         </a>
       </div>
     `;
-    }
   });
 }
 
+basicEmployeeSearchInput.addEventListener("input", () => {
+  const value = basicEmployeeSearchInput.value.trim().toLowerCase();
+
+  if (value === "") {
+    renderEmployees(employees);
+  }
+});
+
 employeeSearchBtn.addEventListener("click", () => {
   const value = basicEmployeeSearchInput.value.trim().toLowerCase();
+  console.log(value);
   if (!value) return;
 
   employees.forEach(
@@ -264,22 +279,22 @@ employeeSearchBtn.addEventListener("click", () => {
         `${employee.first_name} ${employee.last_name}`.toLowerCase())
   );
 
-  const findEmployee = employees.find((employee: Employee) => {
+  const findEmployee = employees.filter((employee: Employee) => {
     const firstName = employee.first_name.toLowerCase();
     const lastName = employee.last_name.toLowerCase();
     const fullName = `${firstName} ${lastName}`;
     const id = employee.id.toLowerCase();
 
     return (
-      id === value ||
-      firstName === value ||
-      lastName === value ||
-      fullName === value
+      id.includes(value) ||
+      firstName.includes(value) ||
+      lastName.includes(value) ||
+      fullName.includes(value)
     );
   });
 
-  if (findEmployee) {
-    window.location.href = `user.html?id=${findEmployee.id}`;
+  if (findEmployee.length > 0) {
+    renderEmployees(findEmployee);
   } else {
     employeeSection.classList.remove("employee-section");
     employeeSection.classList.add("employee-section-flex");

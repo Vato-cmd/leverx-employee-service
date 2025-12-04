@@ -1,4 +1,3 @@
-console.log("SCRIPT LOADED!");
 const basicSearchBtn = document.getElementById("basic-search");
 const advancedSearchBtn = document.getElementById("advanced-search");
 const basicContent = document.getElementById("basic-content");
@@ -143,27 +142,32 @@ form.addEventListener("submit", (e) => {
 function goToHomePage() {
     return (window.location.href = `index.html`);
 }
-fetch("./data/users.json")
+fetch("http://localhost:3000/employees")
     .then((res) => res.json())
     .then((data) => {
+    console.log(data);
     employees = data;
-    renderEmployees(employees);
+    if (employees && employees.length > 0) {
+        renderEmployees(employees);
+    }
 });
 function renderEmployees(users) {
+    employeeSection.innerHTML = "";
+    employeeSection.classList.add("employee-section");
+    employeeSection.classList.remove("employee-section-flex");
     users.forEach((user, index) => {
-        if (index !== users.length - 1) {
-            employeeSection.innerHTML += `
+        employeeSection.innerHTML += `
       <div>
        <a href="user.html?id=${user.id}">
         <div class="employee-cards">
             <div class="remote-relative">
               <img src="${user.user_avatar}" alt="${user.first_name}" class="avatar">
               ${user.isRemoteWork
-                ? `<div class="remote-container">
+            ? `<div class="remote-container">
                       <img class="remote" src="images/icons8-remote-working-32.png" alt="remote" />
                      </div>
                     `
-                : ""}
+            : ""}
             </div>
             <h3>${user.first_name} ${user.last_name}</h3>
                 <p class="department"><img src="images/briefcase-svgrepo-com.svg"/>${user.department}</p>
@@ -172,27 +176,33 @@ function renderEmployees(users) {
         </a>
       </div>
     `;
-        }
     });
 }
+basicEmployeeSearchInput.addEventListener("input", () => {
+    const value = basicEmployeeSearchInput.value.trim().toLowerCase();
+    if (value === "") {
+        renderEmployees(employees);
+    }
+});
 employeeSearchBtn.addEventListener("click", () => {
     const value = basicEmployeeSearchInput.value.trim().toLowerCase();
+    console.log(value);
     if (!value)
         return;
     employees.forEach((employee) => (employee.fullname =
         `${employee.first_name} ${employee.last_name}`.toLowerCase()));
-    const findEmployee = employees.find((employee) => {
+    const findEmployee = employees.filter((employee) => {
         const firstName = employee.first_name.toLowerCase();
         const lastName = employee.last_name.toLowerCase();
         const fullName = `${firstName} ${lastName}`;
         const id = employee.id.toLowerCase();
-        return (id === value ||
-            firstName === value ||
-            lastName === value ||
-            fullName === value);
+        return (id.includes(value) ||
+            firstName.includes(value) ||
+            lastName.includes(value) ||
+            fullName.includes(value));
     });
-    if (findEmployee) {
-        window.location.href = `user.html?id=${findEmployee.id}`;
+    if (findEmployee.length > 0) {
+        renderEmployees(findEmployee);
     }
     else {
         employeeSection.classList.remove("employee-section");

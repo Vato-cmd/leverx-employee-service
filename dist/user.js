@@ -1,7 +1,7 @@
 const userDetailsContainer = document.getElementById("user-details");
 const params = new URLSearchParams(window.location.search);
 const userId = params.get("id");
-fetch("./data/users.json")
+fetch("http://localhost:3000/employees")
     .then((res) => res.json())
     .then((data) => {
     const user = data.find((user) => user.id === userId);
@@ -9,8 +9,6 @@ fetch("./data/users.json")
         return;
     renderUser(user);
 });
-{
-}
 function renderUser(user) {
     if (!userDetailsContainer)
         return;

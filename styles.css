@@ -655,6 +655,7 @@ button:hover {
 
 .sign-in-container {
   height: 300px;
+  width: 300px;
   text-align: center;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
 }
@@ -674,16 +675,35 @@ button:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: lef;
   gap: 10px;
 }
+.register-info input {
+  padding: 5px;
+}
 
+.email-label label,
+.password-label label {
+  display: block;
+}
+
+.email-label,
+.password-label {
+  text-align: left;
+}
 .sign-in-header {
   background-color: var(--header-color);
   width: 100%;
   text-align: center;
   padding: 10px;
   color: white;
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+.sign-in-header img {
+  width: 30px;
 }
 
 @media (width <= 800px) {

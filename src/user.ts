@@ -47,7 +47,7 @@ const userDetailsContainer = document.getElementById(
 const params = new URLSearchParams(window.location.search);
 const userId = params.get("id");
 
-fetch("./data/users.json")
+fetch("http://localhost:3000/employees")
   .then((res) => res.json())
   .then((data: Employee[]) => {
     const user = data.find((user) => user.id === userId);
@@ -55,8 +55,6 @@ fetch("./data/users.json")
 
     renderUser(user);
   });
-{
-}
 
 function renderUser(user: Employee): void {
   if (!userDetailsContainer) return;
