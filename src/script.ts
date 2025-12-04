@@ -86,7 +86,8 @@ const employeeSection = document.getElementById(
   "employee-section"
 ) as HTMLElement;
 
-const storedUser = sessionStorage.getItem("user");
+const storedUser =
+  sessionStorage.getItem("user") || localStorage.getItem("user");
 
 if (!storedUser) {
   window.location.href = "signin.html";

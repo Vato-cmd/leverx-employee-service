@@ -17,7 +17,7 @@ const loggedUserAvatar = document.getElementById("logged-user-avatar");
 const hiddenNavImage = document.getElementById("hidden-nav-image");
 const loggedUserName = document.getElementById("logged-user-name");
 const employeeSection = document.getElementById("employee-section");
-const storedUser = sessionStorage.getItem("user");
+const storedUser = sessionStorage.getItem("user") || localStorage.getItem("user");
 if (!storedUser) {
     window.location.href = "signin.html";
 }

@@ -1,6 +1,7 @@
 const emailInput = document.getElementById("email");
 const passwordInput = document.getElementById("password");
 const signInButton = document.getElementById("sign-in-btn");
+const rememberMe = document.getElementById("remember-me");
 signInButton.addEventListener("click", async () => {
     const email = emailInput.value.trim();
     const password = passwordInput.value.trim();
@@ -23,9 +24,16 @@ signInButton.addEventListener("click", async () => {
         const data = await response.json();
         if (!response.ok) {
             alert(data.message);
+            passwordInput.value = "";
+            emailInput.value = "";
             return;
         }
-        sessionStorage.setItem("user", JSON.stringify(data.user));
+        if (rememberMe.checked) {
+            localStorage.setItem("user", JSON.stringify(data.user));
+        }
+        else {
+            sessionStorage.setItem("user", JSON.stringify(data.user));
+        }
         window.location.href = "index.html";
     }
     catch (error) {
