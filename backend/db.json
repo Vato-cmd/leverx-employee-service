@@ -3,6 +3,7 @@
     {
       "id": "1",
       "isRemoteWork": false,
+      "password": "$2b$12$eIUALHyxDJZwUxz3NhjpHu1hs8E6vSDLGZ8haUSIEzhFNZ58TINlu",
       "middle_name": "D.",
       "user_avatar": "images/Avatars - 9.png",
       "first_name": "Brendan",
@@ -31,6 +32,7 @@
     {
       "id": "2",
       "isRemoteWork": true,
+      "password": "$2b$12$LnZ983hU.NNzGKbS/RTndeCPnG7/WYHcD0pf71RiPbZsTIbuWeM92",
       "middle_name": "D.",
       "user_avatar": "images/Avatars - 8.png",
       "first_name": "Andrew",
@@ -59,6 +61,7 @@
     {
       "id": "3",
       "isRemoteWork": false,
+      "password": "$2b$12$H.cItTpyI/UyTaO.yMWrruWSsBJr1Ga74h66fimK1fkuVE4LwqagG",
       "middle_name": "L.",
       "user_avatar": "images/Avatars - 7.png",
       "first_name": "Lula",
@@ -87,6 +90,7 @@
     {
       "id": "4",
       "isRemoteWork": false,
+      "password": "$2b$12$l1BeFvKEGAyZM01WUHQ3HuNteq.FcPX2SLe2UYkxlN6AHssIZENHy",
       "middle_name": "K.",
       "user_avatar": "images/Avatars - 6.png",
       "first_name": "Fintan",
@@ -115,6 +119,7 @@
     {
       "id": "5",
       "isRemoteWork": true,
+      "password": "$2b$12$PhBlU6d7YN50.NyLqvEPdeBYFqQrg3YrsvtxxazAtzscegKe2GnVW",
       "middle_name": "F.",
       "user_avatar": "images/Avatars - 5.png",
       "first_name": "Suzanne",
@@ -143,6 +148,7 @@
     {
       "id": "6",
       "isRemoteWork": false,
+      "password": "$2b$12$ZxhKnKNIK3m8sf3Xy2Ink.NqjXOA8J4DvSibNue.gxiUOQ.g3vDjC",
       "middle_name": "",
       "user_avatar": "images/Avatars - 4.png",
       "first_name": "Francesco",
@@ -171,6 +177,7 @@
     {
       "id": "7",
       "isRemoteWork": false,
+      "password": "$2b$12$NQxf0kRQYJQngyY.LxAOUu6M459snUTJuQ2yHPLU19aKedKT0XzZa",
       "middle_name": "D.",
       "user_avatar": "images/Avatars - 3.png",
       "first_name": "Alexander",
@@ -199,6 +206,7 @@
     {
       "id": "8",
       "isRemoteWork": false,
+      "password": "$2b$12$CY92.RN0PWV7v.XLNgOmmecYKggvxmFzCrV0anDvV/3hS/2iEx7Ya",
       "middle_name": "",
       "user_avatar": "images/Avatars -2.png",
       "first_name": "James",
@@ -227,6 +235,7 @@
     {
       "id": "9",
       "isRemoteWork": true,
+      "password": "$2b$12$bXJjoT8cWecxRkXdONBHeeyTKKp35/4mfctUVNVNLZmF2d/fujIMW",
       "middle_name": "U.",
       "user_avatar": "images/Avatars - 1.png",
       "first_name": "John",
@@ -254,6 +263,7 @@
     {
       "id": "10",
       "isRemoteWork": true,
+      "password": "$2b$12$P5O4KjAOD06Yz7CokVn/KedNW14EvIgS/uqFvoe2eqHzfxb9zcXze",
       "middle_name": "A.",
       "first_name": "Steve",
       "last_name": "Cook",

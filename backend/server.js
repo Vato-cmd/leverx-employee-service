@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const fs = require("fs");
 const path = require("path");
+const bcrypt = require("bcrypt");
 
 const app = express();
 app.use(cors());
@@ -13,49 +14,54 @@ function readDB() {
   return JSON.parse(fs.readFileSync(DB_PATH, "utf-8"));
 }
 
-function writeDB(data) {
-  fs.writeFileSync(DB_PATH, JSON.stringify(data, null, 2));
-}
-
 app.get("/employees", (req, res) => {
-  try {
-    const data = readDB();
-    res.json(data.employees);
-  } catch (err) {
-    res.status(500).json({ error: "Failed to read database" });
-  }
+  const data = readDB();
+  res.json(data.employees);
 });
 
 app.get("/employees/:id", (req, res) => {
-  try {
-    const data = readDB();
-    const employee = data.employees.find((e) => e.id === req.params.id);
+  const data = readDB();
+  const employee = data.employees.find((e) => e.id === req.params.id);
 
-    if (!employee) {
-      return res.status(404).json({ message: "User not found" });
-    }
+  if (!employee) return res.status(404).json({ message: "User not found" });
 
-    res.json(employee);
-  } catch (err) {
-    res.status(500).json({ error: "Failed to read database" });
-  }
+  res.json(employee);
 });
 
-app.post("/employees", (req, res) => {
-  try {
-    const data = readDB();
+app.post("/sign-in", async (req, res) => {
+  const { email, password } = req.body;
 
-    const newEmployee = req.body;
-    data.employees.push(newEmployee);
-
-    writeDB(data);
-
-    res.json({ message: "Employee added", employee: newEmployee });
-  } catch (err) {
-    res.status(500).json({ error: "Failed to save employee" });
+  if (!email || !password) {
+    return res
+      .status(400)
+      .json({ message: "Email and password are required." });
   }
+
+  const data = readDB();
+  const user = data.employees.find((user) => user.email === email);
+
+  if (!user) {
+    return res.status(401).json({ message: "Invalid credentials." });
+  }
+
+  const isMatch = await bcrypt.compare(password, user.password);
+
+  if (!isMatch) {
+    return res.status(401).json({ message: "Invalid credentials." });
+  }
+
+  res.json({
+    message: "Login successful",
+    user: {
+      id: user.id,
+      first_name: user.first_name,
+      last_name: user.last_name,
+      email: user.email,
+      user_avatar: user.user_avatar,
+    },
+  });
 });
 
 app.listen(3000, () => {
-  console.log("Backend running at http://localhost:3000");
+  console.log("Server running on port 3000");
 });
