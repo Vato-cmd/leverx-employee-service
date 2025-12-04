@@ -12,6 +12,42 @@ const conditionalRenderComponent = document.getElementById("conditional-section"
 const employeeSearchBtn = document.getElementById("employee-search-btn");
 const basicEmployeeSearchInput = document.getElementById("basic-employee-search-input");
 let employees = [];
+const advancedInputs = advancedContent.querySelectorAll("input, select");
+console.log(advancedContent);
+advancedInputs.forEach((input) => {
+    input.addEventListener("input", handleAdvancedReset);
+    input.addEventListener("change", handleAdvancedReset);
+});
+function handleAdvancedReset() {
+    const formData = new FormData(form);
+    let hasValue = false;
+    formData.forEach((value) => {
+        const cleaned = String(value).trim();
+        if (cleaned && !cleaned.startsWith("Select")) {
+            hasValue = true;
+        }
+    });
+    if (!hasValue) {
+        renderEmployees(employees);
+        resetLayoutToCurrentView();
+    }
+}
+function resetLayoutToCurrentView() {
+    if (svgGrid.classList.contains("clicked")) {
+        employeeSection.classList.add("employee-section");
+        employeeSection.classList.remove("list-employee-section");
+        document
+            .querySelectorAll(".employee-cards")
+            .forEach((card) => card.classList.remove("list"));
+    }
+    if (svgList.classList.contains("clicked")) {
+        employeeSection.classList.remove("employee-section");
+        employeeSection.classList.add("list-employee-section");
+        document
+            .querySelectorAll(".employee-cards")
+            .forEach((card) => card.classList.add("list"));
+    }
+}
 form.addEventListener("submit", (e) => {
     e.preventDefault();
     const formData = new FormData(form);
@@ -105,7 +141,7 @@ form.addEventListener("submit", (e) => {
         }, 1000);
         return;
     }
-    const found = employees.find((emp) => {
+    const found = employees.filter((emp) => {
         const fullName = `${emp.first_name} ${emp.last_name}`.toLowerCase();
         return Object.entries(advanceSearchObject).every(([key, value]) => {
             switch (key) {
@@ -120,7 +156,7 @@ form.addEventListener("submit", (e) => {
         });
     });
     if (found) {
-        window.location.href = `user.html?id=${found.id}`;
+        renderEmployees(found);
     }
     else {
         employeeSection.classList.remove("employee-section");
