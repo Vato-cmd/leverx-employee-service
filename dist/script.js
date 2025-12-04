@@ -26,7 +26,8 @@ form.addEventListener("submit", (e) => {
         form.innerHTML = `<h3 style="opacity: 0.8; transform: scale(1.1)">Please enter at least one search field!</h3>`;
         setTimeout(() => {
             form.innerHTML = `
-        <label for="name">Name</label>
+        <form class="form" id="form">
+              <label for="name">Name</label>
               <input
                 name="name"
                 id="name"
@@ -38,25 +39,25 @@ form.addEventListener("submit", (e) => {
               <input
                 id="email"
                 name="email"
-                type="email"
+                type="text"
                 placeholder="john.smith@leverx.com"
               />
-              <div class="phone-skype">
+              <div class="additional-info">
                 <div>
                   <label for="phone">Phone</label>
                   <input
                     name="phone"
                     id="phone"
-                    type="tel"
+                    type="text"
                     placeholder="Phone number"
                   />
                 </div>
                 <div>
                   <label for="viber">Viber</label>
-                  <input name="viber" type="tel" placeholder="ViberId" />
+                  <input name="viber" type="text" placeholder="ViberId" />
                 </div>
               </div>
-              <div class="phone-skype">
+              <div class="additional-info">
                 <div>
                   <label for="building">Building</label>
                   <select name="building" id="building">
@@ -99,6 +100,7 @@ form.addEventListener("submit", (e) => {
                 <option>Finance & Accounting</option>
               </select>
               <button class="search-btn">SEARCH</button>
+            </form>
       `;
         }, 1000);
         return;
@@ -142,15 +144,21 @@ form.addEventListener("submit", (e) => {
 function goToHomePage() {
     return (window.location.href = `index.html`);
 }
-fetch("http://localhost:3000/employees")
-    .then((res) => res.json())
-    .then((data) => {
-    console.log(data);
-    employees = data;
-    if (employees && employees.length > 0) {
+async function loadEmployees() {
+    try {
+        const res = await fetch("http://localhost:3000/employees");
+        if (!res.ok)
+            throw new Error("Server error");
+        const data = await res.json();
+        employees = Array.isArray(data) ? data : [];
         renderEmployees(employees);
     }
-});
+    catch (error) {
+        console.error(error);
+        employeeSection.innerHTML = "<h2>Failed to load employees.</h2>";
+    }
+}
+loadEmployees();
 function renderEmployees(users) {
     employeeSection.innerHTML = "";
     employeeSection.classList.add("employee-section");
@@ -183,16 +191,19 @@ basicEmployeeSearchInput.addEventListener("input", () => {
     if (value === "") {
         renderEmployees(employees);
         if (svgGrid.classList.contains("clicked")) {
+            document.querySelectorAll(".employee-cards").forEach((card) => {
+                card.classList.remove("list");
+            });
             employeeSection.classList.add("employee-section");
             employeeSection.classList.remove("list-employee-section");
         }
-        else {
+        if (svgList.classList.contains("clicked")) {
+            document.querySelectorAll(".employee-cards").forEach((card) => {
+                card.classList.add("list");
+            });
             employeeSection.classList.remove("employee-section");
             employeeSection.classList.add("list-employee-section");
         }
-        document.querySelectorAll(".employee-cards").forEach((card) => {
-            card.classList.add("list");
-        });
     }
 });
 employeeSearchBtn.addEventListener("click", () => {
