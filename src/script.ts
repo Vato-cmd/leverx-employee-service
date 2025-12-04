@@ -230,13 +230,14 @@ form.addEventListener("submit", (e) => {
             emp.last_name.toLowerCase().includes(value) ||
             fullName.includes(value)
           );
+
         default:
           const field = (emp as Record<string, any>)[key];
-          return field && field.toString().toLowerCase() === value;
+          return field && String(field).toLowerCase().includes(value);
       }
     });
   });
-  if (found) {
+  if (found.length > 0) {
     renderEmployees(found);
   } else {
     employeeSection.classList.remove("employee-section");
@@ -307,7 +308,7 @@ function renderEmployees(users: Employee[]): void {
                 <p class="department"><img src="images/briefcase-svgrepo-com.svg"/>${
                   user.department
                 }</p>
-                <p class="department second-p"><img src="images/door-svgrepo-com.svg"/>${
+                <p class="department second-p"><img src="images/door-svgrepo-com.svg"/>LPT${
                   user.room
                 }</p>
         </div>

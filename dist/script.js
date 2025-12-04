@@ -151,11 +151,11 @@ form.addEventListener("submit", (e) => {
                         fullName.includes(value));
                 default:
                     const field = emp[key];
-                    return field && field.toString().toLowerCase() === value;
+                    return field && String(field).toLowerCase().includes(value);
             }
         });
     });
-    if (found) {
+    if (found.length > 0) {
         renderEmployees(found);
     }
     else {
@@ -215,7 +215,7 @@ function renderEmployees(users) {
             </div>
             <h3>${user.first_name} ${user.last_name}</h3>
                 <p class="department"><img src="images/briefcase-svgrepo-com.svg"/>${user.department}</p>
-                <p class="department second-p"><img src="images/door-svgrepo-com.svg"/>${user.room}</p>
+                <p class="department second-p"><img src="images/door-svgrepo-com.svg"/>LPT${user.room}</p>
         </div>
         </a>
       </div>
