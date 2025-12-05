@@ -8,18 +8,33 @@ const spinner = document.getElementById("btn-loader") as HTMLDivElement;
 const invalidCredentials = document.getElementById(
   "invalid-credentials"
 ) as HTMLDivElement;
+const missingInfo = document.getElementById("missing-info") as HTMLSpanElement;
+const missingEmail = document.getElementById(
+  "missing-email"
+) as HTMLSpanElement;
+const missingPassword = document.getElementById(
+  "missing-password"
+) as HTMLSpanElement;
 
 signInButton.addEventListener("click", async () => {
   const email = emailInput.value.trim();
   const password = passwordInput.value.trim();
 
   if (!email) {
-    alert("Please enter your email!");
+    missingEmail.textContent = "fill in email";
+    missingEmail.classList.remove("hidden");
+    setTimeout(() => {
+      missingEmail.classList.add("hidden");
+    }, 1000);
     return;
   }
 
   if (!password) {
-    alert("Please enter your password!");
+    missingPassword.textContent = "fill in password";
+    missingPassword.classList.remove("hidden");
+    setTimeout(() => {
+      missingPassword.classList.add("hidden");
+    }, 1000);
     return;
   }
 

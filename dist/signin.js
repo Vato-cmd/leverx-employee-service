@@ -4,15 +4,26 @@ const signInButton = document.getElementById("sign-in-btn");
 const rememberMe = document.getElementById("remember-me");
 const spinner = document.getElementById("btn-loader");
 const invalidCredentials = document.getElementById("invalid-credentials");
+const missingInfo = document.getElementById("missing-info");
+const missingEmail = document.getElementById("missing-email");
+const missingPassword = document.getElementById("missing-password");
 signInButton.addEventListener("click", async () => {
     const email = emailInput.value.trim();
     const password = passwordInput.value.trim();
     if (!email) {
-        alert("Please enter your email!");
+        missingEmail.textContent = "fill in email";
+        missingEmail.classList.remove("hidden");
+        setTimeout(() => {
+            missingEmail.classList.add("hidden");
+        }, 1000);
         return;
     }
     if (!password) {
-        alert("Please enter your password!");
+        missingPassword.textContent = "fill in password";
+        missingPassword.classList.remove("hidden");
+        setTimeout(() => {
+            missingPassword.classList.add("hidden");
+        }, 1000);
         return;
     }
     try {
