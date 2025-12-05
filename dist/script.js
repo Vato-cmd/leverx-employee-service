@@ -23,7 +23,6 @@ if (!storedUser) {
 }
 let employees = [];
 const loggedUser = JSON.parse(storedUser);
-console.log(loggedUser);
 userProfile.addEventListener("click", () => {
     window.location.href = `user.html?id=${loggedUser.id}`;
 });

@@ -46,14 +46,41 @@ const userDetailsContainer = document.getElementById(
 const params = new URLSearchParams(window.location.search);
 const userId = params.get("id");
 
+const hiddenNavImage = document.getElementById(
+  "hidden-nav-image"
+) as HTMLImageElement;
+const loggedUserName = document.getElementById(
+  "logged-user-name"
+) as HTMLElement;
+const loggedUserAvatar = document.getElementById(
+  "logged-user-avatar"
+) as HTMLImageElement;
+const logout = document.getElementById("logout") as HTMLButtonElement;
+const signOutParagraph = document.getElementById(
+  "signout-paragraph"
+) as HTMLElement;
+
+signOutParagraph.addEventListener("click", logoutFunc);
+logout.addEventListener("click", logoutFunc);
+
+function logoutFunc() {
+  sessionStorage.removeItem("user");
+  window.location.href = "signin.html";
+}
+
 if (!userId) {
   renderUserNotFound();
 }
-const storedUser = sessionStorage.getItem("user");
+
+const storedUser =
+  sessionStorage.getItem("user") || localStorage.getItem("user");
 
 if (!storedUser) {
   window.location.href = "signin.html";
 }
+
+const loggedUser = JSON.parse(storedUser!);
+
 function renderUserNotFound() {
   if (!userDetailsContainer) return;
 
@@ -68,7 +95,12 @@ fetch(`http://localhost:3000/employees/${userId}`)
     if (!res.ok) throw new Error("User not found");
     return res.json();
   })
-  .then((user) => renderUser(user))
+  .then((user) => {
+    loggedUserAvatar.src = user.user_avatar;
+    loggedUserName.innerText = `${user.first_name} ${user.last_name}`;
+    hiddenNavImage.src = user.user_avatar;
+    renderUser(user);
+  })
   .catch(() => {
     renderUserNotFound();
   });
