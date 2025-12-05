@@ -20,25 +20,27 @@ const signInButtonSpan = document.getElementById(
 const signUpButton = document.getElementById("sign-up-btn") as HTMLSpanElement;
 
 const signInForm = document.getElementById("sign-in-form") as HTMLDivElement;
-const signUpForm = document.getElementById("sign-un-form") as HTMLDivElement;
-const toggleSignForm = document.getElementById(
-  "toggle-form"
-) as HTMLParagraphElement;
-const formTitle = document.getElementById("form-title") as HTMLParagraphElement;
+const signUpForm = document.getElementById("sign-up-form") as HTMLDivElement;
+const toggleSignForm = document.getElementById("toggle-form") as HTMLElement;
+const formTitle = document.getElementById("form-title") as HTMLElement;
 
 let signedUp = false;
 
-if (signedUp) {
-  signInForm.classList.add("hidden");
-  signUpForm.classList.remove("hidden");
-  toggleSignForm.textContent = "Already have an account? Sign in";
-  formTitle.textContent = "Create an account";
-} else {
-  signInForm.classList.remove("hidden");
-  signUpForm.classList.add("hidden");
-  toggleSignForm.textContent = "Don't have an account? Sign up";
-  formTitle.textContent = "Sign in";
-}
+toggleSignForm.addEventListener("click", () => {
+  console.log("toggled");
+  signedUp = !signedUp;
+  if (signedUp) {
+    signInForm.classList.add("hidden");
+    signUpForm.classList.remove("hidden");
+    toggleSignForm.textContent = "Already have an account? Sign in";
+    formTitle.textContent = "Create an account";
+  } else {
+    signInForm.classList.remove("hidden");
+    signUpForm.classList.add("hidden");
+    toggleSignForm.textContent = "Don't have an account? Sign up";
+    formTitle.textContent = "Sign in";
+  }
+});
 
 signInButton.addEventListener("click", async () => {
   const email = emailInput.value.trim();

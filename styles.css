@@ -639,10 +639,6 @@ hr {
   border-color: 0.5px solid #738392;
 }
 
-.hidden {
-  display: none;
-  margin-bottom: 20px;
-}
 button {
   transition: transform 0.3s ease;
 }
@@ -689,6 +685,7 @@ button:hover {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
   background-color: white;
   width: 300px;
+  padding: 10px;
 }
 .sign-in-container button {
   padding: 10px 20px;
@@ -903,4 +900,9 @@ button:hover {
   .mobile-input-search {
     background-position: 100px center;
   }
+}
+
+.hidden {
+  display: none;
+  margin-bottom: 20px;
 }
