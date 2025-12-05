@@ -93,17 +93,18 @@ function renderUserNotFound() {
   `;
 }
 
-fetch(`http://localhost:3000/employees/${userId}`)
-  .then((res) => {
-    if (!res.ok) throw new Error("User not found");
-    return res.json();
-  })
-  .then((user) => {
-    renderUser(user);
-  })
-  .catch(() => {
-    renderUserNotFound();
-  });
+try {
+  const res = await fetch(`http://localhost:3000/employees/${userId}`);
+
+  if (!res.ok) {
+    throw new Error("User not found");
+  }
+
+  const user = await res.json();
+  renderUser(user);
+} catch (error) {
+  renderUserNotFound();
+}
 
 function renderUser(user: Employee): void {
   if (!userDetailsContainer) return;

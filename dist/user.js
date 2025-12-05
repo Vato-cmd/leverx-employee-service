@@ -31,18 +31,17 @@ function renderUserNotFound() {
     <a href="signin.html">Go back</a>
   `;
 }
-fetch(`http://localhost:3000/employees/${userId}`)
-    .then((res) => {
-    if (!res.ok)
+try {
+    const res = await fetch(`http://localhost:3000/employees/${userId}`);
+    if (!res.ok) {
         throw new Error("User not found");
-    return res.json();
-})
-    .then((user) => {
+    }
+    const user = await res.json();
     renderUser(user);
-})
-    .catch(() => {
+}
+catch (error) {
     renderUserNotFound();
-});
+}
 function renderUser(user) {
     if (!userDetailsContainer)
         return;
