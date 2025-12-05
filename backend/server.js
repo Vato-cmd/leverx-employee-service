@@ -66,12 +66,12 @@ app.post("/sign-in", async (req, res) => {
 app.post("/sign-up", async (req, res) => {
   const { first_name, last_name, email, password } = req.body;
 
-  if (!first_name || !email || !last_name || !password) {
-    return res.status(400).json({ message: "All fields required." });
+  if (!first_name || !last_name || !email || !password) {
+    return res.status(400).json({ message: "All fields are required." });
   }
 
   const data = readDB();
-  const exists = data.employees.find((user) => user.email === email);
+  const exists = data.employees.find((u) => u.email === email);
 
   if (exists) {
     return res.status(400).json({ message: "Email already exists." });
@@ -87,16 +87,16 @@ app.post("/sign-up", async (req, res) => {
     password: hashed,
     user_avatar: "images/default-avatar.png",
     isRemoteWork: false,
-    department: "",
-    building: "",
-    room: "",
-    desk_number: 0,
-    phone: "",
-    viber: "",
-    cnumber: "",
-    citizenship: "",
-    date_birth: { day: "", month: "", year: "" },
-    manager: { id: "", first_name: "", last_name: "" },
+    department: "N/A",
+    room: "N/A",
+    building: "N/A",
+    desk_number: "N/A",
+    phone: "N/A",
+    viber: "N/A",
+    cnumber: "N/A",
+    citizenship: "N/A",
+    date_birth: { day: "N/A", month: "N/A", year: "N/A" },
+    manager: { id: "N/A", first_name: "N/A", last_name: "N/A" },
     visa: [],
   };
 
@@ -104,7 +104,7 @@ app.post("/sign-up", async (req, res) => {
 
   fs.writeFileSync(DB_PATH, JSON.stringify(data, null, 2));
 
-  res.json({ message: "Account created successfully" });
+  return res.status(201).json({ message: "Account created successfully" });
 });
 
 app.listen(3000, () => {

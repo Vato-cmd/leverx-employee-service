@@ -39,7 +39,6 @@ const formTitle = document.getElementById("form-title");
 let signedUp = false;
 toggleSignForm.addEventListener("click", switchForms);
 function switchForms() {
-    console.log("toggled");
     signedUp = !signedUp;
     if (signedUp) {
         signInForm.classList.add("hidden");

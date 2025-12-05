@@ -361,36 +361,6 @@
           "end_date": 1683680400000
         }
       ]
-    },
-    {
-      "user": {
-        "id": "11",
-        "first_name": "Vato",
-        "last_name": "Mez",
-        "email": "vato.mez@leverx.com",
-        "password": "$2b$12$qvx8RpVNPMHCZclIok5Y6.VG8tcij6wxuqTKjgZOfi.uZYxeIMCJ.",
-        "user_avatar": "images/default-avatar.png",
-        "isRemoteWork": false,
-        "department": "",
-        "room": "",
-        "building": "",
-        "desk_number": 0,
-        "phone": "",
-        "viber": "",
-        "cnumber": "",
-        "citizenship": "",
-        "date_birth": {
-          "day": "",
-          "month": "",
-          "year": ""
-        },
-        "manager": {
-          "id": "",
-          "first_name": "",
-          "last_name": ""
-        },
-        "visa": []
-      }
     }
   ]
 }
