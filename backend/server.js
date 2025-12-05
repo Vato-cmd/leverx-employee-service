@@ -51,7 +51,6 @@ app.post("/sign-in", async (req, res) => {
   if (!isMatch) {
     return res.status(401).json({ message: "Invalid credentials." });
   }
-  console.log(user);
 
   res.json({
     user: {
@@ -62,6 +61,50 @@ app.post("/sign-in", async (req, res) => {
       user_avatar: user.user_avatar,
     },
   });
+});
+
+app.post("/sign-up", async (req, res) => {
+  const { first_name, last_name, email, password } = req.body;
+
+  if (!first_name || !email || !last_name || !password) {
+    return res.status(400).json({ message: "All fields required." });
+  }
+
+  const data = readDB();
+  const exists = data.employees.find((user) => user.email === email);
+
+  if (exists) {
+    return res.status(400).json({ message: "Email already exists." });
+  }
+
+  const hashed = await bcrypt.hash(password, 12);
+
+  const newUser = {
+    id: (data.employees.length + 1).toString(),
+    first_name,
+    last_name,
+    email,
+    password: hashed,
+    user_avatar: "images/default-avatar.png",
+    isRemoteWork: false,
+    department: "",
+    building: "",
+    room: "",
+    desk_number: 0,
+    phone: "",
+    viber: "",
+    cnumber: "",
+    citizenship: "",
+    date_birth: { day: "", month: "", year: "" },
+    manager: { id: "", first_name: "", last_name: "" },
+    visa: [],
+  };
+
+  data.employees.push(newUser);
+
+  fs.writeFileSync(DB_PATH, JSON.stringify(data, null, 2));
+
+  res.json({ message: "Account created successfully" });
 });
 
 app.listen(3000, () => {

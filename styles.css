@@ -79,6 +79,10 @@ header > nav {
   display: block;
 }
 
+.signup-form input {
+  padding: 5px;
+}
+
 .button-with-avatar {
   display: flex;
   align-items: center;

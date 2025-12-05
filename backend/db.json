@@ -11,9 +11,17 @@
       "department": "Human Resources (HR)",
       "building": "LeverX HQ – Poland",
       "room": "1402",
-      "date_birth": { "year": 1991, "month": 6, "day": 18 },
+      "date_birth": {
+        "year": 1991,
+        "month": 6,
+        "day": 18
+      },
       "desk_number": 21,
-      "manager": { "id": "m001", "first_name": "John", "last_name": "Snow" },
+      "manager": {
+        "id": "m001",
+        "first_name": "John",
+        "last_name": "Snow"
+      },
       "phone": "+48123456701",
       "email": "brendan.krueger@leverx.com",
       "viber": "live:brendan.krueger",
@@ -28,7 +36,6 @@
         }
       ]
     },
-
     {
       "id": "2",
       "isRemoteWork": true,
@@ -40,9 +47,17 @@
       "department": "Finance & Accounting",
       "building": "LeverX Dubai",
       "room": "502B",
-      "date_birth": { "year": 1989, "month": 11, "day": "02" },
+      "date_birth": {
+        "year": 1989,
+        "month": 11,
+        "day": "02"
+      },
       "desk_number": 9,
-      "manager": { "id": "m001", "first_name": "John", "last_name": "Snow" },
+      "manager": {
+        "id": "m001",
+        "first_name": "John",
+        "last_name": "Snow"
+      },
       "phone": "+48777710222",
       "email": "andrew.savage@leverx.com",
       "viber": "live:andrew.savage",
@@ -57,7 +72,6 @@
         }
       ]
     },
-
     {
       "id": "3",
       "isRemoteWork": false,
@@ -69,9 +83,17 @@
       "department": "Web & Mobile",
       "building": "LeverX HQ – Georgia",
       "room": "1403",
-      "date_birth": { "year": 1993, "month": 3, "day": 12 },
+      "date_birth": {
+        "year": 1993,
+        "month": 3,
+        "day": 12
+      },
       "desk_number": 14,
-      "manager": { "id": "m002", "first_name": "Elena", "last_name": "Koval" },
+      "manager": {
+        "id": "m002",
+        "first_name": "Elena",
+        "last_name": "Koval"
+      },
       "phone": "+48550555111",
       "email": "lula.aguilar@leverx.com",
       "viber": "live:lula.aguilar",
@@ -86,7 +108,6 @@
         }
       ]
     },
-
     {
       "id": "4",
       "isRemoteWork": false,
@@ -98,9 +119,17 @@
       "department": "Marketing",
       "building": "LeverX HQ – Kazakhstan",
       "room": "1501",
-      "date_birth": { "year": 1995, "month": 9, "day": 22 },
+      "date_birth": {
+        "year": 1995,
+        "month": 9,
+        "day": 22
+      },
       "desk_number": 12,
-      "manager": { "id": "m003", "first_name": "Adam", "last_name": "Stein" },
+      "manager": {
+        "id": "m003",
+        "first_name": "Adam",
+        "last_name": "Stein"
+      },
       "phone": "+48509877722",
       "email": "f.cruz@leverx.com",
       "viber": "live:cruz.f",
@@ -115,7 +144,6 @@
         }
       ]
     },
-
     {
       "id": "5",
       "isRemoteWork": true,
@@ -127,9 +155,17 @@
       "department": "Sales",
       "building": "Remote",
       "room": "302B",
-      "date_birth": { "year": 1985, "month": 2, "day": 14 },
+      "date_birth": {
+        "year": 1985,
+        "month": 2,
+        "day": 14
+      },
       "desk_number": 11,
-      "manager": { "id": "m002", "first_name": "Elena", "last_name": "Koval" },
+      "manager": {
+        "id": "m002",
+        "first_name": "Elena",
+        "last_name": "Koval"
+      },
       "phone": "+447891223344",
       "email": "suzanne.taylor@leverx.com",
       "viber": "live:s.taylor",
@@ -144,7 +180,6 @@
         }
       ]
     },
-
     {
       "id": "6",
       "isRemoteWork": false,
@@ -156,9 +191,17 @@
       "department": "IT / Information Technology",
       "building": "LeverX Bulgaria",
       "room": "337A",
-      "date_birth": { "year": 1990, "month": 12, "day": "04" },
+      "date_birth": {
+        "year": 1990,
+        "month": 12,
+        "day": "04"
+      },
       "desk_number": 7,
-      "manager": { "id": "m003", "first_name": "Adam", "last_name": "Stein" },
+      "manager": {
+        "id": "m003",
+        "first_name": "Adam",
+        "last_name": "Stein"
+      },
       "phone": "+359892123987",
       "email": "francesco.reed@leverx.com",
       "viber": "live:francesco.reed",
@@ -173,7 +216,6 @@
         }
       ]
     },
-
     {
       "id": "7",
       "isRemoteWork": false,
@@ -185,9 +227,17 @@
       "department": "Customer Support",
       "building": "LeverX HQ – Hungary",
       "room": "1222",
-      "date_birth": { "year": 1994, "month": 5, "day": 16 },
+      "date_birth": {
+        "year": 1994,
+        "month": 5,
+        "day": 16
+      },
       "desk_number": 11,
-      "manager": { "id": "m001", "first_name": "John", "last_name": "Snow" },
+      "manager": {
+        "id": "m001",
+        "first_name": "John",
+        "last_name": "Snow"
+      },
       "phone": "+48888555111",
       "email": "alex.volk@leverx.com",
       "viber": "live:alex.volk",
@@ -202,7 +252,6 @@
         }
       ]
     },
-
     {
       "id": "8",
       "isRemoteWork": false,
@@ -214,9 +263,17 @@
       "department": "Research & Development (R&D)",
       "building": "LeverX HQ – England",
       "room": "1401",
-      "date_birth": { "year": 1992, "month": 7, "day": "08" },
+      "date_birth": {
+        "year": 1992,
+        "month": 7,
+        "day": "08"
+      },
       "desk_number": 16,
-      "manager": { "id": "m003", "first_name": "Adam", "last_name": "Stein" },
+      "manager": {
+        "id": "m003",
+        "first_name": "Adam",
+        "last_name": "Stein"
+      },
       "phone": "+48222733111",
       "email": "james.jones@leverx.com",
       "viber": "live:j.jones",
@@ -231,7 +288,6 @@
         }
       ]
     },
-
     {
       "id": "9",
       "isRemoteWork": true,
@@ -243,9 +299,17 @@
       "department": "Operations",
       "building": "Leverx HQ",
       "room": "100",
-      "date_birth": { "year": 1988, "month": 1, "day": 19 },
+      "date_birth": {
+        "year": 1988,
+        "month": 1,
+        "day": 19
+      },
       "desk_number": 43,
-      "manager": { "id": "m002", "first_name": "Elena", "last_name": "Koval" },
+      "manager": {
+        "id": "m002",
+        "first_name": "Elena",
+        "last_name": "Koval"
+      },
       "phone": "+14880002233",
       "email": "john.doe@leverx.com",
       "viber": "live:john.doe",
@@ -277,7 +341,6 @@
         "month": "03",
         "year": "1985"
       },
-
       "manager": {
         "id": "105",
         "first_name": "Elena",
@@ -285,14 +348,11 @@
         "phone": "+49711223344",
         "email": "elena.koval@leverx.com"
       },
-
       "phone": "+371660055555",
       "email": "steve.cook@leverx.com",
       "viber": "live:steve.cook1985",
       "cnumber": "LC011590",
-
       "citizenship": "Poland",
-
       "visa": [
         {
           "issuing_country": "Poland",
@@ -301,6 +361,36 @@
           "end_date": 1683680400000
         }
       ]
+    },
+    {
+      "user": {
+        "id": "11",
+        "first_name": "Vato",
+        "last_name": "Mez",
+        "email": "vato.mez@leverx.com",
+        "password": "$2b$12$qvx8RpVNPMHCZclIok5Y6.VG8tcij6wxuqTKjgZOfi.uZYxeIMCJ.",
+        "user_avatar": "images/default-avatar.png",
+        "isRemoteWork": false,
+        "department": "",
+        "room": "",
+        "building": "",
+        "desk_number": 0,
+        "phone": "",
+        "viber": "",
+        "cnumber": "",
+        "citizenship": "",
+        "date_birth": {
+          "day": "",
+          "month": "",
+          "year": ""
+        },
+        "manager": {
+          "id": "",
+          "first_name": "",
+          "last_name": ""
+        },
+        "visa": []
+      }
     }
   ]
 }
