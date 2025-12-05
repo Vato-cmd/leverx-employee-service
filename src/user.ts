@@ -60,6 +60,15 @@ const signOutParagraph = document.getElementById(
   "signout-paragraph"
 ) as HTMLElement;
 
+const storedUser =
+  sessionStorage.getItem("user") || localStorage.getItem("user");
+
+if (!storedUser) {
+  window.location.href = "signin.html";
+}
+
+const loggedUser = JSON.parse(storedUser!);
+
 signOutParagraph.addEventListener("click", logoutFunc);
 logout.addEventListener("click", logoutFunc);
 
@@ -71,15 +80,6 @@ function logoutFunc() {
 if (!userId) {
   renderUserNotFound();
 }
-
-const storedUser =
-  sessionStorage.getItem("user") || localStorage.getItem("user");
-
-if (!storedUser) {
-  window.location.href = "signin.html";
-}
-
-const loggedUser = JSON.parse(storedUser!);
 
 function renderUserNotFound() {
   if (!userDetailsContainer) return;

@@ -6,6 +6,11 @@ const loggedUserName = document.getElementById("logged-user-name");
 const loggedUserAvatar = document.getElementById("logged-user-avatar");
 const logout = document.getElementById("logout");
 const signOutParagraph = document.getElementById("signout-paragraph");
+const storedUser = sessionStorage.getItem("user") || localStorage.getItem("user");
+if (!storedUser) {
+    window.location.href = "signin.html";
+}
+const loggedUser = JSON.parse(storedUser);
 signOutParagraph.addEventListener("click", logoutFunc);
 logout.addEventListener("click", logoutFunc);
 function logoutFunc() {
@@ -15,11 +20,6 @@ function logoutFunc() {
 if (!userId) {
     renderUserNotFound();
 }
-const storedUser = sessionStorage.getItem("user") || localStorage.getItem("user");
-if (!storedUser) {
-    window.location.href = "signin.html";
-}
-const loggedUser = JSON.parse(storedUser);
 function renderUserNotFound() {
     if (!userDetailsContainer)
         return;
