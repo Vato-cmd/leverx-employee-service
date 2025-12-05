@@ -67,6 +67,17 @@ header > nav {
 .title {
   font-weight: 100;
 }
+.toggle {
+  cursor: pointer;
+  color: #5591ff;
+  margin-top: 10px;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.signup-form label {
+  display: block;
+}
 
 .button-with-avatar {
   display: flex;
@@ -674,11 +685,10 @@ button:hover {
 }
 
 .sign-in-container {
-  height: 350px;
-  width: 400px;
   text-align: center;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
   background-color: white;
+  width: 300px;
 }
 .sign-in-container button {
   padding: 10px 20px;

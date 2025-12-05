@@ -8,7 +8,6 @@ const spinner = document.getElementById("btn-loader") as HTMLDivElement;
 const invalidCredentials = document.getElementById(
   "invalid-credentials"
 ) as HTMLDivElement;
-const missingInfo = document.getElementById("missing-info") as HTMLSpanElement;
 const missingEmail = document.getElementById(
   "missing-email"
 ) as HTMLSpanElement;
@@ -18,6 +17,28 @@ const missingPassword = document.getElementById(
 const signInButtonSpan = document.getElementById(
   "sign-in-span"
 ) as HTMLSpanElement;
+const signUpButton = document.getElementById("sign-up-btn") as HTMLSpanElement;
+
+const signInForm = document.getElementById("sign-in-form") as HTMLDivElement;
+const signUpForm = document.getElementById("sign-un-form") as HTMLDivElement;
+const toggleSignForm = document.getElementById(
+  "toggle-form"
+) as HTMLParagraphElement;
+const formTitle = document.getElementById("form-title") as HTMLParagraphElement;
+
+let signedUp = false;
+
+if (signedUp) {
+  signInForm.classList.add("hidden");
+  signUpForm.classList.remove("hidden");
+  toggleSignForm.textContent = "Already have an account? Sign in";
+  formTitle.textContent = "Create an account";
+} else {
+  signInForm.classList.remove("hidden");
+  signUpForm.classList.add("hidden");
+  toggleSignForm.textContent = "Don't have an account? Sign up";
+  formTitle.textContent = "Sign in";
+}
 
 signInButton.addEventListener("click", async () => {
   const email = emailInput.value.trim();

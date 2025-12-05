@@ -15,9 +15,10 @@
     <div class="sign-in-container">
       <div class="sign-in-header">
         <img src="images/leverx-logo-png_seeklogo-480680.png" alt="leverx" />
-        <p>Please, sign in!</p>
+        <p id="form-title">Please, sign in!</p>
       </div>
-      <div class="register-info">
+
+      <div class="register-info" id="sign-in-form">
         <div class="email-label">
           <label for="email missing-info"
             >Email
@@ -51,7 +52,28 @@
         <div id="btn-loader" class="spinner" hidden></div>
         <span id="sign-in-span">Click to sign in</span>
       </button>
-      <script src="dist/signin.js" type="module"></script>
+
+      <div id="signup-form" class="signup-form hidden">
+        <label for="first-name">First Name</label>
+        <input type="text" id="first-name" />
+
+        <label for="last-name">Last Name</label>
+        <input type="text" id="last-name" />
+
+        <label for="new-email">Email</label>
+        <input type="text" id="new-email" />
+
+        <label for="new-password">Password</label>
+        <input type="password" id="new-password" />
+
+        <label for="new-password2">Confirm Password</label>
+        <input type="password" id="new-password2" />
+
+        <button id="sign-up-btn">Create Account</button>
+      </div>
+      <p id="toggle-form" class="toggle">Don’t have an account? Sign up</p>
     </div>
+
+    <script src="dist/signin.js" type="module"></script>
   </body>
 </html>
