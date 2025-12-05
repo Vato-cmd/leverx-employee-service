@@ -21,7 +21,9 @@ app.get("/employees", (req, res) => {
 
 app.get("/employees/:id", (req, res) => {
   const data = readDB();
-  const employee = data.employees.find((e) => e.id === req.params.id);
+  const employee = data.employees.find(
+    (employee) => employee.id === req.params.id
+  );
 
   if (!employee) return res.status(404).json({ message: "User not found" });
 

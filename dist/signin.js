@@ -3,6 +3,7 @@ const passwordInput = document.getElementById("password");
 const signInButton = document.getElementById("sign-in-btn");
 const rememberMe = document.getElementById("remember-me");
 const spinner = document.getElementById("btn-loader");
+const invalidCredentials = document.getElementById("invalid-credentials");
 signInButton.addEventListener("click", async () => {
     const email = emailInput.value.trim();
     const password = passwordInput.value.trim();
@@ -24,7 +25,10 @@ signInButton.addEventListener("click", async () => {
         });
         const data = await response.json();
         if (!response.ok) {
-            alert(data.message);
+            invalidCredentials.classList.remove("hidden");
+            setTimeout(() => {
+                invalidCredentials.classList.add("hidden");
+            }, 1200);
             passwordInput.value = "";
             emailInput.value = "";
             return;

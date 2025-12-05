@@ -694,6 +694,10 @@ button:hover {
   gap: 10px;
 }
 
+.invalid-credentials {
+  color: rgb(211, 51, 51);
+}
+
 .register-info {
   padding: 20px;
   display: flex;
