@@ -88,6 +88,7 @@ const employeeSection = document.getElementById(
 
 const storedUser =
   sessionStorage.getItem("user") || localStorage.getItem("user");
+console.log(storedUser);
 
 if (!storedUser) {
   window.location.href = "signin.html";
@@ -99,15 +100,6 @@ const loggedUser = JSON.parse(storedUser!);
 userProfile.addEventListener("click", () => {
   window.location.href = `user.html?id=${loggedUser.id}`;
 });
-
-fetch("http://localhost:3000/employees")
-  .then((res) => res.json())
-  .then((data) => {
-    const foundUser = data.find((user: Employee) => user.id === loggedUser.id);
-    loggedUserAvatar.src = foundUser.user_avatar;
-    loggedUserName.textContent = `${foundUser.first_name} ${foundUser.last_name}`;
-    hiddenNavImage.src = foundUser.user_avatar;
-  });
 
 const buttonGrid = document.getElementById("button-grid") as HTMLButtonElement;
 const buttonList = document.getElementById("button-list") as HTMLButtonElement;
@@ -317,6 +309,10 @@ async function loadEmployees() {
     if (!res.ok) throw new Error("Server error");
 
     const data = await res.json();
+    const foundUser = data.find((user: Employee) => user.id === loggedUser.id);
+    loggedUserAvatar.src = foundUser.user_avatar;
+    loggedUserName.textContent = `${foundUser.first_name} ${foundUser.last_name}`;
+    hiddenNavImage.src = foundUser.user_avatar;
     employees = Array.isArray(data) ? data : [];
 
     renderEmployees(employees);

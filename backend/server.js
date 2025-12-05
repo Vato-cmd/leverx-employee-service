@@ -51,6 +51,7 @@ app.post("/sign-in", async (req, res) => {
   if (!isMatch) {
     return res.status(401).json({ message: "Invalid credentials." });
   }
+  console.log(user);
 
   res.json({
     user: {
@@ -58,6 +59,7 @@ app.post("/sign-in", async (req, res) => {
       first_name: user.first_name,
       last_name: user.last_name,
       email: user.email,
+      user_avatar: user.user_avatar,
     },
   });
 });

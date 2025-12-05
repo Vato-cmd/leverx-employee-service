@@ -11,6 +11,9 @@ if (!storedUser) {
     window.location.href = "signin.html";
 }
 const loggedUser = JSON.parse(storedUser);
+loggedUserAvatar.src = loggedUser.user_avatar;
+loggedUserName.textContent = `${loggedUser.first_name} ${loggedUser.last_name}`;
+hiddenNavImage.src = loggedUser.user_avatar;
 signOutParagraph.addEventListener("click", logoutFunc);
 logout.addEventListener("click", logoutFunc);
 function logoutFunc() {
@@ -35,9 +38,6 @@ fetch(`http://localhost:3000/employees/${userId}`)
     return res.json();
 })
     .then((user) => {
-    loggedUserAvatar.src = user.user_avatar;
-    loggedUserName.innerText = `${user.first_name} ${user.last_name}`;
-    hiddenNavImage.src = user.user_avatar;
     renderUser(user);
 })
     .catch(() => {

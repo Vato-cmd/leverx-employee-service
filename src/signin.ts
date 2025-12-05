@@ -15,6 +15,9 @@ const missingEmail = document.getElementById(
 const missingPassword = document.getElementById(
   "missing-password"
 ) as HTMLSpanElement;
+const signInButtonSpan = document.getElementById(
+  "sign-in-span"
+) as HTMLSpanElement;
 
 signInButton.addEventListener("click", async () => {
   const email = emailInput.value.trim();
@@ -59,13 +62,15 @@ signInButton.addEventListener("click", async () => {
       return;
     }
     spinner.hidden = false;
-
     if (rememberMe.checked) {
       localStorage.setItem("user", JSON.stringify(data.user));
     } else {
       sessionStorage.setItem("user", JSON.stringify(data.user));
     }
+    signInButtonSpan.textContent = "Signing in...";
+
     setTimeout(() => {
+      signInButtonSpan.textContent = "Click to sign in";
       window.location.href = "index.html";
       spinner.hidden = true;
     }, 1000);

@@ -7,6 +7,7 @@ const invalidCredentials = document.getElementById("invalid-credentials");
 const missingInfo = document.getElementById("missing-info");
 const missingEmail = document.getElementById("missing-email");
 const missingPassword = document.getElementById("missing-password");
+const signInButtonSpan = document.getElementById("sign-in-span");
 signInButton.addEventListener("click", async () => {
     const email = emailInput.value.trim();
     const password = passwordInput.value.trim();
@@ -51,7 +52,9 @@ signInButton.addEventListener("click", async () => {
         else {
             sessionStorage.setItem("user", JSON.stringify(data.user));
         }
+        signInButtonSpan.textContent = "Signing in...";
         setTimeout(() => {
+            signInButtonSpan.textContent = "Click to sign in";
             window.location.href = "index.html";
             spinner.hidden = true;
         }, 1000);
