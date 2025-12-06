@@ -71,7 +71,7 @@ app.post("/sign-up", async (req, res) => {
   }
 
   const data = readDB();
-  const exists = data.employees.find((u) => u.email === email);
+  const exists = data.employees.find((user) => user.email === email);
 
   if (exists) {
     return res.status(400).json({ message: "Email already exists." });

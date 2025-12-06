@@ -1,4 +1,7 @@
 const emailInput = document.getElementById("email") as HTMLInputElement;
+const hiddenMessage = document.getElementById(
+  "hidden-message"
+) as HTMLSpanElement;
 const passwordInput = document.getElementById("password") as HTMLInputElement;
 const signInButton = document.getElementById(
   "sign-in-btn"
@@ -37,7 +40,11 @@ signUpButton.addEventListener("click", async () => {
   ).value.trim();
 
   if (password !== password2) {
-    alert("Passwords do not match");
+    hiddenMessage.classList.remove("hidden");
+    hiddenMessage.innerText = "Passwords do not mathch";
+    setTimeout(() => {
+      hiddenMessage.classList.add("hidden");
+    }, 1000);
     return;
   }
 
@@ -50,12 +57,15 @@ signUpButton.addEventListener("click", async () => {
   const data = await response.json();
 
   if (!response.ok) {
-    alert;
     data.message;
+    hiddenMessage.textContent = data.message;
+    hiddenMessage.classList.remove("hidden");
+    setTimeout(() => {
+      hiddenMessage.classList.add("hidden");
+    }, 1000);
     return;
   }
-
-  alert("Account has been created");
+  alert("You have successfully signed up! please sign in");
   switchForms();
 });
 
@@ -125,6 +135,7 @@ signInButton.addEventListener("click", async () => {
       emailInput.value = "";
       return;
     }
+
     spinner.hidden = false;
     if (rememberMe.checked) {
       localStorage.setItem("user", JSON.stringify(data.user));

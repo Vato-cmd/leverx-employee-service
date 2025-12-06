@@ -896,3 +896,11 @@ button:hover {
   display: none;
   margin-bottom: 20px;
 }
+
+.hidden-message {
+  color: rgb(230, 72, 72);
+}
+
+.success {
+  color: rgb(50, 194, 50);
+}
