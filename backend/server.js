@@ -86,7 +86,7 @@ app.post("/sign-up", async (req, res) => {
     email,
     password: hashed,
     user_avatar: "images/default-avatar.png",
-    isRemoteWork: false,
+    isRemoteWork: true,
     department: "N/A",
     room: "N/A",
     building: "N/A",

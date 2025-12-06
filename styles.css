@@ -337,15 +337,6 @@ main {
   align-items: center;
 }
 
-.hamburger-menu:has(input:checked) ~ main section .employee-section .overlay {
-  display: block;
-  opacity: 1;
-}
-.hamburger-menu:has(input:checked) ~ main section .no-employees .overlay {
-  display: block;
-  opacity: 1;
-}
-
 .hamburger-menu:has(input:checked)::before {
   rotate: 45deg;
   width: calc((2px * 3)+ (5px * 2)) * 1.41421356237;
@@ -364,14 +355,6 @@ main {
   margin: 0;
   outline: none;
   pointer-events: none;
-}
-
-.mobile-version {
-  display: none;
-}
-
-.mobile-input-search {
-  display: none;
 }
 
 .employee-section-flex {
@@ -650,16 +633,6 @@ button:hover {
   transform: scale(1.07);
 }
 
-.overlay {
-  display: none;
-  height: 100%;
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.55);
-  z-index: 9;
-  opacity: 0;
-}
-
 .sign-in-body {
   height: 100vh;
   display: flex;
@@ -788,12 +761,6 @@ button:hover {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .top-section {
-    width: 70%;
-    margin: 0 auto;
-    margin-bottom: 10px;
-  }
-
   aside {
     width: 70%;
     margin: 0 auto;
@@ -858,37 +825,9 @@ button:hover {
     width: 20px;
   }
 
-  .card {
-    display: none;
-  }
-
-  .card img {
-    display: none;
-  }
-  .card h3 {
-    display: none;
-  }
-  .card .tags {
-    display: none;
-  }
-
-  .employee-section.card {
-    display: none;
-  }
-
   input::placeholder {
     color: #6f88b6;
     font-weight: bold;
-  }
-
-  .mobile-input-search {
-    background-position: 150px center;
-  }
-}
-
-@media (width <= 410px) {
-  .mobile-input-search {
-    background-position: 100px center;
   }
 }
 
