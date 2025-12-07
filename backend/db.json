@@ -2,6 +2,7 @@
   "employees": [
     {
       "id": "1",
+      "role": "Employee",
       "isRemoteWork": false,
       "password": "$2b$12$RQFq8FZgeLYIwArCCW3Hh./ZvjJvhChKDprLkob.bbZ/LW1Eanir2",
       "middle_name": "D.",
@@ -18,9 +19,9 @@
       },
       "desk_number": 21,
       "manager": {
-        "id": "m001",
-        "first_name": "John",
-        "last_name": "Snow"
+        "id": "2",
+        "first_name": "Andrew",
+        "last_name": "Savage"
       },
       "phone": "+48123456701",
       "email": "brendan.krueger@leverx.com",
@@ -38,6 +39,7 @@
     },
     {
       "id": "2",
+      "role": "HR",
       "isRemoteWork": true,
       "password": "$2b$12$iyl0VDjYWNBMcfFEaPBP6u74ieFD/aJtnVsIOge02624BzxUSJury",
       "middle_name": "D.",
@@ -54,9 +56,9 @@
       },
       "desk_number": 9,
       "manager": {
-        "id": "m001",
-        "first_name": "John",
-        "last_name": "Snow"
+        "id": "10",
+        "first_name": "Steve",
+        "last_name": "Cook"
       },
       "phone": "+48777710222",
       "email": "andrew.savage@leverx.com",
@@ -74,6 +76,7 @@
     },
     {
       "id": "3",
+      "role": "Employee",
       "isRemoteWork": false,
       "password": "$2b$12$AxmE56VUZN3n5Ate5MCMEOKbA1kVHUdDUV2NiPEXNgeIw.4teMVS6",
       "middle_name": "L.",
@@ -90,9 +93,9 @@
       },
       "desk_number": 14,
       "manager": {
-        "id": "m002",
-        "first_name": "Elena",
-        "last_name": "Koval"
+        "id": "5",
+        "first_name": "Suzzane",
+        "last_name": "Taylor"
       },
       "phone": "+48550555111",
       "email": "lula.aguilar@leverx.com",
@@ -110,6 +113,7 @@
     },
     {
       "id": "4",
+      "role": "Employee",
       "isRemoteWork": false,
       "password": "$2b$12$lVgnpfVezHwJT5bHuradseYKFe.1IBF7n0mu6E41dCjWyv4Z3HD.m",
       "middle_name": "K.",
@@ -126,9 +130,9 @@
       },
       "desk_number": 12,
       "manager": {
-        "id": "m003",
-        "first_name": "Adam",
-        "last_name": "Stein"
+        "id": "2",
+        "first_name": "Andrew",
+        "last_name": "Savage"
       },
       "phone": "+48509877722",
       "email": "f.cruz@leverx.com",
@@ -146,6 +150,7 @@
     },
     {
       "id": "5",
+      "role": "HR",
       "isRemoteWork": true,
       "password": "$2b$12$XAy3McholYUeOmIZClKS.e.wqx5YCqwxJ/F6bTEor0k2Fc2UFKswG",
       "middle_name": "F.",
@@ -162,9 +167,9 @@
       },
       "desk_number": 11,
       "manager": {
-        "id": "m002",
-        "first_name": "Elena",
-        "last_name": "Koval"
+        "id": "10",
+        "first_name": "Steve",
+        "last_name": "Cook"
       },
       "phone": "+447891223344",
       "email": "suzanne.taylor@leverx.com",
@@ -182,6 +187,7 @@
     },
     {
       "id": "6",
+      "role": "Employee",
       "isRemoteWork": false,
       "password": "$2b$12$77fcnBixYWgTjkc484j4AuY.y8sCB.85531LsE7v6Wsvv5xaLIq66",
       "middle_name": "",
@@ -198,9 +204,9 @@
       },
       "desk_number": 7,
       "manager": {
-        "id": "m003",
-        "first_name": "Adam",
-        "last_name": "Stein"
+        "id": "9",
+        "first_name": "John",
+        "last_name": "Doe"
       },
       "phone": "+359892123987",
       "email": "francesco.reed@leverx.com",
@@ -218,6 +224,7 @@
     },
     {
       "id": "7",
+      "role": "Employee",
       "isRemoteWork": false,
       "password": "$2b$12$xuGK/txHGFd/82.SvLA/huOg4wRRhFI2z1ldyYoKrsDB7cog0rvOe",
       "middle_name": "D.",
@@ -234,9 +241,9 @@
       },
       "desk_number": 11,
       "manager": {
-        "id": "m001",
+        "id": "9",
         "first_name": "John",
-        "last_name": "Snow"
+        "last_name": "Doe"
       },
       "phone": "+48888555111",
       "email": "alex.volk@leverx.com",
@@ -254,6 +261,7 @@
     },
     {
       "id": "8",
+      "role": "Employee",
       "isRemoteWork": false,
       "password": "$2b$12$WPTt3XarjXeQHnlbbb014.uZYM.XXFzO36noJiHy1VTkxjLzYzs1m",
       "middle_name": "",
@@ -270,9 +278,9 @@
       },
       "desk_number": 16,
       "manager": {
-        "id": "m003",
-        "first_name": "Adam",
-        "last_name": "Stein"
+        "id": "5",
+        "first_name": "Suzanne",
+        "last_name": "Taylor"
       },
       "phone": "+48222733111",
       "email": "james.jones@leverx.com",
@@ -290,6 +298,7 @@
     },
     {
       "id": "9",
+      "role": "HR",
       "isRemoteWork": true,
       "password": "$2b$12$i7AIWw/dqH7ysbk6gRk2buwC7ae8nXkPs3k3cxlp6W9sJrZ9BCQGK",
       "middle_name": "U.",
@@ -306,9 +315,9 @@
       },
       "desk_number": 43,
       "manager": {
-        "id": "m002",
-        "first_name": "Elena",
-        "last_name": "Koval"
+        "id": "10",
+        "first_name": "Steve",
+        "last_name": "Cook"
       },
       "phone": "+14880002233",
       "email": "john.doe@leverx.com",
@@ -342,9 +351,9 @@
         "year": "1985"
       },
       "manager": {
-        "id": "105",
-        "first_name": "Elena",
-        "last_name": "Koval",
+        "id": "10",
+        "first_name": "Steve",
+        "last_name": "Cook",
         "phone": "+49711223344",
         "email": "elena.koval@leverx.com"
       },
