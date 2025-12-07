@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign In</title>
+    <link rel="stylesheet" href="src/styles.scss" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="images/leverx-logo-png_seeklogo-480680.png"
+    />
+  </head>
+  <body class="sign-in-body">
+    <div>
+      <div class="sign-in-header">
+        <img src="images/leverx-logo-png_seeklogo-480680.png" alt="leverx" />
+        <p id="form-title">Please, sign in!</p>
+      </div>
+      <div class="sign-in-container">
+        <div class="register-info" id="sign-in-form">
+          <div class="email-label">
+            <label for="email missing-info"
+              >Email
+              <span id="missing-email" class="missing-info hidden"></span>
+            </label>
+            <input type="text" name="email" id="email" placeholder="email" />
+          </div>
+          <div class="password-label">
+            <label for="password"
+              >Password
+              <span id="missing-password" class="missing-info hidden"></span
+            ></label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="******"
+            />
+          </div>
+          <div>
+            <label for="remember-me" class="remember-me-label">
+              <input type="checkbox" name="remember-me" id="remember-me" />
+              Remember me
+            </label>
+          </div>
+          <button id="sign-in-btn">
+            <div id="btn-loader" class="spinner" hidden></div>
+            <span id="sign-in-span">Click to sign in</span>
+          </button>
+        </div>
+        <div class="invalid-credentials hidden" id="invalid-credentials">
+          <span>invalid credentials, please try again!</span>
+        </div>
+
+        <div id="sign-up-form" class="signup-form hidden">
+          <label for="first_name">First Name</label>
+          <input type="text" id="first_name" placeholder="Name" />
+
+          <label for="last_name">Last Name</label>
+          <input type="text" id="last_name" placeholder="Last Name" />
+
+          <label for="new_email">Email</label>
+          <input type="text" id="new_email" placeholder="email" />
+
+          <label for="new_password">Password</label>
+          <input type="password" id="new_password" placeholder="*********" />
+
+          <label for="new_password2">Confirm Password</label>
+          <input type="password" id="new_password2" placeholder="*********" />
+
+          <button id="sign-up-btn">Create Account</button>
+          <span class="hidden-message hidden" id="hidden-message"></span>
+        </div>
+        <p id="toggle-form" class="toggle">Don’t have an account? Sign up</p>
+      </div>
+    </div>
+
+    <script src="src/signin.ts" type="module"></script>
+  </body>
+</html>

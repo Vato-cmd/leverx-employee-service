@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Details</title>
+    <link href="src/styles.scss" rel="stylesheet" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="images/leverx-logo-png_seeklogo-480680.png"
+    />
+  </head>
+  <body>
+    <label class="hamburger-menu">
+      <input type="checkbox" />
+    </label>
+    <header>
+      <nav>
+        <a class="header-anchor" href="index.html">
+          <p class="title">
+            LEVERX <span class="header-logo-span">EMPLOYEE SERVICES</span>
+          </p>
+        </a>
+        <div class="header-address-active">
+          <a class="header-anchor" href="index.html">
+            <p>Adress Book</p>
+          </a>
+        </div>
+        <div class="header-button-container">
+          <button>
+            <img
+              src="images/question-circle-svgrepo-com.svg"
+              alt="question icon"
+            />SUPPORT
+          </button>
+
+          <button id="user-profile" class="button-with-avatar">
+            <img id="logged-user-avatar" src="images/avataaars.png" />
+            <span id="logged-user-name"></span>
+          </button>
+
+          <button id="logout" class="button-with-power-logo">
+            <img src="./images/power-off-svgrepo-com.svg" alt="power logo" />
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <div class="hidden-main-nav">
+      <div class="hidden-main-nav-inner">
+        <div>
+          <div class="hidden-main-nav-inner-top">
+            <img
+              id="hidden-nav-image"
+              src="images/avataaars.png"
+              alt="main image"
+            />
+            <div id="main-account">
+              <p></p>
+              <p class="paragraph-smaller">Sign out</p>
+            </div>
+          </div>
+          <div class="hidden-main-nav-inner-bottom">
+            <h4>Adress Book</h4>
+          </div>
+        </div>
+
+        <div class="hidden-main-nav-inner-bottom-button">
+          <button id="signout-paragraph" class="hidden-main-button">
+            <img
+              src="images/question-circle-svgrepo-com.svg"
+              alt="question"
+            />SUPPORT
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="user-details" id="user-details"></div>
+    <script src="src/user.ts" type="module"></script>
+  </body>
+</html>
