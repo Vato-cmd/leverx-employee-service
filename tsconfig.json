@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "rootDir": "./src",
+    "rootDir": "./frontend/src",
     "outDir": "./dist",
     "module": "esNext",
     "target": "esnext",
