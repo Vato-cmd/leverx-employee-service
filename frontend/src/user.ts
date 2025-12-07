@@ -96,7 +96,7 @@ function renderUserNotFound() {
 }
 
 try {
-  const res = await fetch(`http://localhost:3000/employees/${userId}`);
+  const res = await fetch(`http://localhost:3000/user/${userId}`);
 
   if (!res.ok) {
     throw new Error("User not found");

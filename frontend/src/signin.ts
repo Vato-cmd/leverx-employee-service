@@ -43,7 +43,7 @@ signUpButton.addEventListener("click", async () => {
 
   if (password !== password2) {
     hiddenMessage.classList.remove("hidden");
-    hiddenMessage.innerText = "Passwords do not mathch";
+    hiddenMessage.innerText = "Passwords do not match";
     setTimeout(() => {
       hiddenMessage.classList.add("hidden");
     }, 1000);

@@ -88,7 +88,7 @@ const loggedUser = storedUser && JSON.parse(storedUser);
 
 async function loadEmployees() {
   try {
-    const res = await fetch("http://localhost:3000/employees");
+    const res = await fetch("http://localhost:3000/user");
     if (!res.ok) throw new Error("Server error");
     const data = await res.json();
     const foundUser = data.find((user: Employee) => user.id === loggedUser.id);
@@ -164,7 +164,7 @@ function renderEmployees(users: Employee[]): void {
 
 async function newUserRoleFunc(id: string, newRole: string) {
   try {
-    const response = await fetch(`http://localhost:3000/employees/${id}`, {
+    const response = await fetch(`http://localhost:3000/user/${id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ role: newRole }),

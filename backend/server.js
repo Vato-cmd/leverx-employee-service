@@ -14,12 +14,12 @@ function readDB() {
   return JSON.parse(fs.readFileSync(DB_PATH, "utf-8"));
 }
 
-app.get("/employees", (req, res) => {
+app.get("/user", (req, res) => {
   const data = readDB();
   res.json(data.employees);
 });
 
-app.get("/employees/:id", (req, res) => {
+app.get("/user/:id", (req, res) => {
   const data = readDB();
   const employee = data.employees.find(
     (employee) => employee.id === req.params.id
@@ -114,7 +114,7 @@ app.listen(3000, () => {
   console.log("Server running on port 3000");
 });
 
-app.patch("/employees/:id", (req, res) => {
+app.patch("/user/:id", (req, res) => {
   const { id } = req.params;
   const { role } = req.body;
 

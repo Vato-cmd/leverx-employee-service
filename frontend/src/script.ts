@@ -252,7 +252,7 @@ function goToHomePage() {
 
 async function loadEmployees() {
   try {
-    const res = await fetch("http://localhost:3000/employees");
+    const res = await fetch("http://localhost:3000/user");
     if (!res.ok) throw new Error("Server error");
 
     const data = await res.json();
