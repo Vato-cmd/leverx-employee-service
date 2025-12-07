@@ -113,3 +113,24 @@ app.post("/sign-up", async (req, res) => {
 app.listen(3000, () => {
   console.log("Server running on port 3000");
 });
+
+app.patch("/employees/:id", (req, res) => {
+  const { id } = req.params;
+  const { role } = req.body;
+
+  if (!role) {
+    return res.status(400).json({ message: "Role is required" });
+  }
+
+  const data = readDB();
+  const employee = data.employees.find((user) => user.id === id);
+
+  if (!employee) {
+    return res.status(404).json({ message: "User not founde" });
+  }
+  employee.role = role;
+
+  fs.writeFileSync(DB_PATH, JSON.stringify(data, null, 2));
+
+  res.json({ message: "Role updated successfully", employee });
+});
