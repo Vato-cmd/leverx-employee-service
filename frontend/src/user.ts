@@ -103,6 +103,7 @@ try {
   }
 
   const user = await res.json();
+
   renderUser(user);
 } catch (error) {
   renderUserNotFound();
@@ -133,7 +134,7 @@ function renderUser(user: Employee): void {
     user.last_name
   }</p>
             <button id="copy-link" class="copy-link-btn"><img src="images/copy-svgrepo-com.svg"/>Copy link</button>
-            <button class="edit-btn"><img src="images/edit-svgrepo-com.svg"/>EDIT</button>
+            <button class="edit-btn" id="edit-btn"><img src="images/edit-svgrepo-com.svg"/>EDIT</button>
         </div>
 
         
@@ -278,7 +279,17 @@ function renderUser(user: Employee): void {
 
 
     `;
+  const editBtn = document.getElementById("edit-btn") as HTMLElement;
 
+  const canEdit =
+    loggedUser.role === "Admin" ||
+    (loggedUser.role === "HR" && user.manager.id === loggedUser.id);
+
+  if (canEdit) {
+    editBtn.classList.remove("hidden");
+  } else {
+    editBtn.classList.add("hidden");
+  }
   const copyBtn = document.getElementById(
     "copy-link"
   ) as HTMLButtonElement | null;

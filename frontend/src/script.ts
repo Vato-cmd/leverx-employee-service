@@ -382,18 +382,18 @@ employeeSearchBtn.addEventListener("click", () => {
 });
 
 advancedSearchBtn.addEventListener("click", () => {
-  advancedSearchBtn.classList.toggle("active");
-  basicSearchBtn.classList.toggle("active");
+  advancedSearchBtn.classList.add("active");
+  basicSearchBtn.classList.remove("active");
 
-  basicContent.classList.toggle("hidden");
-  advancedContent.classList.toggle("hidden");
+  basicContent.classList.add("hidden");
+  advancedContent.classList.remove("hidden");
 });
 basicSearchBtn.addEventListener("click", () => {
-  advancedSearchBtn.classList.toggle("active");
-  basicSearchBtn.classList.toggle("active");
+  advancedSearchBtn.classList.remove("active");
+  basicSearchBtn.classList.add("active");
 
-  basicContent.classList.toggle("hidden");
-  advancedContent.classList.toggle("hidden");
+  basicContent.classList.remove("hidden");
+  advancedContent.classList.add("hidden");
 });
 
 buttonGrid.addEventListener("click", () => {

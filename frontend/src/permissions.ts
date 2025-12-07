@@ -86,6 +86,10 @@ if (!storedUser) {
 
 const loggedUser = storedUser && JSON.parse(storedUser);
 
+if (loggedUser.role !== "Admin") {
+  window.location.href = "index.html";
+}
+
 async function loadEmployees() {
   try {
     const res = await fetch("http://localhost:3000/user");
