@@ -134,11 +134,17 @@ function renderEmployees(users: Employee[]): void {
                 user.role === "Admin" ? "indicated" : ""
               }">PO</button>
               <button>DD</button>
-            </div>
 
-              <button class="${
-                user.role === "Admin" ? "indicated" : ""
-              }">Admin</button>
+                
+            </div>
+            <div class="permissions-inner-flex admin-cell">
+             <button class="${
+               user.role === "Admin" ? "indicated" : ""
+             }">Admin</button>
+            </div>
+           
+
+            
 
         </div>
       </div>

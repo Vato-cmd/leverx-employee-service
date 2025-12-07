@@ -78,6 +78,7 @@ signOutParagraph.addEventListener("click", logoutFunc);
 
 function logoutFunc() {
   sessionStorage.removeItem("user");
+  localStorage.removeItem("user");
   window.location.href = "signin.html";
 }
 

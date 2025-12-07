@@ -131,14 +131,15 @@ main {
   width: 90%;
   margin: 0 auto;
   padding: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   margin-bottom: 3px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+  text-align: center;
 }
 
 .permissions-container-inner input {
+  justify-self: center;
   padding: 5px 10px;
 }
 
@@ -152,10 +153,10 @@ main {
 }
 
 .permissions-user-layout-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   padding: 20px;
+  justify-items: center;
 }
 
 .permissions-user-layout {
