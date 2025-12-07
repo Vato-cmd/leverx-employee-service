@@ -126,7 +126,7 @@ app.patch("/user/:id", (req, res) => {
   const employee = data.employees.find((user) => user.id === id);
 
   if (!employee) {
-    return res.status(404).json({ message: "User not founde" });
+    return res.status(404).json({ message: "User not found" });
   }
   employee.role = role;
 

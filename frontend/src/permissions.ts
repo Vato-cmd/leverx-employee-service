@@ -58,6 +58,9 @@ const list = document.getElementById("permissions-container") as HTMLDivElement;
 const search = document.getElementById(
   "permissions-search"
 ) as HTMLInputElement;
+const userProfile = document.getElementById(
+  "user-profile"
+) as HTMLButtonElement;
 
 search.addEventListener("input", () => {
   const value = search.value.trim().toLowerCase();
@@ -85,6 +88,10 @@ if (!storedUser) {
 }
 
 const loggedUser = storedUser && JSON.parse(storedUser);
+
+userProfile.addEventListener("click", () => {
+  window.location.href = `user.html?id=${loggedUser.id}`;
+});
 
 if (loggedUser.role !== "Admin") {
   window.location.href = "index.html";

@@ -668,16 +668,19 @@ a {
 }
 
 .edit-btn,
-.copy-link-btn {
+.copy-link-btn,
+.save-btn {
   padding: 8px 15px;
   display: flex;
   align-items: center;
   gap: 5px;
 }
 .edit-btn img,
-.copy-link-btn img {
-  width: 15px;
+.copy-link-btn img,
+.save-btn img {
+  width: 20px;
 }
+
 .information-title {
   margin: 10px;
 }
