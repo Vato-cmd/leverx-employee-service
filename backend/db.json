@@ -335,6 +335,7 @@
     },
     {
       "id": "10",
+      "role": "Admin",
       "isRemoteWork": true,
       "password": "$2b$12$CrEczeyOu7HojBd/pqzUgu2dLhQt7.ekIYF5oniyARKDE5XoIs.fO",
       "middle_name": "A.",

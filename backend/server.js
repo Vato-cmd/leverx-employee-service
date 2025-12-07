@@ -59,6 +59,8 @@ app.post("/sign-in", async (req, res) => {
       last_name: user.last_name,
       email: user.email,
       user_avatar: user.user_avatar,
+      role: user.role,
+      managerId: user.manager ? user.manager.id : null,
     },
   });
 });
@@ -81,6 +83,7 @@ app.post("/sign-up", async (req, res) => {
 
   const newUser = {
     id: (data.employees.length + 1).toString(),
+    role: "Employee",
     first_name,
     last_name,
     email,

@@ -15,5 +15,9 @@
     "bcrypt": "^6.0.0",
     "cors": "^2.8.5",
     "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "sass": "^1.94.2",
+    "typescript": "^5.9.3"
   }
 }

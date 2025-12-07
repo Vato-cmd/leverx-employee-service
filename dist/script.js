@@ -4,6 +4,16 @@ const advancedSearchBtn = document.getElementById("advanced-search");
 const userProfile = document.getElementById("user-profile");
 const logout = document.getElementById("logout");
 const signOutParagraph = document.getElementById("signout-paragraph");
+const addressBook = document.getElementById("address");
+const settings = document.getElementById("settings");
+settings.addEventListener("click", () => {
+    settings.classList.add("header-active-page");
+    addressBook.classList.remove("header-active-page");
+});
+addressBook.addEventListener("click", () => {
+    addressBook.classList.add("header-active-page");
+    settings.classList.remove("header-active-page");
+});
 logout.addEventListener("click", logoutFunc);
 signOutParagraph.addEventListener("click", logoutFunc);
 function logoutFunc() {

@@ -58,6 +58,18 @@ const logout = document.getElementById("logout") as HTMLButtonElement;
 const signOutParagraph = document.getElementById(
   "signout-paragraph"
 ) as HTMLElement;
+const addressBook = document.getElementById("address") as HTMLParagraphElement;
+const settings = document.getElementById("settings") as HTMLParagraphElement;
+
+settings.addEventListener("click", () => {
+  settings.classList.add("header-active-page");
+  addressBook.classList.remove("header-active-page");
+});
+
+addressBook.addEventListener("click", () => {
+  addressBook.classList.add("header-active-page");
+  settings.classList.remove("header-active-page");
+});
 
 logout.addEventListener("click", logoutFunc);
 signOutParagraph.addEventListener("click", logoutFunc);
