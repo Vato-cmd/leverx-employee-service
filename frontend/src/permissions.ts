@@ -42,6 +42,7 @@ type Employee = {
   visa: Visa[];
   fullname?: string;
 };
+let employees: Employee[] = [];
 
 const loggedUserAvatar = document.getElementById(
   "logged-user-avatar"
@@ -58,6 +59,24 @@ const search = document.getElementById(
   "permissions-search"
 ) as HTMLInputElement;
 
+search.addEventListener("input", () => {
+  const value = search.value.trim().toLowerCase();
+
+  if (!value) {
+    renderEmployees(employees);
+    return;
+  }
+
+  const filter = employees.filter((user) => {
+    return (
+      user.first_name.toLowerCase().includes(value) ||
+      user.last_name.toLowerCase().includes(value) ||
+      `${user.first_name} ${user.last_name}`.toLowerCase().includes(value)
+    );
+  });
+  renderEmployees(filter);
+});
+
 const storedUser =
   sessionStorage.getItem("user") || localStorage.getItem("user");
 
@@ -66,8 +85,6 @@ if (!storedUser) {
 }
 
 const loggedUser = storedUser && JSON.parse(storedUser);
-
-let employees: Employee[] = [];
 
 async function loadEmployees() {
   try {
@@ -79,7 +96,6 @@ async function loadEmployees() {
     loggedUserName.textContent = `${foundUser.first_name} ${foundUser.last_name}`;
     hiddenNavImage.src = foundUser.user_avatar;
     employees = Array.isArray(data) ? data : [];
-
     renderEmployees(employees);
   } catch (error) {
     console.error(error);
@@ -89,6 +105,8 @@ async function loadEmployees() {
 loadEmployees();
 
 function renderEmployees(users: Employee[]): void {
+  list.innerHTML = "";
+
   users.forEach((user: Employee) => {
     list.innerHTML += `
       <div class="permissions-user-layout" data-id="${user.id}">
@@ -103,10 +121,10 @@ function renderEmployees(users: Employee[]): void {
             <div class="permissions-inner-flex">
               <button data-role="Employee" class="${
                 user.role === "Employee" ? "indicated" : ""
-              }">Employee</button>
+              }" ${user.role === "Admin" ? "disabled" : ""}>Employee</button>
               <button data-role="HR" class="${
                 user.role === "HR" ? "indicated" : ""
-              }">HR</button>
+              }" ${user.role === "Admin" ? "disabled" : ""}>HR</button>
             </div>
             <div class="permissions-inner-flex">
               <button class="${
@@ -129,9 +147,8 @@ function renderEmployees(users: Employee[]): void {
 
   document.querySelectorAll(".permissions-user-layout").forEach((row) => {
     const id = row.getAttribute("data-id")!;
-    console.log(typeof id);
     row.querySelectorAll("button").forEach((btn) => {
-      btn.addEventListener("click", (e) => {
+      btn.addEventListener("click", () => {
         const updatedRole = btn.getAttribute("data-role")!;
         newUserRoleFunc(id, updatedRole);
       });
@@ -146,6 +163,7 @@ async function newUserRoleFunc(id: string, newRole: string) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ role: newRole }),
     });
+    console.log(response);
 
     loadEmployees();
   } catch (error) {

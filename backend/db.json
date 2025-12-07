@@ -39,7 +39,7 @@
     },
     {
       "id": "2",
-      "role": "Employee",
+      "role": "HR",
       "isRemoteWork": true,
       "password": "$2b$12$iyl0VDjYWNBMcfFEaPBP6u74ieFD/aJtnVsIOge02624BzxUSJury",
       "middle_name": "D.",
@@ -76,7 +76,7 @@
     },
     {
       "id": "3",
-      "role": "HR",
+      "role": "Employee",
       "isRemoteWork": false,
       "password": "$2b$12$AxmE56VUZN3n5Ate5MCMEOKbA1kVHUdDUV2NiPEXNgeIw.4teMVS6",
       "middle_name": "L.",
@@ -113,7 +113,7 @@
     },
     {
       "id": "4",
-      "role": "Employee",
+      "role": "HR",
       "isRemoteWork": false,
       "password": "$2b$12$lVgnpfVezHwJT5bHuradseYKFe.1IBF7n0mu6E41dCjWyv4Z3HD.m",
       "middle_name": "K.",
