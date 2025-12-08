@@ -1,0 +1,12 @@
+main {
+  width: 90%;
+  margin: 20px auto;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 35px;
+  padding-top: 100px;
+}
+
+.permissions-page {
+  padding-top: 100px;
+}

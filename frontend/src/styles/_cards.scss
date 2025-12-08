@@ -1,0 +1,84 @@
+.employee-section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  box-shadow: $shadow-light;
+  transition: 0.5s;
+  text-align: center;
+}
+
+.employee-cards {
+  height: 300px;
+  background-color: white;
+  box-shadow: $shadow-light;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 20px;
+  transition: $transition-default;
+
+  &:hover {
+    transform: scale(1.03);
+  }
+
+  &.list {
+    height: auto;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+  }
+}
+
+// .list-employee-section {
+//   display: flex;
+//   flex-direction: column;
+//   gap: 0;
+//   transition: 1s;
+
+//   div div.employee-cards {
+//     display: flex;
+//     flex-direction: column;
+//     gap: 10px;
+//   }
+// }
+
+.employee-cards-inner-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-top: 1px solid #adadb1;
+  padding-top: 10px;
+}
+
+.department {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  img {
+    width: 20px;
+  }
+}
+
+.functional-buttons {
+  button {
+    border: none;
+    cursor: pointer;
+
+    svg {
+      width: 20px;
+      height: 20px;
+      transition: $transition-default;
+
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+  }
+}
+
+.clicked {
+  stroke: #0a41a5;
+}

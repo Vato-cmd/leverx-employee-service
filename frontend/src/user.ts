@@ -138,9 +138,9 @@ function renderUser(user: Employee): void {
     user.last_name
   }</p>
             <button id="copy-link" class="copy-link-btn"><img src="images/copy-svgrepo-com.svg"/>Copy link</button>
-            <div>
-              <button class="edit-btn" id="edit-btn"><img src="images/edit-svgrepo-com.svg"/>EDIT</button>
-              <button class="save-btn hidden" id="save-btn"><img src="images/save_img.jpg"/>SAVE</button>
+              <div class="edit-save-container">
+                <button class="edit-btn" id="edit-btn"><img src="images/edit-svgrepo-com.svg"/>EDIT</button>
+                <button class="cancel-btn hidden" id="cancel-btn"><img src="images/trash.png"/>Cancel</button>
               </div>
         </div>
 
@@ -153,7 +153,7 @@ function renderUser(user: Employee): void {
                     <img src="images/briefcase-svgrepo-com.svg" />
                     <span>Department</span>
                 </div>
-                <div class="info-right">
+                <div class="info-right" data-field="department">
                     ${user.department}
                 </div>
             </div>
@@ -163,7 +163,7 @@ function renderUser(user: Employee): void {
                     <img src="images/building-svgrepo-com.svg"/>
                     <span>Building</span>
                 </div>
-                <div class="info-right">
+                <div class="info-right" data-field="building">
                     ${user.building}
                 </div>
             </div>
@@ -173,7 +173,7 @@ function renderUser(user: Employee): void {
                     <img src="images/door-svgrepo-com.svg" />
                     <span>Room</span>
                 </div>
-                <div class="info-right">
+                <div class="info-right" data-field="room">
                     ${user.room}
                 </div>
             </div>
@@ -182,7 +182,7 @@ function renderUser(user: Employee): void {
                     <img src="images/hashtag-svgrepo-com.svg" />
                     <span>Desk number</span>
                 </div>
-                <div class="info-right">
+                <div class="info-right" data-field="desk-number">
                     ${user.desk_number}
                 </div>
             </div>
@@ -191,10 +191,10 @@ function renderUser(user: Employee): void {
                     <img src="images/date-range-svgrepo-com.svg" />
                     <span>Date of birth</span>
                 </div>
-                <div class="info-right">
-                    ${user.date_birth.day}/${user.date_birth.month}/${
-    user.date_birth.year
-  }
+                <div class="info-right" data-field="date-of-birth">
+                    <span>${user.date_birth.day}</span>/
+                    <span>${user.date_birth.month}</span>/
+                    <span>${user.date_birth.year}</span>
                 </div>
             </div>
             <div class="info-row">
@@ -202,7 +202,7 @@ function renderUser(user: Employee): void {
                     <img src="images/user-svgrepo-com.svg" />
                     <span>Manager</span>
                 </div>
-                <div class="info-right blue">
+                <div class="info-right blue" data-field="full-name">
                     ${user.manager.first_name} ${user.manager.last_name}
                 </div>
             </div>
@@ -213,7 +213,7 @@ function renderUser(user: Employee): void {
                     <img src="images/mobile-svgrepo-com.svg" />
                     <span>Mobile phone</span>
                 </div>
-                <div class="info-right blue">
+                <div class="info-right blue" data-field="phone">
                     ${user.phone}
                 </div>
             </div>
@@ -222,7 +222,7 @@ function renderUser(user: Employee): void {
                     <img src="images/email-1572-svgrepo-com.svg" />
                     <span>Email</span>
                 </div>
-                <div class="info-right blue">
+                <div class="info-right blue" data-field="email">
                     ${user.email}
                 </div>
             </div>
@@ -231,7 +231,7 @@ function renderUser(user: Employee): void {
                     <img src="images/viber-svgrepo-com.svg" />
                     <span>Viber</span>
                 </div>
-                <div class="info-right blue">
+                <div class="info-right blue" data-field="viber">
                     ${user.viber}
                 </div>
             </div>
@@ -240,7 +240,7 @@ function renderUser(user: Employee): void {
                     <img src="images/viber-svgrepo-com.svg" />
                     <span>C-number</span>
                 </div>
-                <div class="info-right">
+                <div class="info-right" data-field="cnumber">
                     ${user.cnumber}
                 </div>
             </div>
@@ -287,12 +287,88 @@ function renderUser(user: Employee): void {
 
     `;
   const editBtn = document.getElementById("edit-btn") as HTMLElement;
-  const saveBtn = document.getElementById("save-btn") as HTMLElement;
+  const cancel = document.getElementById("cancel-btn") as HTMLElement;
+  let editing = false;
+  let originalValues: Record<string, any> = {};
 
   editBtn.addEventListener("click", () => {
-    saveBtn.classList.remove("hidden");
-    editBtn.innerHTML = `<img src="images/trash.png"/>Discard`;
+    if (!editing) {
+      enterEditMode();
+    } else {
+      cancelEdit(true, userId!);
+    }
   });
+  cancel.addEventListener("click", () => cancelEdit(false, userId!));
+
+  function enterEditMode() {
+    editing = true;
+
+    const editBtn = document.getElementById("edit-btn") as HTMLElement;
+    const cancel = document.getElementById("cancel-btn") as HTMLElement;
+
+    editBtn.innerHTML = `<img src="./images/save_img.jpg" />Save`;
+    cancel.classList.remove("hidden");
+    const fields = document.querySelectorAll<HTMLElement>("[data-field]");
+    console.log(originalValues);
+
+    originalValues = {};
+    fields.forEach((field) => {
+      const key = field.getAttribute("data-field")!;
+      const value = field.innerText.trim();
+      originalValues[key] = value;
+
+      field.innerHTML = `<input class="edit-input" value="${value}" />`;
+    });
+  }
+
+  async function cancelEdit(save: boolean, userId: string) {
+    editing = false;
+    const editBtn = document.getElementById("edit-btn")!;
+    const cancelBtn = document.getElementById("cancel-btn")!;
+
+    editBtn.innerHTML = `<img src="images/edit-svgrepo-com.svg" />EDIT`;
+    cancelBtn.classList.add("hidden");
+    const fields = document.querySelectorAll("[data-field]");
+    console.log(fields);
+    if (!save) {
+      fields.forEach((field) => {
+        const key = field.getAttribute("data-field")!;
+        const oldValue = originalValues[key];
+        field.innerHTML = oldValue;
+      });
+      return;
+    }
+    saveChanges(userId);
+  }
+
+  async function saveChanges(userId: string) {
+    const fields = document.querySelectorAll("[data-field]")!;
+    const updatedData: Record<string, any> = {};
+    fields.forEach((field) => {
+      const key = field.getAttribute("data-field")!;
+      const input = field.querySelector("input") as HTMLInputElement;
+
+      if (input) {
+        updatedData[key] = input.value.trim();
+      }
+    });
+
+    try {
+      const response = await fetch(`http://localhost:3000/user/${userId}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updatedData),
+      });
+
+      if (!response.ok) throw new Error("Update failed!");
+
+      const newInformation = await response.json();
+
+      renderUser(newInformation);
+    } catch (error) {
+      alert("Couldn't save changes");
+    }
+  }
 
   const canEdit =
     loggedUser.role === "Admin" ||

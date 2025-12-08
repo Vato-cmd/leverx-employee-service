@@ -1,0 +1,38 @@
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin header-button-mixin {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 16px;
+  background-color: $header-btn-bg;
+  border: none;
+  border-radius: 20px;
+  color: whitesmoke;
+  cursor: pointer;
+  font-family: $font-primary;
+}
+
+@mixin button-default {
+  padding: 10px 20px;
+  background-color: $btn-blue;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}

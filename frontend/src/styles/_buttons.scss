@@ -1,0 +1,67 @@
+.button-with-avatar {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  img {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+}
+
+.button-with-power-logo {
+  margin-left: 15px;
+}
+
+.search-btn {
+  margin-top: 10px;
+  @include button-default;
+}
+
+.permissions-user-layout button {
+  padding: 10px;
+  border: none;
+  font-family: $font-primary;
+  cursor: pointer;
+  width: 80px;
+}
+
+.employee-section-flex button {
+  @include button-default;
+  padding: 10px 20px;
+}
+
+.hidden-main-button {
+  @include header-button-mixin;
+}
+
+.copy-link-btn,
+.edit-btn,
+.cancel-btn {
+  padding: 8px 15px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  img {
+    width: 30px;
+  }
+}
+
+.copy-link-btn {
+  background-color: #e5e5ec;
+  border: none;
+  border-radius: 15px;
+  padding: 8px 15px;
+  color: #707172;
+}
+
+button {
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.07);
+  }
+}

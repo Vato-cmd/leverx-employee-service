@@ -116,11 +116,7 @@ app.listen(3000, () => {
 
 app.patch("/user/:id", (req, res) => {
   const { id } = req.params;
-  const { role } = req.body;
-
-  if (!role) {
-    return res.status(400).json({ message: "Role is required" });
-  }
+  const updates = req.body;
 
   const data = readDB();
   const employee = data.employees.find((user) => user.id === id);
@@ -128,9 +124,14 @@ app.patch("/user/:id", (req, res) => {
   if (!employee) {
     return res.status(404).json({ message: "User not found" });
   }
-  employee.role = role;
+
+  for (const key in updates) {
+    if (employee.hasOwnProperty(key)) {
+      employee[key] = updates[key];
+    }
+  }
 
   fs.writeFileSync(DB_PATH, JSON.stringify(data, null, 2));
 
-  res.json({ message: "Role updated successfully", employee });
+  return res.json(employee);
 });

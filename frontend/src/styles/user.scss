@@ -1,0 +1,123 @@
+.user-main-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+
+  p {
+    color: #a4a7ac;
+  }
+
+  button {
+    cursor: pointer;
+    transition: $transition-default;
+  }
+
+  .go-back {
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    left: 5%;
+    background-color: #e4e4e9;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: $transition-default, opacity 0.3s ease;
+
+    img {
+      width: 25px;
+    }
+
+    &:hover {
+      transform: scale(1.09);
+      opacity: 0.9;
+    }
+  }
+}
+
+.user-avatar {
+  width: 200px;
+  position: relative;
+}
+
+.remote-container {
+  position: absolute;
+  left: 0;
+  bottom: 10px;
+  background-color: #914bb9;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  border: 2px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img.remote {
+    width: 70%;
+    height: 70%;
+  }
+}
+.remote-work-logo-bg {
+  background-color: #914bb9;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid white;
+}
+
+.remote-work-logo {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  z-index: 1;
+}
+
+.user-details {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  padding: 110px 20px;
+
+  .info-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    span {
+      opacity: 0.9;
+    }
+  }
+
+  .info-right {
+    margin-right: 30%;
+    text-align: left;
+  }
+
+  .info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+
+    img {
+      width: 20px;
+      height: 20px;
+      opacity: 0.75;
+    }
+  }
+
+  .container-of-user-info {
+    opacity: 0.75;
+
+    hr {
+      width: 70%;
+      border-color: #738392;
+    }
+  }
+}

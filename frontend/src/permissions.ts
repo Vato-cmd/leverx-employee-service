@@ -165,6 +165,7 @@ function renderEmployees(users: Employee[]): void {
   document.querySelectorAll(".permissions-user-layout").forEach((row) => {
     const id = row.getAttribute("data-id")!;
     row.querySelectorAll("button").forEach((btn) => {
+      if (!btn.getAttribute("data-role")) return;
       btn.addEventListener("click", () => {
         const updatedRole = btn.getAttribute("data-role")!;
         newUserRoleFunc(id, updatedRole);

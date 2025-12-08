@@ -1,0 +1,146 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.form input,
+.form select {
+  width: 100%;
+  padding: 10px;
+  color: $text-gray;
+  border: 1px solid #c3c9cf;
+  border-radius: $radius-sm;
+  box-sizing: border-box;
+}
+
+.signup-form label {
+  display: block;
+}
+
+.signup-form input {
+  padding: 5px;
+}
+
+.register-info {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+
+  input {
+    padding: 5px;
+  }
+}
+
+.email-label label,
+.password-label label {
+  display: block;
+}
+
+.email-label,
+.password-label {
+  text-align: left;
+}
+
+.missing-info {
+  color: rgb(211, 51, 51);
+  font-size: 0.8em;
+  margin-bottom: -10px;
+}
+
+.sign-in-body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: $light-bg;
+}
+
+.sign-in-header {
+  background-color: $header-bg;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+.sign-in-header img {
+  width: 30px;
+}
+
+.sign-in-container {
+  text-align: center;
+  box-shadow: $shadow-light;
+  background-color: white;
+  width: 300px;
+  padding: 10px;
+
+  button {
+    padding: 10px 20px;
+    background-color: $btn-blue;
+    border: none;
+    color: white;
+    border-radius: $radius-sm;
+    margin: 20px auto;
+    cursor: pointer;
+    transition: $transition-default;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+}
+
+.invalid-credentials {
+  color: rgb(211, 51, 51);
+}
+
+.content-inside > input {
+  background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' fill='%23cbd2dd' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11.742 10.344h-.806l-.286-.276a6.471 6.471 0 001.486-4.098A6.565 6.565 0 005.565.965 6.565 6.565 0 00.964 5.565a6.565 6.565 0 006.6 6.5c1.523 0 2.935-.5 4.098-1.486l.276.286v.806l4.25 4.244 1.27-1.27-4.244-4.25zm-5.877 0A5.134 5.134 0 01.43 5.148a5.134 5.134 0 015.435-5.435 5.134 5.134 0 015.434 5.434 5.134 5.134 0 01-5.434 5.435z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 12px center;
+  padding: 10px;
+  color: $text-gray;
+  border: 1px solid #c3c9cf;
+  border-radius: $radius-sm;
+  padding-left: 35px;
+  box-shadow: $shadow-light;
+}
+
+.search-btn {
+  padding: 10px;
+  border: none;
+  color: white;
+  background-color: $blue-brand; // alias for $btn-blue
+  font-family: $font-primary;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 10px;
+  border-radius: $radius-sm;
+}
+
+.additional-info {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  > div {
+    flex: 1;
+
+    > label {
+      display: block;
+    }
+  }
+}
+
+@media (width <= 600px) {
+  input::placeholder {
+    color: gray;
+    font-weight: bold;
+  }
+}

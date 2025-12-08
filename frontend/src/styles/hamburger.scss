@@ -1,0 +1,121 @@
+$square-root: 1.41421356237;
+.hamburger-menu {
+  display: none;
+  flex-direction: column;
+  gap: $hamburger-gap;
+  z-index: 41;
+  width: max-content;
+  position: fixed;
+  right: 10px;
+  top: 30px;
+
+  > input {
+    appearance: none;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    pointer-events: none;
+  }
+}
+
+.hamburger-menu::before,
+.hamburger-menu::after,
+.hamburger-menu input {
+  content: "";
+  width: $hamburger-width;
+  height: $hamburger-height;
+  background-color: white;
+  transition: opacity 0.3s, width 0.3s;
+  transform-origin: left center;
+  margin-right: 15px;
+}
+
+.hamburger-menu:has(input:checked) {
+  &::before,
+  &::after {
+    rotate: 45deg;
+    width: calc($hamburger-width * $square-root);
+  }
+  &::before {
+    rotate: 45deg;
+    translate: 0 calc($hamburger-height * -1);
+  }
+
+  &::after {
+    rotate: -45deg;
+    translate: 0 calc($hamburger-height);
+  }
+
+  input {
+    opacity: 0;
+    width: 0;
+  }
+}
+
+.hidden-main-nav {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  height: 100vh;
+  width: 280px;
+  background: white;
+  z-index: 30;
+  transition: left 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+
+  img {
+    width: 60px;
+  }
+}
+
+.hamburger-menu:has(input:checked) ~ .hidden-main-nav {
+  display: flex;
+  justify-content: center;
+  left: 0;
+}
+
+.hidden-main-nav-inner {
+  display: flex;
+  flex-direction: column;
+  padding-top: 100px;
+  align-items: center;
+}
+
+.hidden-main-nav-inner-top {
+  padding: 30px;
+  border-bottom: 1px solid rgb(194, 184, 184);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  p:first-child {
+    margin-bottom: 10px;
+  }
+}
+
+.hidden-main-nav-inner-bottom {
+  padding: 30px;
+  border-bottom: 1px solid rgb(194, 184, 184);
+}
+
+.hidden-main-nav-inner-bottom-button {
+  margin: auto;
+}
+
+.hidden-main-button {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 16px;
+  background-color: $header-btn-bg;
+  border: none;
+  border-radius: 20px;
+  color: whitesmoke;
+  cursor: pointer;
+  font-family: $font-primary;
+
+  img {
+    width: 20px;
+  }
+}

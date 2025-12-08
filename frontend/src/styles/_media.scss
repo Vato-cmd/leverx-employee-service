@@ -1,0 +1,105 @@
+@media (width <= 900px) {
+  main {
+    grid-template-columns: 1fr;
+    width: 100%;
+    padding: 100px 10px;
+    font-size: 0.9em;
+  }
+  .functional-buttons {
+    display: none;
+  }
+  .user-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .container-of-user-info {
+    width: 100%;
+    margin: 0 auto;
+  }
+  .container-of-user-info hr {
+    width: 100%;
+  }
+  .info-row {
+    justify-content: space-between;
+  }
+  .info-right {
+    margin: 0;
+  }
+  .button-section {
+    justify-content: center;
+  }
+  .employee-section {
+    width: 70%;
+    margin: 0 auto;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  aside {
+    width: 70%;
+    margin: 0 auto;
+  }
+
+  header .header-address-active,
+  header .header-button-container {
+    display: none;
+  }
+
+  body .hamburger-menu {
+    display: flex;
+  }
+}
+
+@media (width <= 600px) {
+  .tabs {
+    display: none;
+  }
+  .sign-in-container {
+    width: 90%;
+  }
+  .no-employees {
+    width: 100%;
+    font-size: 1.2em;
+  }
+  .container-of-user-info {
+    font-size: 0.9em;
+  }
+
+  section .conditional-section {
+    display: none;
+  }
+
+  .button-section {
+    margin-bottom: 20px;
+  }
+  .second-p {
+    display: none;
+  }
+  .employee-section {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 10px;
+    width: 90%;
+  }
+
+  .list-employee-section {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 10px;
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .employee-cards .department img {
+    width: 20px;
+  }
+
+  input::placeholder {
+    color: #6f88b6;
+    font-weight: bold;
+  }
+
+  .button-section {
+    align-items: center;
+  }
+}

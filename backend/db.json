@@ -9,7 +9,7 @@
       "user_avatar": "images/Avatars - 9.png",
       "first_name": "Brendan",
       "last_name": "Krueger",
-      "department": "Human Resources (HR)",
+      "department": "Human Resources",
       "building": "LeverX HQ – Poland",
       "room": "1402",
       "date_birth": {
@@ -113,7 +113,7 @@
     },
     {
       "id": "4",
-      "role": "HR",
+      "role": "Employee",
       "isRemoteWork": false,
       "password": "$2b$12$lVgnpfVezHwJT5bHuradseYKFe.1IBF7n0mu6E41dCjWyv4Z3HD.m",
       "middle_name": "K.",
@@ -224,7 +224,7 @@
     },
     {
       "id": "7",
-      "role": "Employee",
+      "role": "HR",
       "isRemoteWork": false,
       "password": "$2b$12$xuGK/txHGFd/82.SvLA/huOg4wRRhFI2z1ldyYoKrsDB7cog0rvOe",
       "middle_name": "D.",
