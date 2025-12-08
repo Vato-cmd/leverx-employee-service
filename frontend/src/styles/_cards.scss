@@ -21,21 +21,22 @@
   &:hover {
     transform: scale(1.03);
   }
-
-  &.list {
-    height: auto;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 10px;
-  }
 }
 
-// .list-employee-section {
-//   display: flex;
-//   flex-direction: column;
-//   gap: 0;
-//   transition: 1s;
+.list-employee-section {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0;
+  transition: 1s;
+}
 
+.employee-cards.list {
+  height: auto;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px;
+  align-items: center;
+}
 //   div div.employee-cards {
 //     display: flex;
 //     flex-direction: column;

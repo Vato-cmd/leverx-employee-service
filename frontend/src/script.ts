@@ -226,14 +226,17 @@ form.addEventListener("submit", (e) => {
   });
   if (found.length > 0) {
     renderEmployees(found);
+    resetLayoutToCurrentView();
   } else {
     employeeSection.classList.remove("employee-section");
-    employeeSection.classList.add("employee-section-flex");
+    employeeSection.classList.add("error-section");
     employeeSection.innerHTML = `
-      <img src="images/Page-Not-Found--Streamline-Lagos.png" />
-      <h2>404 Page not found</h2>
-      <p>Sorry, we can't find that page! it might be an old link or maybe it was removed</p>
-      <button id="go-home">GO TO THE HOME PAGE</button>
+      <div class="error-wrapper">
+        <img src="images/Page-Not-Found--Streamline-Lagos.png" />
+        <h2>404 Page not found</h2>
+        <p>Sorry, we can't find that page! it might be an old link or maybe it was removed</p>
+        <button id="go-home">GO TO THE HOME PAGE</button>
+      </div>
     `;
     const goHomeBtn = document.getElementById("go-home");
     if (goHomeBtn) {
@@ -359,14 +362,17 @@ employeeSearchBtn.addEventListener("click", () => {
 
   if (findEmployee.length > 0) {
     renderEmployees(findEmployee);
+    resetLayoutToCurrentView();
   } else {
     employeeSection.classList.remove("employee-section");
-    employeeSection.classList.add("employee-section-flex");
+    employeeSection.classList.add("error-section");
     employeeSection.innerHTML = `
-      <img src="images/Page-Not-Found--Streamline-Lagos.png" />
-      <h2>404 Page not found</h2>
-      <p>Sorry, we can't find that page! it might be an old link or maybe it was removed</p>
-      <button id="go-home">GO TO THE HOME PAGE</button>
+      <div class="error-wrapper">
+        <img src="images/Page-Not-Found--Streamline-Lagos.png" />
+        <h2>404 Page not found</h2>
+        <p>Sorry, we can't find that page! it might be an old link or maybe it was removed</p>
+        <button id="go-home">GO TO THE HOME PAGE</button>
+      </div>
     `;
 
     const goHomeBtn = document.getElementById("go-home");
