@@ -1,8 +1,8 @@
 .employee-section {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  box-shadow: $shadow-light;
+  gap: $margin-default;
+  box-shadow: $light-shadow;
   transition: 0.5s;
   text-align: center;
 }
@@ -10,7 +10,7 @@
 .employee-cards {
   height: 300px;
   background-color: white;
-  box-shadow: $shadow-light;
+  box-shadow: $light-shadow;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -34,32 +34,31 @@
   height: auto;
   flex-direction: row;
   justify-content: space-between;
-  padding: 10px;
+  padding: $padding-default;
   align-items: center;
 }
-//   div div.employee-cards {
-//     display: flex;
-//     flex-direction: column;
-//     gap: 10px;
-//   }
-// }
+div div.employee-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
 
 .employee-cards-inner-flex {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: $margin-default;
   border-top: 1px solid #adadb1;
-  padding-top: 10px;
+  padding-top: $padding-default;
 }
 
 .department {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: $gap-for-all;
 
   img {
-    width: 20px;
+    width: $header-button-size;
   }
 }
 
@@ -69,8 +68,8 @@
     cursor: pointer;
 
     svg {
-      width: 20px;
-      height: 20px;
+      width: $header-button-size;
+      height: $header-button-size;
       transition: $transition-default;
 
       &:hover {
@@ -82,4 +81,43 @@
 
 .clicked {
   stroke: #0a41a5;
+}
+
+.conditional-section img {
+  width: $header-button-size;
+  height: $header-button-size;
+}
+
+.conditional-section {
+  display: flex;
+  align-items: center;
+  padding: $padding-default 5px;
+  background-color: #ffffff;
+  margin-bottom: $margin-default;
+  justify-content: space-between;
+}
+
+.conditional-section div {
+  display: flex;
+  align-items: center;
+  gap: $margin-default;
+}
+
+.employee-section-flex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $gap-for-all;
+}
+.employee-section-flex img {
+  width: 30%;
+}
+
+.employee-section-flex h2,
+p {
+  opacity: 0.75;
+}
+
+.employee-section-flex button:hover {
+  transform: $transition-scale;
 }

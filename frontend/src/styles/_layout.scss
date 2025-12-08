@@ -1,3 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: $light-bg;
+  color: #333;
+  font-family: $font-primary;
+  height: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: #363535;
+}
+
 main {
   width: 90%;
   margin: 20px auto;
@@ -30,7 +49,7 @@ main {
   }
 
   button {
-    padding: 10px 20px;
+    padding: $padding-default 20px;
     background-color: $btn-blue;
     border: none;
     color: white;

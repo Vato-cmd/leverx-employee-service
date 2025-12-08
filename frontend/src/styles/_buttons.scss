@@ -1,7 +1,7 @@
 .button-with-avatar {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: $gap-for-all;
 
   img {
     width: 30px;
@@ -16,12 +16,12 @@
 }
 
 .search-btn {
-  margin-top: 10px;
+  margin-top: $margin-default;
   @include button-default;
 }
 
 .permissions-user-layout button {
-  padding: 10px;
+  padding: $padding-default;
   border: none;
   font-family: $font-primary;
   cursor: pointer;
@@ -30,7 +30,7 @@
 
 .employee-section-flex button {
   @include button-default;
-  padding: 10px 20px;
+  padding: $padding-default 20px;
 }
 
 .hidden-main-button {
@@ -43,7 +43,7 @@
   padding: 8px 15px;
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: $gap-for-all;
 
   img {
     width: 30px;
@@ -59,9 +59,19 @@
 }
 
 button {
-  transition: transform 0.3s ease;
+  transition: $transition-default;
 
   &:hover {
-    transform: scale(1.07);
+    transform: $transition-scale;
   }
+}
+
+.functional-buttons button {
+  border: none;
+  cursor: pointer;
+}
+
+.functional-buttons button svg {
+  width: $header-button-size;
+  height: $header-button-size;
 }

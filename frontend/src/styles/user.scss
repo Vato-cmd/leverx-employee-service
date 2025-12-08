@@ -20,9 +20,7 @@
     left: 5%;
     background-color: #e4e4e9;
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flex-center;
     cursor: pointer;
     transition: $transition-default, opacity 0.3s ease;
 
@@ -51,9 +49,7 @@
   width: 30px;
   height: 30px;
   border: 2px solid white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flex-center;
 
   img.remote {
     width: 70%;
@@ -62,12 +58,10 @@
 }
 .remote-work-logo-bg {
   background-color: #914bb9;
-  width: 20px;
-  height: 20px;
+  width: $header-button-size;
+  height: $header-button-size;
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flex-center;
   border: 2px solid white;
 }
 
@@ -88,7 +82,7 @@
   .info-left {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: $margin-default;
 
     span {
       opacity: 0.9;
@@ -103,11 +97,11 @@
   .info-row {
     display: flex;
     justify-content: space-between;
-    padding: 10px;
+    padding: $padding-default;
 
     img {
-      width: 20px;
-      height: 20px;
+      width: $header-button-size;
+      height: $header-button-size;
       opacity: 0.75;
     }
   }

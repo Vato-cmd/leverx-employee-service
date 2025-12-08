@@ -22,7 +22,7 @@ header {
 
   .header-button-container {
     @include flex-center;
-    gap: 10px;
+    gap: $margin-default;
   }
   .header-button-container img {
     width: $header-button-size;
@@ -34,8 +34,8 @@ header {
   }
 
   .header-address-active {
-    padding-bottom: 10px;
+    padding-bottom: $padding-default;
     display: flex;
-    gap: 10px;
+    gap: $margin-default;
   }
 }

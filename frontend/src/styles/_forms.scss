@@ -1,13 +1,13 @@
 .form {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: $gap-for-all;
 }
 
 .form input,
 .form select {
   width: 100%;
-  padding: 10px;
+  padding: $padding-default;
   color: $text-gray;
   border: 1px solid #c3c9cf;
   border-radius: $radius-sm;
@@ -27,7 +27,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: $margin-default;
 
   input {
     padding: 5px;
@@ -63,7 +63,7 @@
   background-color: $header-bg;
   width: 100%;
   text-align: center;
-  padding: 10px;
+  padding: $padding-default;
   color: white;
   display: flex;
   align-items: center;
@@ -76,13 +76,13 @@
 
 .sign-in-container {
   text-align: center;
-  box-shadow: $shadow-light;
+  box-shadow: $light-shadow;
   background-color: white;
   width: 300px;
-  padding: 10px;
+  padding: $padding-default;
 
   button {
-    padding: 10px 20px;
+    padding: $padding-default 20px;
     background-color: $btn-blue;
     border: none;
     color: white;
@@ -92,7 +92,7 @@
     transition: $transition-default;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: $margin-default;
   }
 }
 
@@ -104,30 +104,30 @@
   background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' fill='%23cbd2dd' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11.742 10.344h-.806l-.286-.276a6.471 6.471 0 001.486-4.098A6.565 6.565 0 005.565.965 6.565 6.565 0 00.964 5.565a6.565 6.565 0 006.6 6.5c1.523 0 2.935-.5 4.098-1.486l.276.286v.806l4.25 4.244 1.27-1.27-4.244-4.25zm-5.877 0A5.134 5.134 0 01.43 5.148a5.134 5.134 0 015.435-5.435 5.134 5.134 0 015.434 5.434 5.134 5.134 0 01-5.434 5.435z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: 12px center;
-  padding: 10px;
+  padding: $padding-default;
   color: $text-gray;
   border: 1px solid #c3c9cf;
   border-radius: $radius-sm;
   padding-left: 35px;
-  box-shadow: $shadow-light;
+  box-shadow: $light-shadow;
 }
 
 .search-btn {
-  padding: 10px;
+  padding: $padding-default;
   border: none;
   color: white;
-  background-color: $blue-brand; // alias for $btn-blue
+  background-color: $btn-blue;
   font-family: $font-primary;
   cursor: pointer;
   text-align: center;
-  margin-top: 10px;
+  margin-top: $margin-default;
   border-radius: $radius-sm;
 }
 
 .additional-info {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: $gap-for-all;
 
   > div {
     flex: 1;
@@ -136,6 +136,35 @@
       display: block;
     }
   }
+}
+
+.tabs {
+  display: flex;
+  gap: 40px;
+  margin-bottom: $margin-default;
+  padding: 15px;
+}
+
+.tabs > button {
+  border: none;
+  font-family: $font-primary;
+  background-color: $light-bg;
+  padding-bottom: $padding-default;
+}
+
+.tabs .active {
+  color: #2b2a2a;
+  border-bottom: 2px solid $btn-blue;
+  opacity: 0.9;
+}
+
+.tab {
+  cursor: pointer;
+  padding-bottom: 5px;
+  font-weight: bold;
+  color: #b3b3b3;
+  border-bottom: 2px solid transparent;
+  transition: $transition-default;
 }
 
 @media (width <= 600px) {

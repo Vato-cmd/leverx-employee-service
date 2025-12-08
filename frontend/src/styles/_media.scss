@@ -1,8 +1,9 @@
 @media (width <= 900px) {
   main {
+    display: grid;
     grid-template-columns: 1fr;
     width: 100%;
-    padding: 100px 10px;
+    padding: 100px $padding-default;
     font-size: 0.9em;
   }
   .functional-buttons {
@@ -79,19 +80,19 @@
   }
   .employee-section {
     grid-template-columns: repeat(1, 1fr);
-    gap: 10px;
+    gap: $margin-default;
     width: 90%;
   }
 
   .list-employee-section {
     grid-template-columns: repeat(1, 1fr);
-    gap: 10px;
+    gap: $margin-default;
     width: 90%;
     margin: 0 auto;
   }
 
   .employee-cards .department img {
-    width: 20px;
+    width: $header-button-size;
   }
 
   input::placeholder {

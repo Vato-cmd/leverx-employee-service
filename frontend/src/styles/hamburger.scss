@@ -61,7 +61,7 @@ $square-root: 1.41421356237;
   background: white;
   z-index: 30;
   transition: left 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  box-shadow: $light-shadow;
 
   img {
     width: 60px;
@@ -89,7 +89,7 @@ $square-root: 1.41421356237;
   gap: 15px;
 
   p:first-child {
-    margin-bottom: 10px;
+    margin-bottom: $margin-default;
   }
 }
 
@@ -116,6 +116,6 @@ $square-root: 1.41421356237;
   font-family: $font-primary;
 
   img {
-    width: 20px;
+    width: $header-button-size;
   }
 }

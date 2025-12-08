@@ -1,0 +1,43 @@
+.permissions-container-inner {
+  background-color: white;
+  width: 90%;
+  margin: 0 auto;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-bottom: 3px;
+  box-shadow: $light-shadow;
+  text-align: center;
+}
+
+.permissions-container-inner input {
+  justify-self: center;
+  padding: 5px $padding-default;
+}
+
+.permissions-inner-flex {
+  display: flex;
+  align-items: center;
+  gap: $gap-for-all;
+}
+.permissions-avatar {
+  width: 70px;
+}
+
+.permissions-user-layout-inner {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 20px;
+  justify-items: center;
+}
+
+.permissions-user-layout {
+  width: 90%;
+  margin: 0 auto;
+  box-shadow: $light-shadow;
+}
+
+.indicated {
+  color: white;
+  background-color: #3498db;
+}
