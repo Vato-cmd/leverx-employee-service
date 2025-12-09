@@ -208,8 +208,12 @@ function renderUser(user: Employee): void {
                     <img src="images/user-svgrepo-com.svg" />
                     <span>Manager</span>
                 </div>
-                <div class="info-right blue" data-field="full-name">
-                    ${user.manager.first_name} ${user.manager.last_name}
+                <div class="info-right blue">
+                    <a href="user.html?id=${
+                      user.manager.id
+                    }" class="manager-link" data-field="full-name">
+                      ${user.manager.first_name} ${user.manager.last_name}
+                    </a>
                 </div>
             </div>
             <p class="information-title">CONTACTS</p>
