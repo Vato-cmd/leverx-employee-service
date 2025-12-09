@@ -121,6 +121,9 @@ app.patch("/user/:id", (req, res) => {
   const data = readDB();
   const employee = data.employees.find((user) => user.id === id);
 
+  const oldRole = employee.role;
+  const newRole = updates.role ?? employee.role;
+
   if (!employee) {
     return res.status(404).json({ message: "User not found" });
   }
@@ -129,6 +132,34 @@ app.patch("/user/:id", (req, res) => {
     if (employee.hasOwnProperty(key)) {
       employee[key] = updates[key];
     }
+  }
+
+  if (oldRole === "HR" && newRole === "Employee") {
+    data.employees.forEach((user) => {
+      if (user.manager?.id === id) {
+        user.previous_manager_id = id;
+
+        user.manager = {
+          id: "00",
+          first_name: "No",
+          last_name: "Manager",
+        };
+      }
+    });
+  }
+
+  if (newRole === "HR" && oldRole === "Employee") {
+    data.employees.forEach((user) => {
+      if (user.previous_manager_id === id) {
+        user.manager = {
+          id: id,
+          first_name: employee.first_name,
+          last_name: employee.last_name,
+        };
+
+        delete user.previous_manager_id;
+      }
+    });
   }
 
   fs.writeFileSync(DB_PATH, JSON.stringify(data, null, 2));

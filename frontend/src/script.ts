@@ -60,6 +60,16 @@ const logout = document.getElementById("logout") as HTMLButtonElement;
 const signOutParagraph = document.getElementById(
   "signout-paragraph"
 ) as HTMLElement;
+
+signOutParagraph.addEventListener("click", logoutFunc);
+logout.addEventListener("click", logoutFunc);
+
+function logoutFunc() {
+  sessionStorage.removeItem("user");
+  localStorage.removeItem("user");
+  window.location.href = "signin.html";
+}
+
 const addressBook = document.getElementById("address") as HTMLParagraphElement;
 const settings = document.getElementById("settings") as HTMLParagraphElement;
 

@@ -83,6 +83,7 @@ logout.addEventListener("click", logoutFunc);
 
 function logoutFunc() {
   sessionStorage.removeItem("user");
+  localStorage.removeItem("user");
   window.location.href = "signin.html";
 }
 
@@ -309,38 +310,29 @@ function renderUser(user: Employee): void {
   function enterEditMode() {
     editing = true;
 
-    const editBtn = document.getElementById("edit-btn") as HTMLElement;
-    const cancel = document.getElementById("cancel-btn") as HTMLElement;
-
     editBtn.innerHTML = `<img src="./images/save_img.jpg" />Save`;
     cancel.classList.remove("hidden");
     const fields = document.querySelectorAll<HTMLElement>("[data-field]");
-    console.log(originalValues);
-
     originalValues = {};
     fields.forEach((field) => {
       const key = field.getAttribute("data-field")!;
       const value = field.innerText.trim();
       originalValues[key] = value;
-
       field.innerHTML = `<input class="edit-input" value="${value}" />`;
     });
   }
 
   async function cancelEdit(save: boolean, userId: string) {
     editing = false;
-    const editBtn = document.getElementById("edit-btn")!;
-    const cancelBtn = document.getElementById("cancel-btn")!;
 
     editBtn.innerHTML = `<img src="images/edit-svgrepo-com.svg" />EDIT`;
-    cancelBtn.classList.add("hidden");
+    cancel.classList.add("hidden");
     const fields = document.querySelectorAll("[data-field]");
-    console.log(fields);
     if (!save) {
       fields.forEach((field) => {
         const key = field.getAttribute("data-field")!;
         const oldValue = originalValues[key];
-        field.innerHTML = oldValue;
+        field.textContent = oldValue;
       });
       return;
     }
@@ -369,6 +361,7 @@ function renderUser(user: Employee): void {
       if (!response.ok) throw new Error("Update failed!");
 
       const newInformation = await response.json();
+      console.log(newInformation);
 
       renderUser(newInformation);
     } catch (error) {
