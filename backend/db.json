@@ -13,9 +13,9 @@
       "building": "LeverX HQ – Poland",
       "room": "1402",
       "date_birth": {
-        "year": 1991,
-        "month": 6,
-        "day": 18
+        "day": "02",
+        "month": "06",
+        "year": "1999"
       },
       "desk_number": 21,
       "manager": {
@@ -50,9 +50,9 @@
       "building": "LeverX Dubai",
       "room": "502B",
       "date_birth": {
-        "year": 1989,
-        "month": 11,
-        "day": "02"
+        "day": "02",
+        "month": "11",
+        "year": "1988"
       },
       "desk_number": 9,
       "manager": {
@@ -376,8 +376,8 @@
       "id": "11",
       "role": "Employee",
       "first_name": "Vato",
-      "last_name": "Mezv",
-      "email": "vato@mez.com",
+      "last_name": "Mezvrishvili",
+      "email": "vato@mezvrishvili.com",
       "password": "$2b$12$rv60UhPxBV6lf5f6UD47MuZfKHVGdjxC8kOil1nt66Nk0M7cOqWsC",
       "user_avatar": "images/default-avatar.png",
       "isRemoteWork": false,

@@ -134,10 +134,15 @@ function renderUser(user: Employee): void {
                 <img class="user-avatar" src="${user.user_avatar}"> 
             </div>
 
-            <h2>${user.first_name} ${user.last_name}</h2> 
-            <p>${user.first_name} ${user.middle_name && user.middle_name} ${
-    user.last_name
-  }</p>
+            <h2>
+              <span data-field="first_name">${user.first_name}</span>
+              <span data-field="last_name">${user.last_name}</span>
+            </h2> 
+            <p>
+              ${user.first_name}
+              <span data-field="middle_name">${user.middle_name}</span>
+              ${user.last_name}
+            </p>
             <button id="copy-link" class="copy-link-btn"><img src="images/copy-svgrepo-com.svg"/>Copy link</button>
               <div class="edit-save-container">
                 <button class="edit-btn" id="edit-btn"><img src="images/edit-svgrepo-com.svg"/>EDIT</button>
@@ -192,7 +197,7 @@ function renderUser(user: Employee): void {
                     <img src="images/date-range-svgrepo-com.svg" />
                     <span>Date of birth</span>
                 </div>
-                <div class="info-right" data-field="date-of-birth">
+                <div class="info-right" data-field="date_birth">
                     <span>${user.date_birth.day}</span>/
                     <span>${user.date_birth.month}</span>/
                     <span>${user.date_birth.year}</span>

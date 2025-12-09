@@ -128,8 +128,14 @@ app.patch("/user/:id", (req, res) => {
     return res.status(404).json({ message: "User not found" });
   }
 
+  if (updates.date_birth) {
+    const cleaned = updates.date_birth.replace(/\s+/g, "");
+    const [day, month, year] = cleaned.split("/");
+    employee.date_birth = { day, month, year };
+  }
+
   for (const key in updates) {
-    if (employee.hasOwnProperty(key)) {
+    if (employee.hasOwnProperty(key) && key !== "date_birth") {
       employee[key] = updates[key];
     }
   }

@@ -141,6 +141,12 @@
 .edit-input {
   padding: 5px;
 }
+
+.user-main-layout .edit-input {
+  display: flex;
+  flex-direction: row;
+}
+
 .edit-save-container {
   display: flex;
   gap: $gap-for-all;
