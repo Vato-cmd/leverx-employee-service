@@ -208,12 +208,8 @@ function renderUser(user: Employee): void {
                     <img src="images/user-svgrepo-com.svg" />
                     <span>Manager</span>
                 </div>
-                <div class="info-right blue">
-                    <a href="user.html?id=${
-                      user.manager.id
-                    }" class="manager-link" data-field="full-name">
+                <div class="info-right blue" data-field="manager">
                       ${user.manager.first_name} ${user.manager.last_name}
-                    </a>
                 </div>
             </div>
             <p class="information-title">CONTACTS</p>
@@ -321,12 +317,25 @@ function renderUser(user: Employee): void {
 
     editBtn.innerHTML = `<img src="./images/save_img.jpg" />Save`;
     cancel.classList.remove("hidden");
+
     const fields = document.querySelectorAll<HTMLElement>("[data-field]");
     originalValues = {};
+
     fields.forEach((field) => {
       const key = field.getAttribute("data-field")!;
       const value = field.innerText.trim();
       originalValues[key] = value;
+
+      if (key === "manager") {
+        if (loggedUser.role !== "Admin") {
+          field.textContent = value;
+          return;
+        }
+
+        field.innerHTML = `<input class="edit-input" value="${value}" placeholder="Type manager name" />`;
+        return;
+      }
+
       field.innerHTML = `<input class="edit-input" value="${value}" />`;
     });
   }
