@@ -19,9 +19,9 @@
       },
       "desk_number": 21,
       "manager": {
-        "id": "2",
-        "first_name": "Andrew",
-        "last_name": "Savage"
+        "id": "3",
+        "first_name": "Lula",
+        "last_name": "Aguilar"
       },
       "phone": "+48123456701",
       "email": "brendan.krueger@leverx.com",
@@ -76,7 +76,7 @@
     },
     {
       "id": "3",
-      "role": "Employee",
+      "role": "HR",
       "isRemoteWork": false,
       "password": "$2b$12$AxmE56VUZN3n5Ate5MCMEOKbA1kVHUdDUV2NiPEXNgeIw.4teMVS6",
       "middle_name": "L.",

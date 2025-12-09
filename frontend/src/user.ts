@@ -360,13 +360,21 @@ function renderUser(user: Employee): void {
   async function saveChanges(userId: string) {
     const fields = document.querySelectorAll("[data-field]")!;
     const updatedData: Record<string, any> = {};
+
     fields.forEach((field) => {
       const key = field.getAttribute("data-field")!;
       const input = field.querySelector("input") as HTMLInputElement;
+      if (!input) return;
+      const value = input.value.trim();
 
-      if (input) {
-        updatedData[key] = input.value.trim();
+      if (key === "manager") {
+        if (loggedUser.role === "Admin") {
+          updatedData.manager_name = value;
+        }
+        return;
       }
+
+      updatedData[key] = value;
     });
 
     try {

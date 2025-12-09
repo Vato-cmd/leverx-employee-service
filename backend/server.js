@@ -134,6 +134,35 @@ app.patch("/user/:id", (req, res) => {
     employee.date_birth = { day, month, year };
   }
 
+  if (updates.manager_name) {
+    const managerFullName = updates.manager_name.trim().toLowerCase();
+    const [first, last] = managerFullName.split(" ");
+
+    if (!first || !last) {
+      return res
+        .status(400)
+        .json({ message: "Manager name must be: FirstName LastName" });
+    }
+
+    const newManager = data.employees.find(
+      (u) =>
+        u.first_name.toLowerCase() === first &&
+        u.last_name.toLowerCase() === last
+    );
+
+    if (!newManager) {
+      return res.status(404).json({ message: "Manager not found" });
+    }
+
+    employee.manager = {
+      id: newManager.id,
+      first_name: newManager.first_name,
+      last_name: newManager.last_name,
+    };
+
+    delete updates.manager_name;
+  }
+
   for (const key in updates) {
     if (employee.hasOwnProperty(key) && key !== "date_birth") {
       employee[key] = updates[key];
