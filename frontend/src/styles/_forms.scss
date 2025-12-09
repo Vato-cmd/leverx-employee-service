@@ -167,6 +167,16 @@
   transition: $transition-default;
 }
 
+.hidden {
+  display: none;
+  margin-bottom: 20px;
+}
+
+.sign-in-body {
+  background-image: url(../images/3395620.jpg);
+  background-repeat: no-repeat;
+}
+
 @media (width <= 600px) {
   input::placeholder {
     color: gray;

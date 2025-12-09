@@ -75,3 +75,15 @@ button {
   width: $header-button-size;
   height: $header-button-size;
 }
+
+.toggle {
+  cursor: pointer;
+  color: #5591ff;
+  margin-top: $margin-default;
+  font-weight: bold;
+  padding: $padding-default;
+}
+.button-section {
+  @include flex-space-between;
+  margin-bottom: 10px;
+}

@@ -16,8 +16,7 @@
 }
 
 .permissions-inner-flex {
-  display: flex;
-  align-items: center;
+  @include flex-center-only;
   gap: $gap-for-all;
 }
 .permissions-avatar {
@@ -39,5 +38,5 @@
 
 .indicated {
   color: white;
-  background-color: #3498db;
+  background-color: $indicated-bg;
 }

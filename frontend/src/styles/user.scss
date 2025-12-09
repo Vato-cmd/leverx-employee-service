@@ -105,6 +105,9 @@
       opacity: 0.75;
     }
   }
+  .success {
+    color: rgb(50, 194, 50);
+  }
 
   .container-of-user-info {
     opacity: 0.75;
@@ -114,4 +117,41 @@
       border-color: #738392;
     }
   }
+}
+
+.remote-container-user {
+  position: relative;
+}
+
+.user-avatar {
+  width: 200px;
+  position: relative;
+}
+
+.remote-relative {
+  position: relative;
+}
+
+.user-details .info-row img {
+  width: $image-size;
+  height: $image-size;
+  opacity: 0.75;
+}
+
+.edit-input {
+  padding: 5px;
+}
+.edit-save-container {
+  display: flex;
+  gap: $gap-for-all;
+}
+
+.information-title {
+  margin: $margin-default;
+}
+
+.missing-info {
+  color: rgb(211, 51, 51);
+  font-size: 0.8em;
+  margin-bottom: -$margin-default;
 }

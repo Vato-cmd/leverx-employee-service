@@ -31,14 +31,50 @@ main {
 }
 
 .error-section {
-  display: flex;
-  justify-content: center;
+  @include flex-center-only;
   padding: 40px 0;
 }
 
+.spinner {
+  width: 24px;
+  height: 24px;
+  border: 3px solid #ddd;
+  border-top-color: $indicated-bg;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+.blue {
+  color: $header-bg;
+}
+
+.content-inside {
+  @include flex-col;
+  gap: 10px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.paragraph-smaller {
+  color: rgb(233, 71, 71);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+}
+
+.hidden-message {
+  color: rgb(230, 72, 72);
+}
+
 .error-wrapper {
-  display: flex;
-  flex-direction: column;
+  @include flex-col;
   align-items: center;
   gap: 15px;
   text-align: center;
@@ -56,4 +92,8 @@ main {
     border-radius: 5px;
     cursor: pointer;
   }
+}
+.conditional-section.hidden {
+  display: none;
+  margin-bottom: 20px;
 }

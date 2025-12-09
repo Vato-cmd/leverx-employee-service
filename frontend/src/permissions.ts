@@ -61,6 +61,19 @@ const search = document.getElementById(
 const userProfile = document.getElementById(
   "user-profile"
 ) as HTMLButtonElement;
+const logout = document.getElementById("logout") as HTMLButtonElement;
+const signOutParagraph = document.getElementById(
+  "signout-paragraph"
+) as HTMLElement;
+
+logout.addEventListener("click", logoutFunc);
+signOutParagraph.addEventListener("click", logoutFunc);
+
+function logoutFunc() {
+  sessionStorage.removeItem("user");
+  localStorage.removeItem("user");
+  window.location.href = "signin.html";
+}
 
 search.addEventListener("input", () => {
   const value = search.value.trim().toLowerCase();

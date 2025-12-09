@@ -292,6 +292,12 @@ function renderUser(user: Employee): void {
   let originalValues: Record<string, any> = {};
 
   editBtn.addEventListener("click", () => {
+    if (
+      (loggedUser.role === "Admin" && loggedUser.id === user.id) ||
+      (loggedUser.role === "HR" && loggedUser.id === user.id)
+    ) {
+      return;
+    }
     if (!editing) {
       enterEditMode();
     } else {

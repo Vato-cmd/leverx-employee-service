@@ -73,15 +73,6 @@ addressBook.addEventListener("click", () => {
   settings.classList.remove("header-active-page");
 });
 
-logout.addEventListener("click", logoutFunc);
-signOutParagraph.addEventListener("click", logoutFunc);
-
-function logoutFunc() {
-  sessionStorage.removeItem("user");
-  localStorage.removeItem("user");
-  window.location.href = "signin.html";
-}
-
 const basicContent = document.getElementById("basic-content") as HTMLDivElement;
 const advancedContent = document.getElementById(
   "advanced-content"
