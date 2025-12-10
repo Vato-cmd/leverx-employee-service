@@ -88,11 +88,14 @@ div div.employee-cards {
 }
 
 .conditional-section {
-  @include flex-center-only;
+  // @include flex-center-only;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  justify-items: center;
   padding: $padding-default 5px;
   background-color: #ffffff;
   margin-bottom: $margin-default;
-  justify-content: space-between;
 }
 
 .conditional-section div {
@@ -106,7 +109,8 @@ div div.employee-cards {
   gap: $gap-for-all;
 }
 .employee-section-flex img {
-  width: 30%;
+  width: 100px;
+  height: 100px;
 }
 
 .employee-section-flex h2,
@@ -116,4 +120,10 @@ p {
 
 .employee-section-flex button:hover {
   transform: $transition-scale;
+}
+
+.employee-cards-inner-flex img,
+.department img {
+  width: 20px;
+  height: 20px;
 }
