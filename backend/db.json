@@ -124,9 +124,9 @@
       "building": "LeverX HQ – Kazakhstan",
       "room": "1501",
       "date_birth": {
-        "year": 1995,
-        "month": 9,
-        "day": 22
+        "day": "22",
+        "month": "9",
+        "year": "1999"
       },
       "desk_number": 12,
       "manager": {
@@ -371,35 +371,6 @@
           "end_date": 1683680400000
         }
       ]
-    },
-    {
-      "id": "11",
-      "role": "Employee",
-      "first_name": "Vato",
-      "last_name": "Mezvrishvili",
-      "email": "vato@mezvrishvili.com",
-      "password": "$2b$12$rv60UhPxBV6lf5f6UD47MuZfKHVGdjxC8kOil1nt66Nk0M7cOqWsC",
-      "user_avatar": "images/default-avatar.png",
-      "isRemoteWork": false,
-      "department": "Leverx",
-      "room": "1400",
-      "building": "302",
-      "desk_number": "",
-      "phone": "",
-      "viber": "",
-      "cnumber": "",
-      "citizenship": "",
-      "date_birth": {
-        "day": "00",
-        "month": "00",
-        "year": "00"
-      },
-      "manager": {
-        "id": "00",
-        "first_name": "00",
-        "last_name": "00"
-      },
-      "visa": []
     }
   ]
 }

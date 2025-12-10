@@ -85,6 +85,7 @@ app.post("/sign-up", async (req, res) => {
     id: (data.employees.length + 1).toString(),
     role: "Employee",
     first_name,
+    middle_name: "",
     last_name,
     email,
     password: hashed,
@@ -99,8 +100,8 @@ app.post("/sign-up", async (req, res) => {
     cnumber: "",
     citizenship: "",
     date_birth: { day: "00", month: "00", year: "00" },
-    manager: { id: "00", first_name: "00", last_name: "00" },
-    visa: [],
+    manager: { id: "0", first_name: "No", last_name: "Manager" },
+    visa: [{ type: "National visa type D" }],
   };
 
   data.employees.push(newUser);
@@ -145,9 +146,9 @@ app.patch("/user/:id", (req, res) => {
     }
 
     const newManager = data.employees.find(
-      (u) =>
-        u.first_name.toLowerCase() === first &&
-        u.last_name.toLowerCase() === last
+      (user) =>
+        user.first_name.toLowerCase() === first &&
+        user.last_name.toLowerCase() === last
     );
 
     if (!newManager) {

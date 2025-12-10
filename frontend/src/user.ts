@@ -62,7 +62,9 @@ const signOutParagraph = document.getElementById(
   "signout-paragraph"
 ) as HTMLElement;
 const settings = document.getElementById("settings") as HTMLParagraphElement;
-
+const userProfile = document.getElementById(
+  "user-profile"
+) as HTMLButtonElement;
 const storedUser =
   sessionStorage.getItem("user") || localStorage.getItem("user");
 
@@ -71,6 +73,11 @@ if (!storedUser) {
 }
 
 const loggedUser = JSON.parse(storedUser!);
+
+userProfile.addEventListener("click", () => {
+  window.location.href = `user.html?id=${loggedUser.id}`;
+});
+
 if (loggedUser.role !== "Admin") {
   settings.classList.add("hidden");
 }
