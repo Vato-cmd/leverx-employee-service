@@ -1,6 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+
+interface LoggedUser {
+  id: string;
+  first_name: string;
+  last_name: string;
+  user_avatar: string;
+  role: string;
+}
 
 const HamburgerNav: React.FC = () => {
+  const [user, setUser] = useState<LoggedUser | null>(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const stored =
+      sessionStorage.getItem("user") || localStorage.getItem("user");
+
+    if (stored) {
+      setUser(JSON.parse(stored));
+    }
+  }, []);
+
+  function handleLogout() {
+    sessionStorage.removeItem("user");
+    localStorage.removeItem("user");
+    navigate("/");
+  }
+
   return (
     <>
       <label className="hamburger-menu">
@@ -10,15 +37,24 @@ const HamburgerNav: React.FC = () => {
       <div className="hidden-main-nav">
         <div className="hidden-main-nav-inner">
           <div className="hidden-main-nav-inner-top">
-            <img src="/images/avataaars.png" />
+            <img src={user?.user_avatar || "/images/avataaars.png"} />
+
             <div>
-              <p>User</p>
-              <p className="paragraph-smaller">Sign out</p>
+              <p>{user ? `${user.first_name} ${user.last_name}` : "Guest"}</p>
+
+              <p
+                className="paragraph-smaller sign-out-link"
+                onClick={handleLogout}
+              >
+                Sign out
+              </p>
             </div>
           </div>
 
           <div className="hidden-main-nav-inner-bottom">
-            <h4>Adress Book</h4>
+            <Link to="/user">
+              <h4>Adress Book</h4>
+            </Link>
           </div>
 
           <div className="hidden-main-nav-inner-bottom-button">
