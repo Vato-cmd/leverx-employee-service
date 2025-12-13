@@ -30,6 +30,15 @@ const SignIn: React.FC = () => {
   async function handleSignUp() {
     setSignUpError("");
 
+    const isValidEmail = (email: string) => {
+      return email.includes("@");
+    };
+
+    if (!isValidEmail(newEmail)) {
+      setSignUpError("Please enter a valid email address");
+      return;
+    }
+
     if (newPassword !== newPassword2) {
       setSignUpError("Passwords do not match");
       return;
@@ -71,6 +80,12 @@ const SignIn: React.FC = () => {
       setMissingEmail("fill in email");
       return;
     }
+
+    if (!email.includes("@")) {
+      setMissingEmail("email must contain @");
+      return;
+    }
+
     if (!password) {
       setMissingPassword("fill in password");
       return;
