@@ -340,6 +340,7 @@ const EmployeeSection: React.FC = () => {
 
           <div
             className={`
+                   employee-wrapper
                   ${
                     viewMode === "grid"
                       ? "employee-grid-wrapper"

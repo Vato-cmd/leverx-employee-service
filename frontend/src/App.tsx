@@ -20,13 +20,14 @@ export default function App() {
           <HamburgerNav />
         </>
       )}
-
-      <Routes>
-        <Route path="/" element={<SignIn />} />
-        <Route path="/user" element={<EmployeeSection />} />
-        <Route path="/user/:id" element={<UserPage />} />
-        <Route path="/permissions" element={<Permissions />} />
-      </Routes>
+      <div key={location.pathname} className="page-wrapper">
+        <Routes>
+          <Route path="/" element={<SignIn />} />
+          <Route path="/user" element={<EmployeeSection />} />
+          <Route path="/user/:id" element={<UserPage />} />
+          <Route path="/permissions" element={<Permissions />} />
+        </Routes>
+      </div>
     </>
   );
 }
