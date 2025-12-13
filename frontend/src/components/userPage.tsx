@@ -56,6 +56,8 @@ const UserPage = () => {
   const [original, setOriginal] = useState<any>({});
   const [isEditing, setIsEditing] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [managerInput, setManagerInput] = useState("");
+  const isManagerValid = managerInput.trim().split(" ").length >= 2;
 
   const loggedUser = getLoggedUser();
 
@@ -65,6 +67,7 @@ const UserPage = () => {
       .then((data) => {
         setUser(data);
         setForm(data);
+        setManagerInput(`${data.manager.first_name} ${data.manager.last_name}`);
       });
   }, [id]);
 
@@ -105,7 +108,14 @@ const UserPage = () => {
     }
 
     if (loggedUser?.role === "Admin") {
-      payload.manager_name = `${form.manager.first_name} ${form.manager.last_name}`;
+      const [first, ...rest] = managerInput.trim().split(" ");
+      const last = rest.join(" ");
+
+      if (!first || !last) {
+        alert("Manager name must be in format: FirstName LastName");
+        return;
+      }
+      payload.manager_name = `${first} ${last}`;
     }
 
     const res = await fetch(`http://localhost:3000/user/${user!.id}`, {
@@ -200,7 +210,11 @@ const UserPage = () => {
 
         {isEditing && (
           <div className="edit-controls">
-            <button className="save-btn" onClick={saveEditing}>
+            <button
+              className="save-btn"
+              onClick={saveEditing}
+              disabled={!isManagerValid}
+            >
               SAVE
             </button>
             <button className="cancel-btn" onClick={cancelEditing}>
@@ -282,19 +296,9 @@ const UserPage = () => {
               `${form.manager.first_name} ${form.manager.last_name}`
             ) : (
               <input
-                value={`${form.manager.first_name} ${form.manager.last_name}`}
-                onChange={(e) => {
-                  const [first, ...rest] = e.target.value.split(" ");
-                  const last = rest.join(" ");
-                  setForm({
-                    ...form,
-                    manager: {
-                      ...form.manager,
-                      first_name: first,
-                      last_name: last,
-                    },
-                  });
-                }}
+                value={managerInput}
+                onChange={(e) => setManagerInput(e.target.value)}
+                placeholder="FirstName LastName"
               />
             )}
           </div>
