@@ -247,8 +247,8 @@
   padding: 20px 40px;
 
   display: flex;
-  gap: 70px;
   align-items: flex-start;
+  gap: 70px;
 }
 
 .userpage-left {
@@ -313,7 +313,7 @@
   padding: 10px 0;
 
   img {
-    width: 20px;
+    width: $image-size;
     opacity: 0.8;
   }
 }
@@ -405,8 +405,8 @@
 
 .remote-work-logo2 img {
   display: flex;
-  width: 20px;
-  height: 20px;
+  width: $image-size;
+  height: $image-size;
 }
 
 .remote-work-logo-bg3 {
@@ -449,7 +449,7 @@
 
 .employee-grid-department img,
 .employee-grid-room img {
-  width: 20px;
+  width: $image-size;
 }
 
 .employee-wrapper {
