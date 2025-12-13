@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles.scss";
+import { useDispatch } from "react-redux";
+import { loginSuccess } from "../store/authSlice";
 
 const SignIn: React.FC = () => {
+  const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [remember, setRemember] = useState(false);
@@ -108,6 +111,8 @@ const SignIn: React.FC = () => {
       }
 
       setLoading(true);
+
+      dispatch(loginSuccess(data.user));
 
       if (remember) {
         localStorage.setItem("user", JSON.stringify(data.user));

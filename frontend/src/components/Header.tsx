@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "../store/store";
+import { logout } from "../store/authSlice";
 
 interface LoggedUser {
   id: string;
@@ -10,19 +13,14 @@ interface LoggedUser {
 }
 
 const Header: React.FC = () => {
-  const [user, setUser] = useState<LoggedUser | null>(null);
+  const user = useSelector((state: RootState) => state.auth.user);
+  const dispatch = useDispatch();
+
   const navigate = useNavigate();
   const location = useLocation();
 
-  useEffect(() => {
-    const stored =
-      sessionStorage.getItem("user") || localStorage.getItem("user");
-
-    if (stored) {
-      setUser(JSON.parse(stored));
-    }
-  }, []);
   function handleLogout() {
+    dispatch(logout());
     sessionStorage.removeItem("user");
     localStorage.removeItem("user");
     navigate("/");
