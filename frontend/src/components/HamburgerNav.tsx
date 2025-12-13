@@ -37,10 +37,10 @@ const HamburgerNav: React.FC = () => {
       <div className="hidden-main-nav">
         <div className="hidden-main-nav-inner">
           <div className="hidden-main-nav-inner-top">
-            <img src={user?.user_avatar || "/images/avataaars.png"} />
+            <img src={user?.user_avatar} />
 
             <div>
-              <p>{user ? `${user.first_name} ${user.last_name}` : "Guest"}</p>
+              <p>{user && `${user.first_name} ${user.last_name}`}</p>
 
               <p
                 className="paragraph-smaller sign-out-link"

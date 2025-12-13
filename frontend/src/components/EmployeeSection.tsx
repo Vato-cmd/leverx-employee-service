@@ -31,7 +31,6 @@ const EmployeeSection: React.FC = () => {
     try {
       const response = await fetch("http://localhost:3000/user");
       const employees: Employee[] = await response.json();
-
       setAllEmployees(employees);
       setFilteredEmployees(employees);
     } catch (err) {
@@ -59,7 +58,6 @@ const EmployeeSection: React.FC = () => {
         employeeFullName.includes(searchQuery)
       );
     });
-
     if (results.length === 0) {
       setShow404Error(true);
     } else {
@@ -70,7 +68,6 @@ const EmployeeSection: React.FC = () => {
 
   function handleAdvancedSearch(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-
     const formData = new FormData(event.currentTarget);
     const filters: Record<string, string> = {};
 
@@ -100,6 +97,7 @@ const EmployeeSection: React.FC = () => {
         }
 
         const employeeFieldValue = (employee as any)[fieldName];
+
         return (
           employeeFieldValue &&
           String(employeeFieldValue).toLowerCase().includes(fieldValue)
@@ -124,7 +122,7 @@ const EmployeeSection: React.FC = () => {
 
     formData.forEach((value) => {
       const cleanedValue = String(value).trim();
-      if (cleanedValue && !cleanedValue.startsWith("Select")) {
+      if (cleanedValue && !cleanedValue.startsWith("select")) {
         anyFieldHasValue = true;
       }
     });
@@ -362,79 +360,75 @@ const EmployeeSection: React.FC = () => {
                 </div>
               </div>
             ) : (
-              filteredEmployees.map(
-                (employee) => (
-                  console.log(employee),
-                  (
-                    <Link
-                      key={employee.id}
-                      className="employee-link"
-                      to={`/user/${employee.id}`}
-                    >
-                      <div
-                        key={employee.id}
-                        className={
-                          viewMode === "grid"
-                            ? "employee-grid-card"
-                            : "employee-list-card"
-                        }
-                      >
-                        {viewMode === "list" ? (
-                          <div className="employee-list-row">
-                            <div className="employee-list-photo">
-                              <img src={employee.user_avatar} alt="avatar" />
-                              {employee.isRemoteWork && (
-                                <div className="remote-work-logo-bg2 remote-work-logo2">
-                                  <img src="/images/icons8-remote-working-32.png" />
-                                </div>
-                              )}
+              filteredEmployees.map((employee) => (
+                <Link
+                  key={employee.id}
+                  className="employee-link"
+                  to={`/user/${employee.id}`}
+                >
+                  <div
+                    key={employee.id}
+                    className={
+                      viewMode === "grid"
+                        ? "employee-grid-card"
+                        : "employee-list-card"
+                    }
+                  >
+                    {viewMode === "list" ? (
+                      <div className="employee-list-row">
+                        <div className="employee-list-photo">
+                          <img src={employee.user_avatar} alt="avatar" />
+                          {employee.isRemoteWork && (
+                            <div className="remote-work-logo-bg2 remote-work-logo2">
+                              <img src="/images/icons8-remote-working-32.png" />
                             </div>
+                          )}
+                        </div>
 
-                            <div className="employee-list-name">
-                              {employee.first_name} {employee.last_name}
-                            </div>
+                        <div className="employee-list-name">
+                          {employee.first_name} {employee.last_name}
+                        </div>
 
-                            <div className="employee-list-department">
-                              <img src="/images/briefcase-svgrepo-com.svg" />
-                              {employee.department}
-                            </div>
+                        <div className="employee-list-department">
+                          <img src="/images/briefcase-svgrepo-com.svg" />
+                          {employee.department}
+                        </div>
 
-                            <div className="employee-list-room">
-                              <img src="/images/door-svgrepo-com.svg" />
-                              {employee.room}
-                            </div>
-                          </div>
-                        ) : (
-                          <div className="employee-grid-card-inner">
-                            <div className="isRemoteWork-inner">
-                              <img
-                                src={employee.user_avatar}
-                                className="employee-grid-photo"
-                              />
-                              {employee.isRemoteWork && (
-                                <div className="remote-work-logo-bg3 remote-work-logo3">
-                                  <img src="/images/icons8-remote-working-32.png" />
-                                </div>
-                              )}
-                            </div>
-
-                            <h3 className="employee-grid-name">
-                              {employee.first_name} {employee.last_name}
-                            </h3>
-
-                            <p className="employee-grid-department">
-                              {employee.department}
-                            </p>
-                            <p className="employee-grid-room">
-                              {employee.room}
-                            </p>
-                          </div>
-                        )}
+                        <div className="employee-list-room">
+                          <img src="/images/door-svgrepo-com.svg" />
+                          {employee.room}
+                        </div>
                       </div>
-                    </Link>
-                  )
-                )
-              )
+                    ) : (
+                      <div className="employee-grid-card-inner">
+                        <div className="isRemoteWork-inner">
+                          <img
+                            src={employee.user_avatar}
+                            className="employee-grid-photo"
+                          />
+                          {employee.isRemoteWork && (
+                            <div className="remote-work-logo-bg3 remote-work-logo3">
+                              <img src="/images/icons8-remote-working-32.png" />
+                            </div>
+                          )}
+                        </div>
+
+                        <h3 className="employee-grid-name">
+                          {employee.first_name} {employee.last_name}
+                        </h3>
+                        <p className="employee-grid-department">
+                          <img src="/images/briefcase-svgrepo-com.svg" />
+                          {employee.department}
+                        </p>
+                        <p className="employee-grid-room">
+                          <img src="/images/door-svgrepo-com.svg" />
+                          {employee.room}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                </Link>
+              ))
             )}
           </div>
         </section>

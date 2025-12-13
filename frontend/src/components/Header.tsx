@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 interface LoggedUser {
   id: string;
@@ -12,6 +12,7 @@ interface LoggedUser {
 const Header: React.FC = () => {
   const [user, setUser] = useState<LoggedUser | null>(null);
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const stored =
@@ -21,12 +22,14 @@ const Header: React.FC = () => {
       setUser(JSON.parse(stored));
     }
   }, []);
-
   function handleLogout() {
     sessionStorage.removeItem("user");
     localStorage.removeItem("user");
     navigate("/");
   }
+
+  const isAddressBook = location.pathname.startsWith("/user");
+  const isPermissions = location.pathname === "/permissions";
 
   return (
     <header>
@@ -39,14 +42,20 @@ const Header: React.FC = () => {
 
         <div className="header-button-container">
           <Link className="header-anchor" to="/user">
-            <div className="address header-active-page">
+            <div
+              className={`address ${isAddressBook ? "header-active-page" : ""}`}
+            >
               <p>Adress Book</p>
             </div>
           </Link>
 
           {user?.role === "Admin" && (
             <Link className="header-anchor" to="/permissions">
-              <div className="settings">
+              <div
+                className={`settings ${
+                  isPermissions ? "header-active-page" : ""
+                }`}
+              >
                 <p>Settings</p>
               </div>
             </Link>
@@ -62,10 +71,8 @@ const Header: React.FC = () => {
             className="button-with-avatar"
             onClick={() => navigate(`/user/${user?.id}`)}
           >
-            <img src={user?.user_avatar || "/images/avataaars.png"} />
-            <span>
-              {user ? `${user.first_name} ${user.last_name}` : "Guest"}
-            </span>
+            <img src={user?.user_avatar} />
+            <span>{user && `${user.first_name} ${user.last_name}`}</span>
           </button>
 
           <button className="button-with-power-logo" onClick={handleLogout}>

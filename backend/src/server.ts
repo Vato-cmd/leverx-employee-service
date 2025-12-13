@@ -14,7 +14,7 @@ app.get("/user", async (req: Request, res: Response) => {
 
 app.get("/user/:id", async (req: Request, res: Response) => {
   const data = await readDB();
-  const employee = data.employees.find((emp) => emp.id === req.params.id);
+  const employee = data.employees.find((employee) => employee.id === req.params.id);
 
   if (!employee) return res.status(404).json({ message: "User not found" });
 
@@ -30,12 +30,11 @@ app.post("/sign-in", async (req: Request, res: Response) => {
       .json({ message: "Email and password are required." });
 
   const data = await readDB();
-  const user = data.employees.find((u) => u.email === email);
+  const user = data.employees.find((user) => user.email === email);
 
   if (!user) return res.status(401).json({ message: "Invalid credentials." });
 
   const isMatch = await bcrypt.compare(password, user.password);
-
   if (!isMatch)
     return res.status(401).json({ message: "Invalid credentials." });
 
@@ -59,7 +58,7 @@ app.post("/sign-up", async (req: Request, res: Response) => {
     return res.status(400).json({ message: "All fields are required." });
 
   const data = await readDB();
-  const exists = data.employees.find((u) => u.email === email);
+  const exists = data.employees.find((user) => user.email === email);
 
   if (exists) return res.status(400).json({ message: "Email already exists." });
 
@@ -73,7 +72,7 @@ app.post("/sign-up", async (req: Request, res: Response) => {
     last_name,
     email,
     password: hashed,
-    user_avatar: "images/default-avatar.png",
+    user_avatar: "/images/default-avatar.png",
     isRemoteWork: false,
     department: "",
     room: "",
@@ -89,8 +88,8 @@ app.post("/sign-up", async (req: Request, res: Response) => {
   };
 
   data.employees.push(newUser);
-
   await writeDB(data);
+
   return res.status(201).json({ message: "Account created successfully" });
 });
 
@@ -99,7 +98,7 @@ app.patch("/user/:id", async (req: Request, res: Response) => {
   const updates = req.body;
 
   const data = await readDB();
-  const employee = data.employees.find((u) => u.id === id);
+  const employee = data.employees.find((user) => user.id === id);
 
   if (!employee) return res.status(404).json({ message: "User not found" });
 
@@ -110,21 +109,23 @@ app.patch("/user/:id", async (req: Request, res: Response) => {
     const cleaned = updates.date_birth.replace(/\s+/g, "");
     const [day, month, year] = cleaned.split("/");
     employee.date_birth = { day, month, year };
+    delete updates.date_birth;
   }
 
   if (updates.manager_name) {
-    const managerFullName = updates.manager_name.trim().toLowerCase();
-    const [first, last] = managerFullName.split(" ");
+    const raw = updates.manager_name.trim();
+    const [first, ...rest] = raw.split(" ");
+    const last = rest.join(" ");
 
     if (!first || !last)
       return res.status(400).json({
-        message: "Manager name must be: FirstName LastName",
+        message: "Manager name must be in format: FirstName LastName",
       });
 
     const newManager = data.employees.find(
-      (u) =>
-        u.first_name.toLowerCase() === first &&
-        u.last_name.toLowerCase() === last
+      (user) =>
+        user.first_name.toLowerCase() === first.toLowerCase() &&
+        user.last_name.toLowerCase() === last.toLowerCase()
     );
 
     if (!newManager)
@@ -140,32 +141,29 @@ app.patch("/user/:id", async (req: Request, res: Response) => {
   }
 
   for (const key in updates) {
-    if (
-      Object.prototype.hasOwnProperty.call(employee, key) &&
-      key !== "date_birth"
-    ) {
+    if (employee.hasOwnProperty(key)) {
       (employee as any)[key] = updates[key];
     }
   }
 
   if (oldRole === "HR" && newRole === "Employee") {
-    data.employees.forEach((u) => {
-      if (u.manager?.id === id) {
-        u.previous_manager_id = id;
-        u.manager = { id: "00", first_name: "No", last_name: "Manager" };
+    data.employees.forEach((user) => {
+      if (user.manager?.id === id) {
+        user.previous_manager_id = id;
+        user.manager = { id: "00", first_name: "No", last_name: "Manager" };
       }
     });
   }
 
   if (newRole === "HR" && oldRole === "Employee") {
-    data.employees.forEach((u) => {
-      if (u.previous_manager_id === id) {
-        u.manager = {
+    data.employees.forEach((user) => {
+      if (user.previous_manager_id === id) {
+        user.manager = {
           id,
           first_name: employee.first_name,
           last_name: employee.last_name,
         };
-        delete u.previous_manager_id;
+        delete user.previous_manager_id;
       }
     });
   }
@@ -174,4 +172,4 @@ app.patch("/user/:id", async (req: Request, res: Response) => {
   return res.json(employee);
 });
 
-app.listen(3000, () => console.log("Server running on port 3000"));
+app.listen(3000, () => console.log("Server running on http://localhost:3000"));

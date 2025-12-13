@@ -15,9 +15,9 @@
       "date_birth": {
         "day": "02",
         "month": "06",
-        "year": "1999"
+        "year": "1995"
       },
-      "desk_number": 21,
+      "desk_number": "22",
       "manager": {
         "id": "3",
         "first_name": "Lula",
@@ -50,15 +50,15 @@
       "building": "LeverX Dubai",
       "room": "502B",
       "date_birth": {
-        "day": "02",
-        "month": "11",
-        "year": "1988"
+        "day": "03",
+        "month": "05",
+        "year": "1990"
       },
-      "desk_number": 9,
+      "desk_number": "11",
       "manager": {
-        "id": "10",
-        "first_name": "Steve",
-        "last_name": "Cook"
+        "id": "3",
+        "first_name": "Lula",
+        "last_name": "Aguilar"
       },
       "phone": "+48777710222",
       "email": "andrew.savage@leverx.com",
@@ -298,7 +298,7 @@
     },
     {
       "id": "9",
-      "role": "HR",
+      "role": "Employee",
       "isRemoteWork": true,
       "password": "$2b$12$i7AIWw/dqH7ysbk6gRk2buwC7ae8nXkPs3k3cxlp6W9sJrZ9BCQGK",
       "middle_name": "U.",

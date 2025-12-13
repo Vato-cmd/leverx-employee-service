@@ -19,6 +19,7 @@ interface Visa {
 
 interface Employee {
   id: string;
+  role: string;
   isRemoteWork: boolean;
   first_name: string;
   middle_name: string;
@@ -78,7 +79,7 @@ const UserPage = () => {
   function handleCopy() {
     navigator.clipboard.writeText(window.location.href);
     setCopied(true);
-    setTimeout(() => setCopied(false), 800);
+    setTimeout(() => setCopied(false), 900);
   }
 
   function startEditing() {
@@ -92,14 +93,22 @@ const UserPage = () => {
   }
 
   async function saveEditing() {
-    const dateBirthString = `${form.date_birth.day}/${form.date_birth.month}/${form.date_birth.year}`;
-    if (!user) return;
-    const payload = {
-      ...form,
-      date_birth: dateBirthString,
-    };
+    let payload: any = {};
 
-    const res = await fetch(`http://localhost:3000/user/${user.id}`, {
+    const dateBirthString = `${form.date_birth.day}/${form.date_birth.month}/${form.date_birth.year}`;
+    payload.date_birth = dateBirthString;
+
+    for (const key in form) {
+      if (key !== "date_birth" && key !== "manager" && key !== "user_avatar") {
+        payload[key] = form[key];
+      }
+    }
+
+    if (loggedUser?.role === "Admin") {
+      payload.manager_name = `${form.manager.first_name} ${form.manager.last_name}`;
+    }
+
+    const res = await fetch(`http://localhost:3000/user/${user!.id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
@@ -130,6 +139,7 @@ const UserPage = () => {
       </div>
     </div>
   );
+  const isAdmin = loggedUser?.role === "Admin";
 
   return (
     <div className="user-details">
@@ -225,7 +235,10 @@ const UserPage = () => {
                   onChange={(e) =>
                     setForm({
                       ...form,
-                      date_birth: { ...form.date_birth, day: e.target.value },
+                      date_birth: {
+                        ...form.date_birth,
+                        day: e.target.value,
+                      },
                     })
                   }
                 />
@@ -234,7 +247,10 @@ const UserPage = () => {
                   onChange={(e) =>
                     setForm({
                       ...form,
-                      date_birth: { ...form.date_birth, month: e.target.value },
+                      date_birth: {
+                        ...form.date_birth,
+                        month: e.target.value,
+                      },
                     })
                   }
                 />
@@ -243,7 +259,10 @@ const UserPage = () => {
                   onChange={(e) =>
                     setForm({
                       ...form,
-                      date_birth: { ...form.date_birth, year: e.target.value },
+                      date_birth: {
+                        ...form.date_birth,
+                        year: e.target.value,
+                      },
                     })
                   }
                 />
@@ -259,14 +278,23 @@ const UserPage = () => {
           </div>
 
           <div className="info-right">
-            {!isEditing || loggedUser.role !== "Admin" ? (
+            {!isEditing || !isAdmin ? (
               `${form.manager.first_name} ${form.manager.last_name}`
             ) : (
               <input
                 value={`${form.manager.first_name} ${form.manager.last_name}`}
-                onChange={(e) =>
-                  setForm({ ...form, manager_name: e.target.value })
-                }
+                onChange={(e) => {
+                  const [first, ...rest] = e.target.value.split(" ");
+                  const last = rest.join(" ");
+                  setForm({
+                    ...form,
+                    manager: {
+                      ...form.manager,
+                      first_name: first,
+                      last_name: last,
+                    },
+                  });
+                }}
               />
             )}
           </div>
@@ -290,7 +318,6 @@ const UserPage = () => {
             <img src="/images/visa-svgrepo-com.svg" />
             <span>Visa 1</span>
           </div>
-
           <div className="info-right">
             {!isEditing ? (
               form.visa[0]?.type

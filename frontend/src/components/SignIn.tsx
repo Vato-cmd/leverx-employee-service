@@ -48,7 +48,6 @@ const SignIn: React.FC = () => {
       });
 
       const data = await res.json();
-      console.log(data);
 
       if (!res.ok) {
         setSignUpError(data.message || "Error");
@@ -170,7 +169,10 @@ const SignIn: React.FC = () => {
 
               <button onClick={handleSignIn}>
                 {loading ? (
-                  <div className="spinner"></div>
+                  <>
+                    <div className="spinner"></div>
+                    <span>Signing in...</span>
+                  </>
                 ) : (
                   <span>Click to sign in</span>
                 )}

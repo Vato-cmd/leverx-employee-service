@@ -66,6 +66,12 @@ button {
   }
 }
 
+.functional-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .functional-buttons button {
   border: none;
   cursor: pointer;
