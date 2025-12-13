@@ -1,32 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useNavigate, Link } from "react-router-dom";
-
-interface LoggedUser {
-  id: string;
-  first_name: string;
-  last_name: string;
-  user_avatar: string;
-  role: string;
-}
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "../store/store";
+import { logout } from "../store/authSlice";
 
 const HamburgerNav: React.FC = () => {
-  const [user, setUser] = useState<LoggedUser | null>(null);
+  const user = useSelector((state: RootState) => state.auth.user);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const stored =
-      sessionStorage.getItem("user") || localStorage.getItem("user");
-
-    if (stored) {
-      setUser(JSON.parse(stored));
-    }
-  }, []);
-
   function handleLogout() {
+    dispatch(logout());
     sessionStorage.removeItem("user");
     localStorage.removeItem("user");
     navigate("/");
   }
+
+  if (!user) return null;
 
   return (
     <>
@@ -37,10 +27,12 @@ const HamburgerNav: React.FC = () => {
       <div className="hidden-main-nav">
         <div className="hidden-main-nav-inner">
           <div className="hidden-main-nav-inner-top">
-            <img src={user?.user_avatar} />
+            <img src={user.user_avatar} alt="avatar" />
 
             <div>
-              <p>{user && `${user.first_name} ${user.last_name}`}</p>
+              <p>
+                {user.first_name} {user.last_name}
+              </p>
 
               <p
                 className="paragraph-smaller sign-out-link"
@@ -53,8 +45,14 @@ const HamburgerNav: React.FC = () => {
 
           <div className="hidden-main-nav-inner-bottom">
             <Link to="/user">
-              <h4>Adress Book</h4>
+              <h4>Address Book</h4>
             </Link>
+
+            {user.role === "Admin" && (
+              <Link to="/permissions">
+                <h4>Settings</h4>
+              </Link>
+            )}
           </div>
 
           <div className="hidden-main-nav-inner-bottom-button">
