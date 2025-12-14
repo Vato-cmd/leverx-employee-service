@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 
+import {
+  useGetUserByIdQuery,
+  useUpdateUserMutation,
+} from "../store/api/userApi";
+
 interface Manager {
   id: string;
   first_name: string;
@@ -17,28 +22,6 @@ interface Visa {
   type: string;
 }
 
-interface Employee {
-  id: string;
-  role: string;
-  isRemoteWork: boolean;
-  first_name: string;
-  middle_name: string;
-  last_name: string;
-  user_avatar: string;
-  department: string;
-  building: string;
-  room: string;
-  desk_number: number;
-  phone: string;
-  email: string;
-  viber: string;
-  cnumber: string;
-  citizenship: string;
-  date_birth: DateBirth;
-  visa: Visa[];
-  manager: Manager;
-}
-
 const getLoggedUser = () => {
   const raw = sessionStorage.getItem("user") || localStorage.getItem("user");
   if (!raw) return null;
@@ -50,34 +33,59 @@ const getLoggedUser = () => {
 };
 
 const UserPage = () => {
-  const { id } = useParams();
-  const [user, setUser] = useState<Employee | null>(null);
-  const [form, setForm] = useState<any>({});
-  const [original, setOriginal] = useState<any>({});
+  const { id } = useParams<{ id: string }>();
+
+  const {
+    data: user,
+    isLoading,
+    error,
+  } = useGetUserByIdQuery(id!, {
+    skip: !id,
+  });
+
+  const [updateUser] = useUpdateUserMutation();
+
+  const [form, setForm] = useState<any>({
+    date_birth: {
+      day: "",
+      month: "",
+      year: "",
+    },
+    manager: {
+      first_name: "",
+      last_name: "",
+    },
+    visa: [],
+  });
+
+  const [original, setOriginal] = useState<any>(null);
   const [isEditing, setIsEditing] = useState(false);
   const [copied, setCopied] = useState(false);
   const [managerInput, setManagerInput] = useState("");
-  const isManagerValid = managerInput.trim().split(" ").length >= 2;
 
   const loggedUser = getLoggedUser();
+  const isManagerValid = managerInput.trim().split(" ").length >= 2;
 
   useEffect(() => {
-    fetch(`http://localhost:3000/user/${id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setUser(data);
-        setForm(data);
-        setManagerInput(`${data.manager.first_name} ${data.manager.last_name}`);
-      });
-  }, [id]);
+    if (!user) return;
 
-  if (!user) return <p>Loading...</p>;
+    setForm(user);
+    setManagerInput(`${user.manager.first_name} ${user.manager.last_name}`);
+  }, [user]);
+
+  if (isLoading) return <p>Loading...</p>;
+  if (error) return <p>Failed to load user</p>;
+  if (!user) return <p>User not found</p>;
 
   const canEdit =
     loggedUser &&
     (loggedUser.role === "Admin" ||
       (loggedUser.role === "HR" &&
         user.manager?.id?.toString() === loggedUser.id?.toString()));
+
+  const isAdmin = loggedUser?.role === "Admin";
+  const isEditingOwnProfile =
+    loggedUser?.role === "Admin" && loggedUser?.id === user.id;
 
   function handleCopy() {
     navigator.clipboard.writeText(window.location.href);
@@ -86,20 +94,25 @@ const UserPage = () => {
   }
 
   function startEditing() {
-    setOriginal(form);
+    setOriginal(JSON.parse(JSON.stringify(form)));
     setIsEditing(true);
   }
 
   function cancelEditing() {
+    if (!original) return;
     setForm(original);
+    setManagerInput(
+      `${original.manager.first_name} ${original.manager.last_name}`
+    );
     setIsEditing(false);
   }
 
   async function saveEditing() {
-    let payload: any = {};
+    if (!user) return;
 
-    const dateBirthString = `${form.date_birth.day}/${form.date_birth.month}/${form.date_birth.year}`;
-    payload.date_birth = dateBirthString;
+    const payload: any = {};
+
+    payload.date_birth = `${form.date_birth.day}/${form.date_birth.month}/${form.date_birth.year}`;
 
     for (const key in form) {
       if (key !== "date_birth" && key !== "manager" && key !== "user_avatar") {
@@ -115,19 +128,20 @@ const UserPage = () => {
         alert("Manager name must be in format: FirstName LastName");
         return;
       }
+
       payload.manager_name = `${first} ${last}`;
     }
 
-    const res = await fetch(`http://localhost:3000/user/${user!.id}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    });
+    try {
+      await updateUser({
+        id: user.id,
+        payload,
+      }).unwrap();
 
-    const updated = await res.json();
-    setUser(updated);
-    setForm(updated);
-    setIsEditing(false);
+      setIsEditing(false);
+    } catch {
+      alert("Failed to update user");
+    }
   }
 
   const field = (label: string, icon: string, key: string) => (
@@ -149,9 +163,6 @@ const UserPage = () => {
       </div>
     </div>
   );
-  const isAdmin = loggedUser?.role === "Admin";
-  const isEditingOwnProfile =
-    loggedUser?.role === "Admin" && loggedUser?.id === user.id;
 
   return (
     <div className="user-details">
@@ -186,7 +197,7 @@ const UserPage = () => {
               onChange={(e) => setForm({ ...form, first_name: e.target.value })}
             />
             <input
-              value={form.middle_name}
+              value={form.middle_name || ""}
               onChange={(e) =>
                 setForm({ ...form, middle_name: e.target.value })
               }
@@ -333,7 +344,7 @@ const UserPage = () => {
                 onChange={(e) =>
                   setForm({
                     ...form,
-                    visa: [{ type: e.target.value }],
+                    visa: [{ ...(form.visa?.[0] || {}), type: e.target.value }],
                   })
                 }
               />
