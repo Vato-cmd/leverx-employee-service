@@ -41,6 +41,35 @@ const EmployeeSection: React.FC = () => {
 
   if (isLoading) return null;
 
+  function handleAdvancedSearch(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
+    const filters: Record<string, string> = {};
+
+    formData.forEach((value, key) => {
+      const v = String(value).trim().toLowerCase();
+      if (!v || v.startsWith("select")) return;
+      filters[key] = v;
+    });
+
+    if (!Object.keys(filters).length) return;
+
+    const results = employees.filter((employee) => {
+      const fullName =
+        `${employee.first_name} ${employee.last_name}`.toLowerCase();
+
+      return Object.entries(filters).every(([key, value]) => {
+        if (key === "name") return fullName.includes(value);
+        return String((employee as any)[key] || "")
+          .toLowerCase()
+          .includes(value);
+      });
+    });
+
+    setShow404Error(results.length === 0);
+  }
+
   return (
     <main>
       <aside>

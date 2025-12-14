@@ -1,35 +1,70 @@
-import { Link, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 
-const getLoggedUser = () => {
-  const raw = localStorage.getItem("user");
-  if (!raw) return null;
-  try {
-    return JSON.parse(raw);
-  } catch {
-    return null;
-  }
-};
+interface LoggedUser {
+  id: string;
+  first_name: string;
+  last_name: string;
+  user_avatar: string;
+  role: string;
+}
 
-const HamburgerNav = () => {
+const HamburgerNav: React.FC = () => {
+  const [user, setUser] = useState<LoggedUser | null>(null);
   const navigate = useNavigate();
-  const user = getLoggedUser();
 
-  function logout() {
+  useEffect(() => {
+    const stored =
+      sessionStorage.getItem("user") || localStorage.getItem("user");
+
+    if (stored) {
+      setUser(JSON.parse(stored));
+    }
+  }, []);
+
+  function handleLogout() {
+    sessionStorage.removeItem("user");
     localStorage.removeItem("user");
     navigate("/");
   }
 
   return (
-    <nav className="hamburger-nav">
-      <Link to="/user">Employees</Link>
-      <Link to="/permissions">Permissions</Link>
+    <>
+      <label className="hamburger-menu">
+        <input type="checkbox" />
+      </label>
 
-      {user && (
-        <button onClick={logout} className="logout-btn">
-          Logout
-        </button>
-      )}
-    </nav>
+      <div className="hidden-main-nav">
+        <div className="hidden-main-nav-inner">
+          <div className="hidden-main-nav-inner-top">
+            <img src={user?.user_avatar} />
+
+            <div>
+              <p>{user && `${user.first_name} ${user.last_name}`}</p>
+
+              <p
+                className="paragraph-smaller sign-out-link"
+                onClick={handleLogout}
+              >
+                Sign out
+              </p>
+            </div>
+          </div>
+
+          <div className="hidden-main-nav-inner-bottom">
+            <Link to="/user">
+              <h4>Adress Book</h4>
+            </Link>
+          </div>
+
+          <div className="hidden-main-nav-inner-bottom-button">
+            <button className="hidden-main-button">
+              <img src="/images/question-circle-svgrepo-com.svg" /> SUPPORT
+            </button>
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 
