@@ -1,5 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../store/store";
+import {
+  fetchEmployees,
+  setFilteredEmployees,
+  setViewMode,
+  resetEmployees,
+} from "../store/employeeSlice";
+import type { AppDispatch } from "../store/store";
 
 interface Employee {
   id: string;
@@ -16,33 +25,27 @@ interface Employee {
 }
 
 const EmployeeSection: React.FC = () => {
-  const [allEmployees, setAllEmployees] = useState<Employee[]>([]);
-  const [filteredEmployees, setFilteredEmployees] = useState<Employee[]>([]);
   const [basicSearchQuery, setBasicSearchQuery] = useState("");
-  const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [activeTab, setActiveTab] = useState<"basic" | "advanced">("basic");
   const [show404Error, setShow404Error] = useState(false);
 
-  useEffect(() => {
-    fetchEmployees();
-  }, []);
+  const dispatch = useDispatch<AppDispatch>();
 
-  async function fetchEmployees() {
-    try {
-      const response = await fetch("http://localhost:3000/user");
-      const employees: Employee[] = await response.json();
-      setAllEmployees(employees);
-      setFilteredEmployees(employees);
-    } catch (err) {
-      console.error("Failed to load employees:", err);
-    }
-  }
+  const { all, filtered, viewMode, loading } = useSelector(
+    (state: RootState) => state.employees
+  );
+  const allEmployees = all;
+  const filteredEmployees = filtered;
+
+  useEffect(() => {
+    dispatch(fetchEmployees());
+  }, [dispatch]);
 
   function handleBasicSearch() {
     const searchQuery = basicSearchQuery.trim().toLowerCase();
 
     if (!searchQuery) {
-      setFilteredEmployees(allEmployees);
+      dispatch(resetEmployees());
       setShow404Error(false);
       return;
     }
@@ -62,7 +65,7 @@ const EmployeeSection: React.FC = () => {
       setShow404Error(true);
     } else {
       setShow404Error(false);
-      setFilteredEmployees(results);
+      dispatch(setFilteredEmployees(results));
     }
   }
 
@@ -109,7 +112,7 @@ const EmployeeSection: React.FC = () => {
       setShow404Error(true);
     } else {
       setShow404Error(false);
-      setFilteredEmployees(results);
+      dispatch(setFilteredEmployees(results));
     }
   }
 
@@ -128,17 +131,17 @@ const EmployeeSection: React.FC = () => {
     });
 
     if (!anyFieldHasValue) {
-      setFilteredEmployees(allEmployees);
+      dispatch(setFilteredEmployees(allEmployees));
       setShow404Error(false);
     }
   }
 
   function switchToGrid() {
-    setViewMode("grid");
+    dispatch(setViewMode("grid"));
   }
 
   function switchToList() {
-    setViewMode("list");
+    dispatch(setViewMode("list"));
   }
 
   return (
@@ -175,7 +178,7 @@ const EmployeeSection: React.FC = () => {
                       setBasicSearchQuery(value);
 
                       if (value.trim() === "") {
-                        setFilteredEmployees(allEmployees);
+                        dispatch(setFilteredEmployees(allEmployees));
                         setShow404Error(false);
                       }
                     }}
