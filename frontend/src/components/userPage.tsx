@@ -150,6 +150,8 @@ const UserPage = () => {
     </div>
   );
   const isAdmin = loggedUser?.role === "Admin";
+  const isEditingOwnProfile =
+    loggedUser?.role === "Admin" && loggedUser?.id === user.id;
 
   return (
     <div className="user-details">
@@ -201,7 +203,7 @@ const UserPage = () => {
           {copied ? "Copied!" : "Copy link"}
         </button>
 
-        {canEdit && !isEditing && (
+        {canEdit && !isEditing && !isEditingOwnProfile && (
           <button className="edit-btn" onClick={startEditing}>
             <img src="/images/edit-svgrepo-com.svg" />
             EDIT
