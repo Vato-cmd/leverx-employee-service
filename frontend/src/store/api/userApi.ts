@@ -58,7 +58,13 @@ export const userApi = createApi({
       }),
       invalidatesTags: (result, error, { id }) => [{ type: "User", id }],
     }),
+
+    getUsers: builder.query<User[], void>({
+      query: () => "/user",
+      providesTags: ["User"],
+    }),
   }),
 });
 
-export const { useGetUserByIdQuery, useUpdateUserMutation } = userApi;
+export const { useGetUserByIdQuery, useUpdateUserMutation, useGetUsersQuery } =
+  userApi;

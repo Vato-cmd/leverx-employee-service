@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles.scss";
+import { useDispatch } from "react-redux";
+import { setCredentials } from "../store/authSlice";
+import { useSignInMutation, useSignUpMutation } from "../store/api/authApi";
 
 const SignIn: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -18,13 +21,19 @@ const SignIn: React.FC = () => {
   const [missingPassword, setMissingPassword] = useState("");
   const [invalidCredentials, setInvalidCredentials] = useState(false);
   const [signUpError, setSignUpError] = useState("");
-  const [loading, setLoading] = useState(false);
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const [signIn, { isLoading: isSigningIn }] = useSignInMutation();
+  const [signUp, { isLoading: isSigningUp }] = useSignUpMutation();
 
   function toggleForm() {
     setShowSignUp(!showSignUp);
     setMissingEmail("");
     setMissingPassword("");
     setInvalidCredentials(false);
+    setSignUpError("");
   }
 
   async function handleSignUp() {
@@ -36,31 +45,19 @@ const SignIn: React.FC = () => {
     }
 
     try {
-      const res = await fetch("http://localhost:3000/sign-up", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          first_name: firstName,
-          last_name: lastName,
-          email: newEmail,
-          password: newPassword,
-        }),
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        setSignUpError(data.message || "Error");
-        return;
-      }
+      await signUp({
+        first_name: firstName,
+        last_name: lastName,
+        email: newEmail,
+        password: newPassword,
+      }).unwrap();
 
       alert("Account created. Please sign in!");
       toggleForm();
-    } catch {
-      setSignUpError("Server error");
+    } catch (err: any) {
+      setSignUpError(err?.data?.message || "Server error");
     }
   }
-  const navigate = useNavigate();
 
   async function handleSignIn() {
     setMissingEmail("");
@@ -77,22 +74,7 @@ const SignIn: React.FC = () => {
     }
 
     try {
-      const res = await fetch("http://localhost:3000/sign-in", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        setInvalidCredentials(true);
-        setEmail("");
-        setPassword("");
-        return;
-      }
-
-      setLoading(true);
+      const data = await signIn({ email, password }).unwrap();
 
       if (remember) {
         localStorage.setItem("user", JSON.stringify(data.user));
@@ -100,12 +82,12 @@ const SignIn: React.FC = () => {
         sessionStorage.setItem("user", JSON.stringify(data.user));
       }
 
-      setTimeout(() => {
-        setLoading(false);
-        navigate("/user");
-      }, 1000);
+      dispatch(setCredentials(data.user));
+      navigate("/user");
     } catch {
-      alert("Server error");
+      setInvalidCredentials(true);
+      setEmail("");
+      setPassword("");
     }
   }
 
@@ -156,19 +138,17 @@ const SignIn: React.FC = () => {
                 />
               </div>
 
-              <div>
-                <label className="remember-me-label">
-                  <input
-                    type="checkbox"
-                    checked={remember}
-                    onChange={(e) => setRemember(e.target.checked)}
-                  />
-                  Remember me
-                </label>
-              </div>
+              <label className="remember-me-label">
+                <input
+                  type="checkbox"
+                  checked={remember}
+                  onChange={(e) => setRemember(e.target.checked)}
+                />
+                Remember me
+              </label>
 
               <button onClick={handleSignIn}>
-                {loading ? (
+                {isSigningIn ? (
                   <div className="spinner"></div>
                 ) : (
                   <span>Click to sign in</span>
@@ -217,7 +197,9 @@ const SignIn: React.FC = () => {
                 onChange={(e) => setNewPassword2(e.target.value)}
               />
 
-              <button onClick={handleSignUp}>Create Account</button>
+              <button onClick={handleSignUp}>
+                {isSigningUp ? "Creating..." : "Create Account"}
+              </button>
 
               {signUpError && (
                 <span className="hidden-message">{signUpError}</span>

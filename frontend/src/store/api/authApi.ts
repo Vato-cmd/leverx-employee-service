@@ -5,12 +5,27 @@ export interface SignInRequest {
   password: string;
 }
 
-export interface SignInResponse {
+export interface SignUpRequest {
+  first_name: string;
+  last_name: string;
+  email: string;
+  password: string;
+}
+
+export interface AuthUser {
   id: string;
   first_name: string;
   last_name: string;
   role: "Admin" | "HR" | "Employee";
   user_avatar: string;
+}
+
+export interface SignInResponse {
+  user: AuthUser;
+}
+
+export interface SignUpResponse {
+  message: string;
 }
 
 export const authApi = createApi({
@@ -26,7 +41,15 @@ export const authApi = createApi({
         body,
       }),
     }),
+
+    signUp: builder.mutation<SignUpResponse, SignUpRequest>({
+      query: (body) => ({
+        url: "/sign-up",
+        method: "POST",
+        body,
+      }),
+    }),
   }),
 });
 
-export const { useSignInMutation } = authApi;
+export const { useSignInMutation, useSignUpMutation } = authApi;
