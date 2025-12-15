@@ -18,6 +18,7 @@ export interface Visa {
 
 export interface User {
   id: string;
+  role: "Admin" | "HR" | "Employee";
   first_name: string;
   middle_name?: string;
   last_name: string;

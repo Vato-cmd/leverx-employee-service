@@ -1,30 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
-
-interface LoggedUser {
-  id: string;
-  first_name: string;
-  last_name: string;
-  user_avatar: string;
-  role: string;
-}
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "../store/store";
+import { logout } from "../store/authSlice";
 
 const HamburgerNav: React.FC = () => {
-  const [user, setUser] = useState<LoggedUser | null>(null);
+  const user = useSelector((state: RootState) => state.auth.user);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const stored =
-      sessionStorage.getItem("user") || localStorage.getItem("user");
-
-    if (stored) {
-      setUser(JSON.parse(stored));
-    }
-  }, []);
-
   function handleLogout() {
-    sessionStorage.removeItem("user");
-    localStorage.removeItem("user");
+    dispatch(logout());
     navigate("/");
   }
 

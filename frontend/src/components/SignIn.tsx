@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles.scss";
-import { useDispatch } from "react-redux";
-import { loginSuccess } from "../store/authSlice";
 
 const SignIn: React.FC = () => {
-  const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [remember, setRemember] = useState(false);
@@ -32,15 +29,6 @@ const SignIn: React.FC = () => {
 
   async function handleSignUp() {
     setSignUpError("");
-
-    const isValidEmail = (email: string) => {
-      return email.includes("@");
-    };
-
-    if (!isValidEmail(newEmail)) {
-      setSignUpError("Please enter a valid email address");
-      return;
-    }
 
     if (newPassword !== newPassword2) {
       setSignUpError("Passwords do not match");
@@ -83,12 +71,6 @@ const SignIn: React.FC = () => {
       setMissingEmail("fill in email");
       return;
     }
-
-    if (!email.includes("@")) {
-      setMissingEmail("email must contain @");
-      return;
-    }
-
     if (!password) {
       setMissingPassword("fill in password");
       return;
@@ -111,8 +93,6 @@ const SignIn: React.FC = () => {
       }
 
       setLoading(true);
-
-      dispatch(loginSuccess(data.user));
 
       if (remember) {
         localStorage.setItem("user", JSON.stringify(data.user));
@@ -189,10 +169,7 @@ const SignIn: React.FC = () => {
 
               <button onClick={handleSignIn}>
                 {loading ? (
-                  <>
-                    <div className="spinner"></div>
-                    <span>Signing in...</span>
-                  </>
+                  <div className="spinner"></div>
                 ) : (
                   <span>Click to sign in</span>
                 )}

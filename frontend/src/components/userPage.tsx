@@ -1,16 +1,11 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-
+import { useSelector } from "react-redux";
+import { RootState } from "../store/store";
 import {
   useGetUserByIdQuery,
   useUpdateUserMutation,
 } from "../store/api/userApi";
-
-interface Manager {
-  id: string;
-  first_name: string;
-  last_name: string;
-}
 
 interface DateBirth {
   day: string | number;
@@ -18,74 +13,70 @@ interface DateBirth {
   year: string | number;
 }
 
+interface Manager {
+  id: string;
+  first_name: string;
+  last_name: string;
+}
+
 interface Visa {
   type: string;
 }
 
-const getLoggedUser = () => {
-  const raw = sessionStorage.getItem("user") || localStorage.getItem("user");
-  if (!raw) return null;
-  try {
-    return JSON.parse(raw);
-  } catch {
-    return null;
-  }
-};
+interface Employee {
+  id: string;
+  role: string;
+  isRemoteWork: boolean;
+  first_name: string;
+  middle_name?: string;
+  last_name: string;
+  user_avatar: string;
+  department: string;
+  building: string;
+  room: string;
+  desk_number: number;
+  phone: string;
+  email: string;
+  viber: string;
+  cnumber: string;
+  citizenship: string;
+  date_birth: DateBirth;
+  visa: Visa[];
+  manager: Manager;
+}
 
 const UserPage = () => {
-  const { id } = useParams<{ id: string }>();
+  const { id } = useParams();
+  const loggedUser = useSelector((state: RootState) => state.auth.user);
 
-  const {
-    data: user,
-    isLoading,
-    error,
-  } = useGetUserByIdQuery(id!, {
-    skip: !id,
-  });
-
+  const { data: user, isLoading } = useGetUserByIdQuery(id!);
   const [updateUser] = useUpdateUserMutation();
 
-  const [form, setForm] = useState<any>({
-    date_birth: {
-      day: "",
-      month: "",
-      year: "",
-    },
-    manager: {
-      first_name: "",
-      last_name: "",
-    },
-    visa: [],
-  });
-
-  const [original, setOriginal] = useState<any>(null);
+  const [form, setForm] = useState<Employee | null>(null);
+  const [original, setOriginal] = useState<Employee | null>(null);
   const [isEditing, setIsEditing] = useState(false);
   const [copied, setCopied] = useState(false);
   const [managerInput, setManagerInput] = useState("");
 
-  const loggedUser = getLoggedUser();
   const isManagerValid = managerInput.trim().split(" ").length >= 2;
 
   useEffect(() => {
-    if (!user) return;
-
-    setForm(user);
-    setManagerInput(`${user.manager.first_name} ${user.manager.last_name}`);
+    if (user) {
+      setForm(user);
+      setManagerInput(`${user.manager.first_name} ${user.manager.last_name}`);
+    }
   }, [user]);
 
-  if (isLoading) return <p>Loading...</p>;
-  if (error) return <p>Failed to load user</p>;
-  if (!user) return <p>User not found</p>;
+  if (isLoading || !form) return <p>Loading...</p>;
+
+  const isAdmin = loggedUser?.role === "Admin";
+  const isEditingOwnProfile = isAdmin && loggedUser?.id === form.id;
 
   const canEdit =
     loggedUser &&
-    (loggedUser.role === "Admin" ||
+    (isAdmin ||
       (loggedUser.role === "HR" &&
-        user.manager?.id?.toString() === loggedUser.id?.toString()));
-
-  const isAdmin = loggedUser?.role === "Admin";
-  const isEditingOwnProfile =
-    loggedUser?.role === "Admin" && loggedUser?.id === user.id;
+        form.manager?.id?.toString() === loggedUser.id?.toString()));
 
   function handleCopy() {
     navigator.clipboard.writeText(window.location.href);
@@ -94,63 +85,48 @@ const UserPage = () => {
   }
 
   function startEditing() {
-    setOriginal(JSON.parse(JSON.stringify(form)));
+    setOriginal(form);
     setIsEditing(true);
   }
 
   function cancelEditing() {
-    if (!original) return;
-    setForm(original);
-    setManagerInput(
-      `${original.manager.first_name} ${original.manager.last_name}`
-    );
+    if (original) setForm(original);
     setIsEditing(false);
   }
 
   async function saveEditing() {
-    if (!user) return;
+    if (!form) return;
 
     const payload: any = {};
 
     payload.date_birth = `${form.date_birth.day}/${form.date_birth.month}/${form.date_birth.year}`;
 
-    for (const key in form) {
-      if (key !== "date_birth" && key !== "manager" && key !== "user_avatar") {
-        payload[key] = form[key];
+    Object.keys(form).forEach((key) => {
+      if (!["date_birth", "manager", "user_avatar"].includes(key)) {
+        payload[key] = (form as any)[key];
       }
-    }
+    });
 
-    if (loggedUser?.role === "Admin") {
+    if (isAdmin) {
       const [first, ...rest] = managerInput.trim().split(" ");
-      const last = rest.join(" ");
-
-      if (!first || !last) {
-        alert("Manager name must be in format: FirstName LastName");
-        return;
-      }
-
-      payload.manager_name = `${first} ${last}`;
+      payload.manager_name = `${first} ${rest.join(" ")}`;
     }
 
-    try {
-      await updateUser({
-        id: user.id,
-        payload,
-      }).unwrap();
+    const updated = await updateUser({
+      id: form.id,
+      payload,
+    }).unwrap();
 
-      setIsEditing(false);
-    } catch {
-      alert("Failed to update user");
-    }
+    setForm(updated);
+    setIsEditing(false);
   }
 
-  const field = (label: string, icon: string, key: string) => (
+  const field = (label: string, icon: string, key: keyof Employee) => (
     <div className="info-row">
       <div className="info-left">
         <img src={icon} />
         <span>{label}</span>
       </div>
-
       <div className="info-right">
         {!isEditing ? (
           (form as any)[key]
@@ -174,12 +150,12 @@ const UserPage = () => {
         </Link>
 
         <div className="remote-container-user">
-          {user.isRemoteWork && (
+          {form.isRemoteWork && (
             <div className="remote-work-logo-bg remote-work-logo">
               <img src="/images/icons8-remote-working-32.png" />
             </div>
           )}
-          <img className="user-avatar" src={user.user_avatar} />
+          <img className="user-avatar" src={form.user_avatar} />
         </div>
 
         <h2>
@@ -197,7 +173,7 @@ const UserPage = () => {
               onChange={(e) => setForm({ ...form, first_name: e.target.value })}
             />
             <input
-              value={form.middle_name || ""}
+              value={form.middle_name}
               onChange={(e) =>
                 setForm({ ...form, middle_name: e.target.value })
               }
@@ -251,7 +227,6 @@ const UserPage = () => {
             <img src="/images/date-range-svgrepo-com.svg" />
             <span>Date of birth</span>
           </div>
-
           <div className="info-right">
             {!isEditing ? (
               `${form.date_birth.day}/${form.date_birth.month}/${form.date_birth.year}`
@@ -303,7 +278,6 @@ const UserPage = () => {
             <img src="/images/user-svgrepo-com.svg" />
             <span>Manager</span>
           </div>
-
           <div className="info-right">
             {!isEditing || !isAdmin ? (
               `${form.manager.first_name} ${form.manager.last_name}`
@@ -344,7 +318,7 @@ const UserPage = () => {
                 onChange={(e) =>
                   setForm({
                     ...form,
-                    visa: [{ ...(form.visa?.[0] || {}), type: e.target.value }],
+                    visa: [{ type: e.target.value }],
                   })
                 }
               />

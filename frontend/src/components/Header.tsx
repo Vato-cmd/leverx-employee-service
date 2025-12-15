@@ -1,29 +1,22 @@
 import React from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-
-interface LoggedUser {
-  id: string;
-  first_name: string;
-  last_name: string;
-  user_avatar: string;
-  role: string;
-}
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "../store/store";
+import { logout } from "../store/authSlice";
 
 const Header: React.FC = () => {
+  const user = useSelector((state: RootState) => state.auth.user);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
 
-  const stored = sessionStorage.getItem("user") || localStorage.getItem("user");
-  const user: LoggedUser | null = stored ? JSON.parse(stored) : null;
-
-  function handleLogout() {
-    sessionStorage.removeItem("user");
-    localStorage.removeItem("user");
-    navigate("/");
-  }
-
   const isAddressBook = location.pathname.startsWith("/user");
   const isPermissions = location.pathname === "/permissions";
+
+  function handleLogout() {
+    dispatch(logout());
+    navigate("/");
+  }
 
   return (
     <header>
@@ -61,15 +54,13 @@ const Header: React.FC = () => {
             <img src="/images/question-circle-svgrepo-com.svg" /> SUPPORT
           </button>
 
-          {user && (
-            <button
-              className="button-with-avatar"
-              onClick={() => navigate(`/user/${user.id}`)}
-            >
-              <img src={user.user_avatar} />
-              <span>{`${user.first_name} ${user.last_name}`}</span>
-            </button>
-          )}
+          <button
+            className="button-with-avatar"
+            onClick={() => navigate(`/user/${user?.id}`)}
+          >
+            <img src={user?.user_avatar} />
+            <span>{user && `${user.first_name} ${user.last_name}`}</span>
+          </button>
 
           <button className="button-with-power-logo" onClick={handleLogout}>
             <img src="/images/power-off-svgrepo-com.svg" />

@@ -10,7 +10,6 @@ export interface SignInResponse {
   first_name: string;
   last_name: string;
   role: "Admin" | "HR" | "Employee";
-  email: string;
   user_avatar: string;
 }
 
