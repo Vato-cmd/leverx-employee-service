@@ -82,7 +82,7 @@ const Permissions: React.FC = () => {
 
               <div className="permissions-inner-flex">
                 <button
-                  disabled={user.role === "Admin"}
+                  disabled={user.id === loggedUser.id}
                   className={user.role === "Employee" ? "indicated" : ""}
                   onClick={() => changeRole(user.id, "Employee")}
                 >
@@ -90,7 +90,7 @@ const Permissions: React.FC = () => {
                 </button>
 
                 <button
-                  disabled={user.role === "Admin"}
+                  disabled={user.id === loggedUser.id}
                   className={user.role === "HR" ? "indicated" : ""}
                   onClick={() => changeRole(user.id, "HR")}
                 >

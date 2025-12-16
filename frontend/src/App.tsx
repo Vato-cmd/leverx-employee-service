@@ -8,7 +8,6 @@ import HamburgerNav from "./components/HamburgerNav";
 
 export default function App() {
   const location = useLocation();
-  console.log(location);
 
   const isSignInPage = location.pathname === "/";
 
