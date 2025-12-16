@@ -14,7 +14,9 @@ app.get("/user", async (req: Request, res: Response) => {
 
 app.get("/user/:id", async (req: Request, res: Response) => {
   const data = await readDB();
-  const employee = data.employees.find((employee) => employee.id === req.params.id);
+  const employee = data.employees.find(
+    (employee) => employee.id === req.params.id
+  );
 
   if (!employee) return res.status(404).json({ message: "User not found" });
 
@@ -172,4 +174,8 @@ app.patch("/user/:id", async (req: Request, res: Response) => {
   return res.json(employee);
 });
 
-app.listen(3000, () => console.log("Server running on http://localhost:3000"));
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
