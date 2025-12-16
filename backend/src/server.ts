@@ -4,7 +4,19 @@ import bcrypt from "bcrypt";
 import { readDB, writeDB, User } from "./db";
 
 const app = express();
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://leverx-employee-servc.netlify.app",
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
+  })
+);
+app.options("*", cors());
+
 app.use(express.json());
 
 app.get("/user", async (req: Request, res: Response) => {
