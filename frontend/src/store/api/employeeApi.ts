@@ -17,7 +17,7 @@ export interface Employee {
 export const employeeApi = createApi({
   reducerPath: "employeeApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:3000",
+    baseUrl: import.meta.env.VITE_API_URL,
   }),
   tagTypes: ["Employee"],
   endpoints: (builder) => ({

@@ -40,7 +40,7 @@ export interface User {
 
 export const userApi = createApi({
   reducerPath: "userApi",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3000" }),
+  baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_API_URL }),
   tagTypes: ["Users"],
   endpoints: (builder) => ({
     getUsers: builder.query<User[], void>({
