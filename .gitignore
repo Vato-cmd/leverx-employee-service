@@ -9,8 +9,11 @@ dist/
 frontend/dist/
 backend/dist/
 
+
 .env
 .env.local
+.env.production
+.env.*.local
 
 npm-debug.log*
 yarn-debug.log*
