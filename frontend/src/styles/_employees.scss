@@ -1,0 +1,99 @@
+.employee-list-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.employee-list-card {
+  background: white;
+  border-radius: 8px;
+  padding: 18px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.employee-grid-card-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.employee-list-card:hover {
+  transform: scale(1.05);
+}
+
+.employee-list-row {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 20px;
+}
+
+.employee-list-photo {
+  position: relative;
+}
+
+.employee-list-photo img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.employee-list-name {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.employee-list-department,
+.employee-list-room {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #666;
+}
+
+.employee-list-department img,
+.employee-list-room img {
+  width: 20px;
+}
+
+.employee-grid-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+.no-employee-grid-wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.employee-grid-card {
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  height: 300px;
+  transition: transform 0.4s ease;
+  cursor: pointer;
+}
+
+.employee-grid-card:hover {
+  transform: scale(1.07);
+}
+
+.employee-grid-photo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.employee-grid-name {
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: 600;
+}

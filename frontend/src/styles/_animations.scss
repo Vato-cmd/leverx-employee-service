@@ -1,0 +1,14 @@
+.page-wrapper {
+  animation: pageFadeSlide 0.8s ease;
+}
+
+@keyframes pageFadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

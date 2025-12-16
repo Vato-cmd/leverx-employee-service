@@ -224,7 +224,7 @@
     },
     {
       "id": "7",
-      "role": "HR",
+      "role": "Employee",
       "isRemoteWork": false,
       "password": "$2b$12$xuGK/txHGFd/82.SvLA/huOg4wRRhFI2z1ldyYoKrsDB7cog0rvOe",
       "middle_name": "D.",
@@ -261,7 +261,7 @@
     },
     {
       "id": "8",
-      "role": "Employee",
+      "role": "HR",
       "isRemoteWork": false,
       "password": "$2b$12$WPTt3XarjXeQHnlbbb014.uZYM.XXFzO36noJiHy1VTkxjLzYzs1m",
       "middle_name": "",

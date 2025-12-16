@@ -40,14 +40,16 @@ export interface User {
 
 export const userApi = createApi({
   reducerPath: "userApi",
-  baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:3000",
-  }),
-  tagTypes: ["User"],
+  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3000" }),
+  tagTypes: ["Users"],
   endpoints: (builder) => ({
+    getUsers: builder.query<User[], void>({
+      query: () => "/user",
+      providesTags: ["Users"],
+    }),
+
     getUserById: builder.query<User, string>({
       query: (id) => `/user/${id}`,
-      providesTags: (result, error, id) => [{ type: "User", id }],
     }),
 
     updateUser: builder.mutation<User, { id: string; payload: Partial<User> }>({
@@ -56,12 +58,7 @@ export const userApi = createApi({
         method: "PATCH",
         body: payload,
       }),
-      invalidatesTags: (result, error, { id }) => [{ type: "User", id }],
-    }),
-
-    getUsers: builder.query<User[], void>({
-      query: () => "/user",
-      providesTags: ["User"],
+      invalidatesTags: ["Users"],
     }),
   }),
 });
