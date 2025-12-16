@@ -20,13 +20,14 @@
     width: 100%;
     margin: 0 auto;
   }
-  .container-of-user-info hr {
+  .user-details .container-of-user-info hr {
     width: 100%;
   }
+
   .info-row {
     justify-content: space-between;
   }
-  .info-right {
+  .info-row .info-right {
     margin: 0;
   }
   .button-section {
@@ -53,7 +54,31 @@
   }
 }
 
+@media (width <= 800px) {
+  .permissions-container-inner p {
+    display: none;
+  }
+
+  .permissions-inner-flex {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
 @media (width <= 600px) {
+  .permissions-user-layout-inner {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .permissions-inner-flex {
+    display: flex;
+    flex-direction: row;
+    gap: $gap-for-all;
+    margin: $margin-default;
+    justify-content: start;
+  }
+
   .tabs {
     display: none;
   }
