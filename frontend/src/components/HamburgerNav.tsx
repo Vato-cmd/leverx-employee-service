@@ -43,6 +43,14 @@ const HamburgerNav: React.FC = () => {
             </Link>
           </div>
 
+          {user?.role === "Admin" ? (
+            <div className="hidden-main-nav-inner-bottom">
+              <Link to="/permissions">
+                <h4>Settings</h4>
+              </Link>
+            </div>
+          ) : null}
+
           <div className="hidden-main-nav-inner-bottom-button">
             <button className="hidden-main-button">
               <img src="/images/question-circle-svgrepo-com.svg" /> SUPPORT
