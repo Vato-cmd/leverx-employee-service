@@ -21,6 +21,7 @@ const EmployeeSection: React.FC = () => {
 
   const [filteredEmployees, setFilteredEmployees] = useState<Employee[]>([]);
   const [basicSearchQuery, setBasicSearchQuery] = useState("");
+
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [activeTab, setActiveTab] = useState<"basic" | "advanced">("basic");
   const [show404Error, setShow404Error] = useState(false);
@@ -113,8 +114,13 @@ const EmployeeSection: React.FC = () => {
     let anyFieldHasValue = false;
 
     formData.forEach((value) => {
-      const cleanedValue = String(value).trim();
-      if (cleanedValue && !cleanedValue.startsWith("select")) {
+      const cleanedValue = String(value).trim().toLowerCase();
+
+      if (
+        cleanedValue &&
+        cleanedValue !== "select building" &&
+        cleanedValue !== "select a department"
+      ) {
         anyFieldHasValue = true;
       }
     });
