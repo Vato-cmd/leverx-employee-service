@@ -8,9 +8,9 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://leverx-employee-service.netlify.app",
+      "https://courageous-froyo-f127c9.netlify.app",
     ],
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
   })
