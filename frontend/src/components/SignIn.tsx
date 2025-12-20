@@ -213,7 +213,15 @@ const SignIn: React.FC = () => {
             </div>
           )}
 
-          <p className="toggle" onClick={toggleForm}>
+          <p
+            className="toggle"
+            onClick={!isSigningIn && !isSigningUp ? toggleForm : undefined}
+            style={{
+              pointerEvents: isSigningIn || isSigningUp ? "none" : "auto",
+              opacity: isSigningIn || isSigningUp ? 0.5 : 1,
+              cursor: isSigningIn || isSigningUp ? "not-allowed" : "pointer",
+            }}
+          >
             {showSignUp
               ? "Already have an account? Sign in"
               : "Don’t have an account? Sign up"}
