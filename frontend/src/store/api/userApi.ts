@@ -41,7 +41,7 @@ export interface User {
 export const userApi = createApi({
   reducerPath: "userApi",
   baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_API_URL }),
-  tagTypes: ["Users"],
+  tagTypes: ["Users", "User"],
   endpoints: (builder) => ({
     getUsers: builder.query<User[], void>({
       query: () => "/user",
@@ -50,15 +50,27 @@ export const userApi = createApi({
 
     getUserById: builder.query<User, string>({
       query: (id) => `/user/${id}`,
+      providesTags: (result, error, id) => [{ type: "User", id }],
     }),
 
+    // updateUser: builder.mutation<User, { id: string; payload: Partial<User> }>({
+    //   query: ({ id, payload }) => ({
+    //     url: `/user/${id}`,
+    //     method: "PATCH",
+    //     body: payload,
+    //   }),
+    //   invalidatesTags: (result, error, { id }) => [{ type: "User", id }],
+    // }),
     updateUser: builder.mutation<User, { id: string; payload: Partial<User> }>({
       query: ({ id, payload }) => ({
         url: `/user/${id}`,
         method: "PATCH",
         body: payload,
       }),
-      invalidatesTags: ["Users"],
+      invalidatesTags: (result, error, { id }) => [
+        { type: "User", id },
+        "Users",
+      ],
     }),
   }),
 });
