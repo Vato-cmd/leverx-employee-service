@@ -149,7 +149,10 @@ const SignIn: React.FC = () => {
 
               <button onClick={handleSignIn}>
                 {isSigningIn ? (
-                  <div className="spinner"></div>
+                  <>
+                    <div className="spinner"></div>
+                    <span>Signing in...</span>
+                  </>
                 ) : (
                   <span>Click to sign in</span>
                 )}
