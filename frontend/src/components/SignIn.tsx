@@ -145,6 +145,7 @@ const SignIn: React.FC = () => {
                   type="checkbox"
                   checked={remember}
                   onChange={(e) => setRemember(e.target.checked)}
+                  disabled={isSigningIn}
                 />
                 Remember me
               </label>
@@ -174,12 +175,14 @@ const SignIn: React.FC = () => {
               <input
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
+                disabled={isSigningIn}
               />
 
               <label>Last Name</label>
               <input
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
+                disabled={isSigningIn}
               />
 
               <label>Email</label>
@@ -187,6 +190,7 @@ const SignIn: React.FC = () => {
                 type="email"
                 value={newEmail}
                 onChange={(e) => setNewEmail(e.target.value)}
+                disabled={isSigningIn}
               />
 
               <label>Password</label>
@@ -194,6 +198,7 @@ const SignIn: React.FC = () => {
                 type="password"
                 value={newPassword}
                 onChange={(e) => setNewPassword(e.target.value)}
+                disabled={isSigningIn}
               />
 
               <label>Confirm Password</label>
@@ -201,6 +206,7 @@ const SignIn: React.FC = () => {
                 type="password"
                 value={newPassword2}
                 onChange={(e) => setNewPassword2(e.target.value)}
+                disabled={isSigningIn}
               />
 
               <button onClick={handleSignUp}>
