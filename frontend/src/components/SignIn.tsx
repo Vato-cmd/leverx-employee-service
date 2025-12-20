@@ -116,6 +116,7 @@ const SignIn: React.FC = () => {
                   placeholder="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  disabled={isSigningIn}
                 />
               </div>
 
@@ -135,6 +136,7 @@ const SignIn: React.FC = () => {
                   placeholder="******"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                  disabled={isSigningIn}
                 />
               </div>
 
@@ -182,6 +184,7 @@ const SignIn: React.FC = () => {
 
               <label>Email</label>
               <input
+                type="email"
                 value={newEmail}
                 onChange={(e) => setNewEmail(e.target.value)}
               />
