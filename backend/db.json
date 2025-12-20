@@ -9,7 +9,7 @@
       "user_avatar": "/images/Avatars9.png",
       "first_name": "Brendan",
       "last_name": "Krueger",
-      "department": "Human Resources",
+      "department": "Human Resources (HR)",
       "building": "LeverX HQ – Poland",
       "room": "1406",
       "date_birth": {
@@ -19,9 +19,9 @@
       },
       "desk_number": "22",
       "manager": {
-        "id": "3",
-        "first_name": "Lula",
-        "last_name": "Aguilar"
+        "id": "2",
+        "first_name": "Andrew",
+        "last_name": "Savage"
       },
       "phone": "+48123456701",
       "email": "brendan.krueger@leverx.com",

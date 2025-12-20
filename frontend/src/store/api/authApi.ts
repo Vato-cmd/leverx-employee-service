@@ -33,6 +33,7 @@ export const authApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: import.meta.env.VITE_API_URL,
   }),
+  tagTypes: ["Users"],
   endpoints: (builder) => ({
     signIn: builder.mutation<SignInResponse, SignInRequest>({
       query: (body) => ({
@@ -40,6 +41,7 @@ export const authApi = createApi({
         method: "POST",
         body,
       }),
+      invalidatesTags: ["Users"],
     }),
 
     signUp: builder.mutation<SignUpResponse, SignUpRequest>({
@@ -48,6 +50,7 @@ export const authApi = createApi({
         method: "POST",
         body,
       }),
+      invalidatesTags: ["Users"],
     }),
   }),
 });
