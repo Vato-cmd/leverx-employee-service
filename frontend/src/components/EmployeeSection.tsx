@@ -17,7 +17,13 @@ interface Employee {
 }
 
 const EmployeeSection: React.FC = () => {
-  const { data: employees = [], isLoading, isError } = useGetEmployeesQuery();
+  const {
+    data: employees = [],
+    isLoading,
+    isError,
+  } = useGetEmployeesQuery(undefined, {
+    refetchOnMountOrArgChange: true,
+  });
 
   const [filteredEmployees, setFilteredEmployees] = useState<Employee[]>([]);
   const [basicSearchQuery, setBasicSearchQuery] = useState("");
