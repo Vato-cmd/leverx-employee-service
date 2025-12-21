@@ -18,6 +18,10 @@ app.use(
 
 app.use(express.json());
 
+app.get("/health", (req, res) => {
+  res.status(200).send("ok");
+});
+
 app.get("/user", async (req: Request, res: Response) => {
   const data = await readDB();
   res.json(data.employees);

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles.scss";
 import { useDispatch } from "react-redux";
@@ -27,6 +27,10 @@ const SignIn: React.FC = () => {
 
   const [signIn, { isLoading: isSigningIn }] = useSignInMutation();
   const [signUp, { isLoading: isSigningUp }] = useSignUpMutation();
+
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_URL}/health`).catch(() => {});
+  }, []);
 
   function toggleForm() {
     setShowSignUp(!showSignUp);
