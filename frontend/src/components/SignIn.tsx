@@ -154,6 +154,15 @@ const SignIn: React.FC = () => {
                 Remember me
               </label>
 
+              {isSigningIn && (
+                <div className="reviewer-note">
+                  <p>
+                    <strong>Note:</strong> The backend server may be in sleep
+                    mode. Signing in may take a few seconds. Please wait.
+                  </p>
+                </div>
+              )}
+
               <button onClick={handleSignIn}>
                 {isSigningIn ? (
                   <>
