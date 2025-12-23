@@ -23,6 +23,7 @@ header {
 
   .header-button-container {
     @include flex-center;
+    height: 100%;
     gap: $margin-default;
   }
   .header-button-container img {
