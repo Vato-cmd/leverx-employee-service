@@ -62,6 +62,15 @@ header {
   border-radius: 2px;
 }
 
+.header-anchor::after {
+  transform: scaleX(0);
+  transition: transform 0.25s ease;
+}
+
+.header-anchor.header-active-page::after {
+  transform: scaleX(1);
+}
+
 .admin {
   @include flex-center-only;
   gap: 8px;
