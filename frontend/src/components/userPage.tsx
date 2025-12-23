@@ -45,7 +45,7 @@ interface Employee {
   manager: Manager;
 }
 
-const blueFields: (keyof Employee)[] = ["phone", "email", "viber", "cnumber"];
+const blueFields: (keyof Employee)[] = ["phone", "email", "viber"];
 
 const UserPage = () => {
   const { id } = useParams();
