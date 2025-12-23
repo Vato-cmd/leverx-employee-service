@@ -136,6 +136,7 @@ const UserPage = () => {
           (form as any)[key]
         ) : (
           <input
+            className="inline-edit-input"
             value={(form as any)[key] || ""}
             onChange={(e) => setForm({ ...form, [key]: e.target.value })}
           />
@@ -173,16 +174,19 @@ const UserPage = () => {
         ) : (
           <p className="edit-name-fields">
             <input
+              className="inline-edit-input"
               value={form.first_name}
               onChange={(e) => setForm({ ...form, first_name: e.target.value })}
             />
             <input
+              className="inline-edit-input"
               value={form.middle_name}
               onChange={(e) =>
                 setForm({ ...form, middle_name: e.target.value })
               }
             />
             <input
+              className="inline-edit-input"
               value={form.last_name}
               onChange={(e) => setForm({ ...form, last_name: e.target.value })}
             />
@@ -237,6 +241,7 @@ const UserPage = () => {
             ) : (
               <div className="dob-edit">
                 <input
+                  className="inline-edit-input"
                   value={form.date_birth.day}
                   onChange={(e) =>
                     setForm({
@@ -249,6 +254,7 @@ const UserPage = () => {
                   }
                 />
                 <input
+                  className="inline-edit-input"
                   value={form.date_birth.month}
                   onChange={(e) =>
                     setForm({
@@ -261,6 +267,7 @@ const UserPage = () => {
                   }
                 />
                 <input
+                  className="inline-edit-input"
                   value={form.date_birth.year}
                   onChange={(e) =>
                     setForm({
@@ -292,6 +299,7 @@ const UserPage = () => {
               </Link>
             ) : (
               <input
+                className="inline-edit-input"
                 value={managerInput}
                 onChange={(e) => setManagerInput(e.target.value)}
                 placeholder="FirstName LastName"
@@ -323,6 +331,7 @@ const UserPage = () => {
               form.visa[0]?.type
             ) : (
               <input
+                className="inline-edit-input"
                 value={form.visa[0]?.type || ""}
                 onChange={(e) =>
                   setForm({

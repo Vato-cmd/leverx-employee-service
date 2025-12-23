@@ -177,3 +177,21 @@
     text-decoration: underline;
   }
 }
+
+.inline-edit-input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px dashed #cfd6e0;
+  padding: 2px 4px;
+  font-size: inherit;
+  font-family: inherit;
+  color: inherit;
+  width: 100%;
+  transition: border-color 0.25s ease, background-color 0.25s ease;
+
+  &:focus {
+    outline: none;
+    border-bottom: 2px solid #5591ff;
+    background-color: rgba(85, 145, 255, 0.06);
+  }
+}
