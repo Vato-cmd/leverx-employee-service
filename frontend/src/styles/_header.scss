@@ -9,6 +9,7 @@ header {
     top: 0;
     width: 100%;
     z-index: 40;
+    position: relative;
   }
 
   .header-logo-span {
@@ -44,7 +45,6 @@ header {
   text-decoration: none;
   color: white;
   opacity: 0.9;
-  position: relative;
   display: flex;
   align-items: center;
   height: 100%;
