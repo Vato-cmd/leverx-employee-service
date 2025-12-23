@@ -28,23 +28,23 @@ const Header: React.FC = () => {
         </Link>
 
         <div className="header-button-container">
-          <Link className="header-anchor" to="/user">
-            <div
-              className={`address ${isAddressBook ? "header-active-page" : ""}`}
-            >
-              <p>Adress Book</p>
-            </div>
+          <Link
+            className={`header-anchor ${
+              isAddressBook ? "header-active-page" : ""
+            }`}
+            to="/user"
+          >
+            <p>Address Book</p>
           </Link>
 
           {user?.role === "Admin" && (
-            <Link className="header-anchor" to="/permissions">
-              <div
-                className={`settings ${
-                  isPermissions ? "header-active-page" : ""
-                }`}
-              >
-                <p>Settings</p>
-              </div>
+            <Link
+              className={`header-anchor ${
+                isPermissions ? "header-active-page" : ""
+              }`}
+              to="/permissions"
+            >
+              <p>Settings</p>
             </Link>
           )}
         </div>
