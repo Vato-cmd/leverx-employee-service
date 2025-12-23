@@ -141,7 +141,6 @@
 .tabs {
   display: flex;
   justify-content: center;
-  position: relative;
   gap: 40px;
   margin-bottom: $margin-default;
   padding: 15px;
@@ -162,7 +161,6 @@
 
 .tab {
   cursor: pointer;
-  position: relative;
   padding-bottom: 5px;
   font-weight: bold;
   color: #b3b3b3;
@@ -174,7 +172,7 @@
   content: "";
   position: absolute;
   left: 0;
-  bottom: -2px;
+  top: 0;
   width: 100%;
   height: 3px;
   background-color: $btn-blue;
