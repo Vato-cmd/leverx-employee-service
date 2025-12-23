@@ -141,6 +141,7 @@
 .tabs {
   display: flex;
   justify-content: center;
+  position: relative;
   gap: 40px;
   margin-bottom: $margin-default;
   padding: 15px;
@@ -153,14 +154,14 @@
   padding-bottom: $padding-default;
 }
 
-// .tabs .active {
-//   color: #2b2a2a;
-//   border-bottom: 2px solid $btn-blue;
-//   opacity: 0.9;
-// }
+.tabs .active {
+  color: #2b2a2a;
+  opacity: 0.9;
+}
 
 .tab {
   cursor: pointer;
+  position: relative;
   padding-bottom: 5px;
   font-weight: bold;
   color: #b3b3b3;
