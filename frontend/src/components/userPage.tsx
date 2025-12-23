@@ -45,6 +45,8 @@ interface Employee {
   manager: Manager;
 }
 
+const blueFields: (keyof Employee)[] = ["phone", "email", "viber", "cnumber"];
+
 const UserPage = () => {
   const { id } = useParams();
   const loggedUser = useSelector((state: RootState) => state.auth.user);
@@ -127,7 +129,9 @@ const UserPage = () => {
         <img src={icon} />
         <span>{label}</span>
       </div>
-      <div className="info-right">
+      <div
+        className={`info-right ${blueFields.includes(key) ? "blue-text" : ""}`}
+      >
         {!isEditing ? (
           (form as any)[key]
         ) : (
@@ -280,7 +284,12 @@ const UserPage = () => {
           </div>
           <div className="info-right">
             {!isEditing || !isAdmin ? (
-              `${form.manager.first_name} ${form.manager.last_name}`
+              <Link
+                to={`/user/${form.manager.id}`}
+                className="blue-text manager-link"
+              >
+                {form.manager.first_name} {form.manager.last_name}
+              </Link>
             ) : (
               <input
                 value={managerInput}

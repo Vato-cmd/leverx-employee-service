@@ -164,3 +164,16 @@
     margin: 0;
   }
 }
+
+.blue-text {
+  color: #5591ff;
+}
+
+.manager-link {
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
