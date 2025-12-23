@@ -22,7 +22,7 @@ header {
   // }
 
   .header-button-container {
-    @include flex-center;
+    // @include flex-center;
     gap: $margin-default;
   }
   .header-button-container img {
