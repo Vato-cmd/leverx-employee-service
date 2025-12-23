@@ -195,3 +195,26 @@
     background-color: rgba(32, 96, 216, 0.06);
   }
 }
+
+.dob-edit {
+  display: flex;
+  gap: 8px;
+}
+
+.dob-edit input {
+  width: 60px;
+  text-align: center;
+  background-color: #f8fafc;
+  border: 1px solid #d0d7e2;
+  border-radius: 6px;
+  padding: 6px;
+  font-size: 14px;
+  transition: all 0.2s ease;
+
+  &:focus {
+    outline: none;
+    border-color: #5591ff;
+    background-color: white;
+    box-shadow: 0 0 0 2px rgba(85, 145, 255, 0.15);
+  }
+}
