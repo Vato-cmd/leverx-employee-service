@@ -287,3 +287,14 @@
   transition: grid-template-columns 1000ms ease, gap 1000ms ease,
     opacity 1000ms ease;
 }
+
+.fade-container {
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.fade-container.show {
+  opacity: 1;
+  transform: translateY(0);
+}

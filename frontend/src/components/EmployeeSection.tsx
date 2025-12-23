@@ -177,110 +177,120 @@ const EmployeeSection: React.FC = () => {
                 ADVANCED SEARCH
               </button>
             </div>
+            <div
+              className={`fade-container ${
+                activeTab === "basic" ? "show" : ""
+              }`}
+            >
+              {activeTab === "basic" && (
+                <div className="basic-content">
+                  <div className="content-inside">
+                    <input
+                      type="text"
+                      className="search-input"
+                      placeholder="John Smith"
+                      value={basicSearchQuery}
+                      onChange={(e) => {
+                        const value = e.target.value;
+                        setBasicSearchQuery(value);
 
-            {activeTab === "basic" && (
-              <div className="basic-content">
-                <div className="content-inside">
-                  <input
-                    type="text"
-                    className="search-input"
-                    placeholder="John Smith"
-                    value={basicSearchQuery}
-                    onChange={(e) => {
-                      const value = e.target.value;
-                      setBasicSearchQuery(value);
+                        if (value.trim() === "") {
+                          setFilteredEmployees(employees);
+                          setShow404Error(false);
+                        }
+                      }}
+                    />
 
-                      if (value.trim() === "") {
-                        setFilteredEmployees(employees);
-                        setShow404Error(false);
-                      }
-                    }}
-                  />
-
-                  <button className="search-btn" onClick={handleBasicSearch}>
-                    SEARCH
-                  </button>
+                    <button className="search-btn" onClick={handleBasicSearch}>
+                      SEARCH
+                    </button>
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
+            </div>
+            <div
+              className={`fade-container ${
+                activeTab === "advanced" ? "show" : ""
+              }`}
+            >
+              {activeTab === "advanced" && (
+                <div className="advanced-content">
+                  <form className="form" onSubmit={handleAdvancedSearch}>
+                    <label>Name</label>
+                    <input
+                      name="name"
+                      type="text"
+                      placeholder="John Smith"
+                      onChange={handleAdvancedReset}
+                    />
 
-            {activeTab === "advanced" && (
-              <div className="advanced-content">
-                <form className="form" onSubmit={handleAdvancedSearch}>
-                  <label>Name</label>
-                  <input
-                    name="name"
-                    type="text"
-                    placeholder="John Smith"
-                    onChange={handleAdvancedReset}
-                  />
+                    <label>Email</label>
+                    <input
+                      name="email"
+                      type="text"
+                      placeholder="john.smith@leverx.com"
+                      onChange={handleAdvancedReset}
+                    />
 
-                  <label>Email</label>
-                  <input
-                    name="email"
-                    type="text"
-                    placeholder="john.smith@leverx.com"
-                    onChange={handleAdvancedReset}
-                  />
+                    <div className="additional-info">
+                      <div>
+                        <label>Phone</label>
+                        <input
+                          name="phone"
+                          type="text"
+                          placeholder="Phone number"
+                          onChange={handleAdvancedReset}
+                        />
+                      </div>
 
-                  <div className="additional-info">
-                    <div>
-                      <label>Phone</label>
-                      <input
-                        name="phone"
-                        type="text"
-                        placeholder="Phone number"
-                        onChange={handleAdvancedReset}
-                      />
+                      <div>
+                        <label>Viber</label>
+                        <input
+                          name="viber"
+                          type="text"
+                          placeholder="ViberId"
+                          onChange={handleAdvancedReset}
+                        />
+                      </div>
                     </div>
 
-                    <div>
-                      <label>Viber</label>
-                      <input
-                        name="viber"
-                        type="text"
-                        placeholder="ViberId"
-                        onChange={handleAdvancedReset}
-                      />
+                    <div className="additional-info">
+                      <div>
+                        <label>Building</label>
+                        <select name="building" onChange={handleAdvancedReset}>
+                          <option>Select building</option>
+                          <option>LeverX HQ – Poland</option>
+                          <option>LeverX Dubai</option>
+                          <option>LeverX HQ – Georgia</option>
+                          <option>Remote</option>
+                        </select>
+                      </div>
+
+                      <div>
+                        <label>Room</label>
+                        <input
+                          name="room"
+                          type="text"
+                          placeholder="303.1"
+                          onChange={handleAdvancedReset}
+                        />
+                      </div>
                     </div>
-                  </div>
 
-                  <div className="additional-info">
-                    <div>
-                      <label>Building</label>
-                      <select name="building" onChange={handleAdvancedReset}>
-                        <option>Select building</option>
-                        <option>LeverX HQ – Poland</option>
-                        <option>LeverX Dubai</option>
-                        <option>LeverX HQ – Georgia</option>
-                        <option>Remote</option>
-                      </select>
-                    </div>
+                    <label>Department</label>
+                    <select name="department" onChange={handleAdvancedReset}>
+                      <option>Select a department</option>
+                      <option>Human Resources (HR)</option>
+                      <option>Web & Mobile</option>
+                      <option>Marketing</option>
+                      <option>Finance</option>
+                    </select>
 
-                    <div>
-                      <label>Room</label>
-                      <input
-                        name="room"
-                        type="text"
-                        placeholder="303.1"
-                        onChange={handleAdvancedReset}
-                      />
-                    </div>
-                  </div>
-
-                  <label>Department</label>
-                  <select name="department" onChange={handleAdvancedReset}>
-                    <option>Select a department</option>
-                    <option>Human Resources (HR)</option>
-                    <option>Web & Mobile</option>
-                    <option>Marketing</option>
-                    <option>Finance</option>
-                  </select>
-
-                  <button className="search-btn">SEARCH</button>
-                </form>
-              </div>
-            )}
+                    <button className="search-btn">SEARCH</button>
+                  </form>
+                </div>
+              )}
+            </div>
           </div>
         </aside>
 
