@@ -298,3 +298,11 @@
   opacity: 1;
   transform: translateY(0);
 }
+
+.basic-content,
+.advanced-content {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: $light-shadow;
+}
