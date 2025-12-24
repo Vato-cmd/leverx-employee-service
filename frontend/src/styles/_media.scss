@@ -133,4 +133,54 @@
   .button-section {
     align-items: center;
   }
+
+  aside {
+    display: none;
+  }
+
+  .mobile-basic-search {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    background: #0f3d91;
+    padding: 12px 0;
+  }
+
+  .mobile-search-inner {
+    width: 90%;
+    max-width: 360px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #154fa8;
+    border-radius: 14px;
+    padding: 10px 14px;
+  }
+
+  .mobile-search-icon {
+    color: #cfd9ff;
+    font-size: 16px;
+  }
+
+  .mobile-search-inner input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+
+    color: #ffffff;
+    font-size: 15px;
+  }
+
+  .mobile-search-inner input::placeholder {
+    color: #cfd9ff;
+  }
+
+  section {
+    padding-top: 140px;
+  }
 }

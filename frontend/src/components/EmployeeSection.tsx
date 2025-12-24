@@ -294,6 +294,30 @@ const EmployeeSection: React.FC = () => {
           </div>
         </aside>
 
+        <div className="mobile-basic-search">
+          <div className="mobile-search-inner">
+            <span className="mobile-search-icon">🔍</span>
+
+            <input
+              type="text"
+              placeholder="John Smith"
+              value={basicSearchQuery}
+              onChange={(e) => {
+                const value = e.target.value;
+                setBasicSearchQuery(value);
+
+                if (value.trim() === "") {
+                  setFilteredEmployees(employees);
+                  setShow404Error(false);
+                }
+              }}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") handleBasicSearch();
+              }}
+            />
+          </div>
+        </div>
+
         <section>
           <div className="button-section">
             <p>{filteredEmployees.length} employees displayed</p>
