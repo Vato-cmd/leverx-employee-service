@@ -298,11 +298,11 @@ const EmployeeSection: React.FC = () => {
           <div className="mobile-search-inner">
             <button
               type="button"
-              className="mobile-search-icon"
               onClick={handleBasicSearch}
               aria-label="Search"
             >
               <img
+                className="mobile-search-icon"
                 src="/images/magnifying-glass-1093183_1280.png"
                 alt="magnifying glass"
               />
