@@ -64,6 +64,10 @@ header {
   box-shadow: 0 2px 5px rgba(44, 136, 255, 0.45);
 }
 
+.header-anchor.header-active-page::after p {
+  color: #ffff;
+}
+
 .header-anchor.header-active-page::after {
   transform: scaleX(1);
 }
