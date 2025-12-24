@@ -64,8 +64,9 @@ header {
   box-shadow: 0 2px 5px rgba(44, 136, 255, 0.45);
 }
 
-.header-anchor.header-active-page::after p {
+.header-anchor.header-active-page {
   color: #ffff;
+  opacity: 1;
 }
 
 .header-anchor.header-active-page::after {
