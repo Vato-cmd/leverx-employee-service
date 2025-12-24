@@ -302,7 +302,10 @@ const EmployeeSection: React.FC = () => {
               onClick={handleBasicSearch}
               aria-label="Search"
             >
-              🔍
+              <img
+                src="frontend/public/images/magnifying-glass-1093183_1280.png"
+                alt="magnifying glass"
+              />
             </button>
 
             <input
