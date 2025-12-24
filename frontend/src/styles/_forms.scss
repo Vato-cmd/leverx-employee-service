@@ -139,11 +139,9 @@
 }
 
 .tabs {
-  display: flex;
-  justify-content: center;
   position: relative;
   gap: 40px;
-  margin-bottom: $margin-default;
+  width: 100%;
 }
 
 .tabs > button {
