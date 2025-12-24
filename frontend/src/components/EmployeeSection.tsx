@@ -299,13 +299,10 @@ const EmployeeSection: React.FC = () => {
             <button
               type="button"
               onClick={handleBasicSearch}
+              className="mobile-search-icon"
               aria-label="Search"
             >
-              <img
-                className="mobile-search-icon"
-                src="/images/magnifying-glass-1093183_1280.png"
-                alt="magnifying glass"
-              />
+              <img src="/images/icons8-magnifier.svg" alt="magnifier" />
             </button>
 
             <input
