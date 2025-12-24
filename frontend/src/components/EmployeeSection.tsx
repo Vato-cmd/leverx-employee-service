@@ -303,7 +303,7 @@ const EmployeeSection: React.FC = () => {
               aria-label="Search"
             >
               <img
-                src="frontend/public/images/magnifying-glass-1093183_1280.png"
+                src="/images/magnifying-glass-1093183_1280.png"
                 alt="magnifying glass"
               />
             </button>
