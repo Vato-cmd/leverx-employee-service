@@ -151,6 +151,9 @@
   padding-bottom: $padding-default;
 }
 
+.tabs > button:hover {
+}
+
 .tabs .active {
   color: #2b2a2a;
   opacity: 0.9;
@@ -165,10 +168,6 @@
   border-bottom: 2px solid transparent;
   transition: $transition-default;
   width: 50%;
-
-  &:hover {
-    transform: scale(0);
-  }
 }
 
 .tab::after {
