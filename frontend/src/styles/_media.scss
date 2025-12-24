@@ -162,8 +162,18 @@
   }
 
   .mobile-search-icon {
+    background: none;
+    border: none;
+    padding: 0;
     color: #cfd9ff;
     font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+
+  .mobile-search-icon:active {
+    transform: scale(0.95);
   }
 
   .mobile-search-inner input {
@@ -171,7 +181,6 @@
     background: transparent;
     border: none;
     outline: none;
-
     color: #ffffff;
     font-size: 15px;
   }
@@ -181,6 +190,6 @@
   }
 
   section {
-    padding-top: 140px;
+    padding-top: 90px;
   }
 }

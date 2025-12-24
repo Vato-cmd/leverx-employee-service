@@ -296,7 +296,14 @@ const EmployeeSection: React.FC = () => {
 
         <div className="mobile-basic-search">
           <div className="mobile-search-inner">
-            <span className="mobile-search-icon">🔍</span>
+            <button
+              type="button"
+              className="mobile-search-icon"
+              onClick={handleBasicSearch}
+              aria-label="Search"
+            >
+              🔍
+            </button>
 
             <input
               type="text"
